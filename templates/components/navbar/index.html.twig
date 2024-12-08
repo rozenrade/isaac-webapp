@@ -1,0 +1,23 @@
+<nav class="bg-gray-800 text-white">
+    {# <img src={{ asset('img/4_Bosses/BabyPlum.png') }} alt="Baby Plum" class="babyplum"> #}
+
+	<ul class="flex flex-row justify-center items-center p-8 space-x-24 text-2xl">
+
+		<li><a href="/">Home</a></li>
+
+		<li><a href="/synergy">Synergies</a></li>
+
+		<li><a href="/random">Random</a></li>
+
+		<li><a href="/about">A propos</a></li>
+
+		{% if is_granted('ROLE_USER') %}
+			<li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+		{% else %}
+			<li><a href="{{ path('app_signup') }}">S'inscrire</a></li>
+			<li><a href="{{ path('app_login') }}">Se connecter</a></li>
+		{% endif %}
+
+	</ul>
+
+</nav>
