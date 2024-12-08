@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Isaac's Bravery - Accueil
+{% endblock %}
+
+{% block body %}
+
+	<div class="flex flex-row">
+		<div class="flex flex-col justify-center items-center m-16 p-16 bg-gray-300">
+			<h1 class="p-4 text-xl">Bienvenue sur mon site dédié à
+				<a href="#" class="text-blue-500 justify-center items-center">The Binding of Isaac</a>!</h1>
+			<p class="p-4 text-xl text-white">
+				Si vous êtes un fan de ce jeu captivant et imprévisible, vous êtes au bon endroit. Ici, vous trouverez un concept unique inspiré d'Ultimate Bravery de League of Legends, mais adapté à The Binding of Isaac. Notre objectif est simple, rendre vos runs encore plus chaotiques et funs en générant des builds totalement randomisés!</p>
+
+			<p class="p-4 text-xl text-white">Que vous soyez à la recherche d'un défi supplémentaire ou que vous vouliez juste pimenter votre expérience de jeu, notre générateur de builds vous imposera des combinaisons d'objets et d'éléments aléatoires pour chaque partie. Préparez-vous à des surprises inattendues, des synergies improbables et des moments mémorables dans votre quête pour vaincre Isaac, Satan ou tout autre boss épique du jeu. Bonne chance, et surtout... amusez-vous avec le chaos !</p>
+		</div>
+		<div class="border-2 border-black">
+			<div>
+
+				<div class="relative w-full overflow-hidden">
+					<div class="flex transition-transform duration-700 ease-in-out " id="carousel-container">
+
+						<div>
+							<img src={{ asset('img/characters/Isaac.png') }} alt="Isaac" class="w-32">
+						</div>
+
+						<div>
+							<img src={{ asset('img/characters/Cain.png') }} alt="Cain" class="w-32">
+						</div>
+
+						<div>
+							<img src={{ asset('img/characters/Eve.png') }} alt="Eve" class="w-32">
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<button class="p-16">Générer un build</button>
+		</div>
+	</div>
+
+{% endblock %}

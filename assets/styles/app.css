@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: skyblue;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
+
+body {
+    background: url('../img/appBg.png');
+}
+

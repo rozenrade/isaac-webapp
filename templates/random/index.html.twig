@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Isaac's bravery - Randomizer
+{% endblock %}
+
+{% block body %}
+	<h1 class="p-4 text-center text-white">You can use our randomizer on this page</h1>
+
+	<div class="flex flex-col items-center justify-center">
+		<a href={{ path('app_random', {status: 'random'}) }}>Randomize</a>
+		<div id="item-container">
+			{# Un item aléatoire est affiché ici #}
+
+		</div>
+	</div>
+{% endblock %}
