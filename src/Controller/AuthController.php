@@ -61,4 +61,10 @@ class AuthController extends AbstractController
 
         return $this->render('auth/signin.html.twig', ['form' => $form]);
     }
+
+    #[Route('/logout', name: 'app_logout')]
+    public function logout(): Response
+    {
+        return $this->redirectToRoute('app_login');
+    }
 }
