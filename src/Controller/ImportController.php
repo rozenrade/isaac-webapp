@@ -15,7 +15,7 @@ class ImportController extends AbstractController
     public function import(JsonImporter $jsonImporter): Response
     {
         // // Chemin vers votre fichier JSON
-        // $jsonFilePath = __DIR__ . '/../../public/assets/data/cleaned_items_with_filename.json';
+        // $jsonFilePath = __DIR__ . '/../../public/assets/data/cleaned_items.json';
 
         // try {
         //     // Appeler le service pour importer les données

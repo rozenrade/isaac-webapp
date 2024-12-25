@@ -1,34 +1,39 @@
 <?php
 
 // Chemin vers le fichier JSON
-$filePath = __DIR__ . '/../assets/data/output.json'; // Ajustez le chemin selon votre structure
+$filePath = __DIR__ . '/../assets/data/items.json';  // Modifiez selon l'emplacement de votre fichier
 
+// Vérifier si le fichier existe
 if (!file_exists($filePath)) {
-    die("Fichier introuvable : $filePath\n");
+    die("Le fichier JSON est introuvable.\n");
 }
 
-// Chargement du contenu JSON
+// Charger le contenu du fichier JSON
 $jsonData = file_get_contents($filePath);
 
+// Vérifier si le contenu a bien été récupéré
 if (!$jsonData) {
-    die("Le fichier JSON est invalide ou vide.\n");
+    die("Le fichier JSON est vide ou invalide.\n");
 }
 
-// Décoder le JSON
+// Décoder le JSON en tableau PHP
 $data = json_decode($jsonData, true);
 
-if (!$data) {
-    die("Le fichier JSON est invalide ou ne peut pas être parsé.\n");
+// Vérifier si le décodage a échoué
+if ($data === null) {
+    die("Erreur de décodage du fichier JSON : " . json_last_error_msg() . "\n");
 }
 
-// Extraction des champs "name" et ajout du champ "filename"
+// Initialiser le tableau nettoyé
 $cleanedData = [];
+
+// Parcourir les données pour récupérer uniquement les champs "name" et "filename"
 foreach ($data as $item) {
     if (isset($item['name'])) {
-        // Générer le nom de fichier à partir du nom (par exemple, transformer en minuscules et remplacer les espaces par des underscores)
+        // Créer le nom du fichier basé sur "name" (remplacer les espaces par des underscores et mettre en minuscules)
         $filename = strtolower(str_replace(' ', '_', $item['name'])) . '.png';
-        
-        // Ajouter l'élément avec "name" et "filename"
+
+        // Ajouter le nouvel élément avec "name" et "filename"
         $cleanedData[] = [
             'name' => $item['name'],
             'filename' => $filename
@@ -36,8 +41,8 @@ foreach ($data as $item) {
     }
 }
 
-// Sauvegarde du JSON nettoyé avec "name" et "filename"
-$outputPath = __DIR__ . '/../assets/data/cleaned_items_with_filename.json';
+// Sauvegarder le tableau nettoyé dans un nouveau fichier JSON
+$outputPath = __DIR__ . '/../assets/data/cleaned_items.json';  // Modifiez selon où vous souhaitez sauvegarder le fichier
 file_put_contents($outputPath, json_encode($cleanedData, JSON_PRETTY_PRINT));
 
-echo "JSON nettoyé et sauvegardé dans : $outputPath\n";
+echo "Fichier JSON nettoyé et sauvegardé dans : $outputPath\n";

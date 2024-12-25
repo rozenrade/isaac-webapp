@@ -1,9 +1,4 @@
 {
-    "NEW": {
-        "name": "Unknown Item",
-        "shown": true,
-        "text": "Tracker doesn't know this item yet"
-    },
     "1": {
         "name": "The Sad Onion",
         "shown": true,
