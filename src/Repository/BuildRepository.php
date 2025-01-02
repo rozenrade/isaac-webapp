@@ -16,6 +16,15 @@ class BuildRepository extends ServiceEntityRepository
         parent::__construct($registry, Build::class);
     }
 
+    public function save(Build $build, ?bool $isSaved = true): void
+    {
+        $this->getEntityManager()->persist($build);
+        
+        if($isSaved){
+            $this->getEntityManager()->flush();
+        }
+    }
+
 //    /**
 //     * @return Build[] Returns an array of Build objects
 //     */
