@@ -18,10 +18,8 @@ class Build
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    /**
-     * @var Collection<int, Item>
-     */
-    #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'builds')]
+    #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'builds', cascade: ['persist'])]
+    #[ORM\JoinTable(name: 'build_item')]  // Nom de la table de liaison
     private Collection $item;
 
     #[ORM\ManyToOne(inversedBy: 'builds')]
@@ -50,9 +48,6 @@ class Build
         return $this;
     }
 
-    /**
-     * @return Collection<int, Item>
-     */
     public function getItem(): Collection
     {
         return $this->item;

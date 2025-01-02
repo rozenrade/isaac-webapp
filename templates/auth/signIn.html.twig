@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's Bravery - S'enregistrer
+{% block title %}Isaac's Bravery - Se connecter
 {% endblock %}
 
 {% block body %}
 
-<h1>Bienvenue sur la page d'inscription !</h1>
+<h1>Bienvenue sur la page de connexion !</h1>
 
 <div class="p-16 flex flex-row">
 	{{ form_start(form) }}
 	<div class="bg-gray-200 p-16 shadow-md rounded-xl">
 
-        <div>
-            <div>
-                {{ form_label(form.email, 'Email', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-            </div>
+		<div>
+			<div>
+				{{ form_label(form.email, 'email', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
+			</div>
 
-            <div class="pt-16 pb-16">
-                {{ form_widget(form.email, {'attr': {'class': 'p-4 text-[24px] focus:outline-none'}}) }}
-            </div>
-        </div>
+			<div class="pt-16 pb-16">
+				{{ form_widget(form.email, {'attr': {'class': 'p-4 text-[24px] focus:outline-none'}, full_name:'email'}) }}
+			</div>
+		</div>
 
-        <div>
-            <div>
-                {{ form_label(form.password, 'Mot de passe', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-	        </div>
+		<div>
+			<div>
+				{{ form_label(form.password, 'password', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
+			</div>
 
-	        <div class="pt-16 pb-16">
-	        {{ form_widget(form.password, {'attr': {'class': 'p-4 text-[24px] focus:outline-none'}}) }}
-	        </div>
-        </div>
+			<div class="pt-16 pb-16">
+				{{ form_widget(form.password, {'attr': {'class': 'p-4 text-[24px] focus:outline-none'}, full_name:'password'}) }}
+			</div>
+		</div>
 
-	    <div>
-		    {{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'}, 'label':    'S\'enregistrer'}) }}
+		<div>
+			{{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'}, 'label':    'Se connecter'}) }}
         </div>
 
     </div>

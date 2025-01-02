@@ -33,3 +33,34 @@ setInterval(() => {
     currentIndex = (currentIndex + 1) % totalSlides; // Incrémente l'index pour passer à la slide suivante, et revient à 0 une fois à la fin.
     showSlide(currentIndex); // Affiche la slide correspondant au nouvel index.
 }, 3000); // Répète ce processus toutes les 3000 millisecondes (3 secondes), créant une transition automatique.
+
+
+// Saving button
+
+document.getElementById('save-button').addEventListener('click',  async () => {
+    // récupérer les id des items
+
+    const itemIds = Array.from(document.querySelectorAll('.item')).map(item => item.id);
+    try {
+        const response = await fetch('/random/save', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            },
+            body: JSON.stringify({items: itemIds,}),
+        });
+
+        const result = await response.json();
+
+        if(response.ok){
+            alert(result.success);
+        }else {
+            alert(result.error);
+        }
+        
+    } catch (error) {
+        console.log("An error occurred while saving the build:", error);
+        
+    }
+})

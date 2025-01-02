@@ -1,0 +1,726 @@
+[
+    {
+        "name": "The Sad Onion",
+        "shown": true,
+        "tears": "0.7",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Inner Eye",
+        "delay": "3",
+        "delay_x": "2.1",
+        "shown": true,
+        "text": "Triple shot",
+        "in_summary": true,
+        "summary_name": "Triple",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Spoon Bender",
+        "shown": true,
+        "text": "Homing tears",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Cricket's Head",
+        "dmg": "0.5",
+        "dmg_x": "1.5",
+        "shown": true,
+        "text": "",
+        "in_summary": true,
+        "summary_name": "CHead",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "My Reflection",
+        "height": "1",
+        "range": "1.5",
+        "shown": true,
+        "text": "Boomerang tears",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Number One",
+        "height": "0.45",
+        "range": "-15.78",
+        "shown": true,
+        "tears": "1.5",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Blood of the Martyr",
+        "dmg": "1",
+        "shown": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Brother Bobby",
+        "shown": true,
+        "conjoined": true,
+        "text": "Familiar (3.5 dmg \/ tear)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Skatole",
+        "shown": true,
+        "beelzebub": true,
+        "text": "Flies won't attack you",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Halo of Flies",
+        "shown": true,
+        "beelzebub": true,
+        "text": "Two non-damaging fly orbitals",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "1UP",
+        "shown": true,
+        "funguy": true,
+        "text": "+1 life",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Magic Mushroom",
+        "dmg": "0.3",
+        "dmg_x": "1.5",
+        "health": "1",
+        "height": "0.5",
+        "range": "5.25",
+        "shown": true,
+        "speed": "0.3",
+        "text": "Size up, full heal",
+        "in_summary": true,
+        "funguy": true,
+        "summary_name": "MMush",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Virus",
+        "speed": "-0.1",
+        "shown": true,
+        "spun": true,
+        "text": "Poison touch",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Roid Rage",
+        "height": "0.5",
+        "range": "5.25",
+        "shown": true,
+        "spun": true,
+        "speed": "0.6",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "<3",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "Full heal",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Raw Liver",
+        "health": "2",
+        "shown": true,
+        "health_only": true,
+        "text": "Full heal",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Skeleton Key",
+        "shown": true,
+        "text": "+99 keys",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "A Dollar",
+        "shown": true,
+        "text": "+99 cents",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Boom!",
+        "shown": true,
+        "text": "+10 bombs",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Transcendence",
+        "shown": true,
+        "text": "Flight",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Compass",
+        "shown": true,
+        "text": "Reveals special rooms",
+        "in_summary": true,
+        "summary_name": "Compass",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Lunch",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Dinner",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Dessert",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Breakfast",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Rotten Meat",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Wooden Spoon",
+        "shown": true,
+        "speed": "0.3",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Belt",
+        "shown": true,
+        "speed": "0.3",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Underwear",
+        "height": "0.5",
+        "range": "5.25",
+        "shown": true,
+        "yesmother": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Heels",
+        "height": "0.5",
+        "range": "5.25",
+        "shown": true,
+        "yesmother": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Lipstick",
+        "height": "0.5",
+        "range": "5.25",
+        "shown": true,
+        "yesmother": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Wire Coat Hanger",
+        "shown": true,
+        "tears": "0.7",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Bible",
+        "shown": true,
+        "seraphim": true,
+        "text": "Temporary flight, instantly kills Mom \/ It Lives!",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Book of Belial",
+        "shown": true,
+        "bookworm": true,
+        "text": "Temporary +2 dmg, +12.5% deal chance, x1.5 dmg with Blood of the Martyr",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Necronomicon",
+        "shown": true,
+        "text": "Deals 40 dmg to the room",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Poop",
+        "shown": true,
+        "ohcrap": true,
+        "text": "Makes a poop",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mr. Boom",
+        "shown": true,
+        "text": "Makes a bomb (110 dmg)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Tammy's Head",
+        "shown": true,
+        "text": "Shoots 10 tears (dmg + 25)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Bra",
+        "shown": true,
+        "yesmother": true,
+        "text": "Temporarily freezes enemies",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Kamikaze",
+        "shown": true,
+        "text": ".5 heart dmg to self, 40 dmg explosion",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Pad",
+        "shown": true,
+        "yesmother": true,
+        "text": "Temporarily fears enemies",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Bob's Rotten Head",
+        "shown": true,
+        "bob": true,
+        "text": "Shoots a poison bomb (50 dmg + 6-8 \/ tick)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Teleport",
+        "shown": true,
+        "text": "",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Yum Heart",
+        "shown": true,
+        "text": "Heals 1 heart",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Lucky Foot",
+        "shown": true,
+        "luck": "1",
+        "text": "Better gambling chances",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Doctor's Remote",
+        "shown": true,
+        "text": "Shoots a missile (20x dmg)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Cupid's Arrow",
+        "shown": true,
+        "text": "Piercing tears",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Shoop Da Whoop",
+        "shown": true,
+        "text": "Shoots a blood laser (7x dmg)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Steven",
+        "dmg": "1",
+        "shown": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Pentagram",
+        "dmg": "1",
+        "shown": true,
+        "leviathan": true,
+        "text": "+20% deal chance",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Dr. Fetus",
+        "delay_x": "2.5",
+        "dmg_x": "3",
+        "shown": true,
+        "text": "Bomb tears",
+        "in_summary": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Magneto",
+        "shown": true,
+        "text": "Attracts pickups",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Treasure Map",
+        "shown": true,
+        "text": "Reveals the floor layout",
+        "in_summary": true,
+        "summary_name": "Map",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mom's Eye",
+        "shown": true,
+        "yesmother": true,
+        "text": "Chance to shoot a 2nd tear backwards",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Lemon Mishap",
+        "shown": true,
+        "text": "Makes a pool of pee",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Distant Admiration",
+        "shown": true,
+        "beelzebub": true,
+        "text": "Orbital (5 dmg \/ tick)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Book of Shadows",
+        "shown": true,
+        "bookworm": true,
+        "text": "Temporary invincibility",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Ladder",
+        "shown": true,
+        "text": "Can cross gaps",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Charm of the Vampire",
+        "shown": true,
+        "text": "Heals half heart every 13 enemy deaths",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Battery",
+        "shown": true,
+        "text": "Can double charge activated items",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Steam Sale",
+        "shown": true,
+        "text": "All shop items are half price",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Anarchist's Cookbook",
+        "shown": true,
+        "bookworm": true,
+        "text": "Spawns 6 troll bombs",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Hourglass",
+        "shown": true,
+        "text": "Temporarily slows enemies",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Sister Maggy",
+        "shown": true,
+        "conjoined": true,
+        "text": "Familiar (3.5 dmg \/ tear)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Technology",
+        "shown": true,
+        "text": "Laser tears (piercing)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Chocolate Milk",
+        "shown": true,
+        "text": "Charge tears (max is 4x dmg and 2.5x delay)",
+        "in_summary": true,
+        "summary_name": "Choco",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Growth Hormones",
+        "dmg": "1",
+        "shown": true,
+        "spun": true,
+        "speed": "0.4",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Mini Mush",
+        "height": "1.5",
+        "range": "-4.25",
+        "shown": true,
+        "funguy": true,
+        "speed": "0.3",
+        "text": "Size down",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Rosary",
+        "shown": true,
+        "seraphim": true,
+        "soul_hearts": "3",
+        "text": "Puts the bible into most item pools",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Cube of Meat",
+        "shown": true,
+        "text": "Orbital (7 dmg \/ tick)",
+        "in_summary": true,
+        "summary_name": "Cube",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "A Quarter",
+        "shown": true,
+        "text": "+25 cents",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "PhD",
+        "shown": true,
+        "text": "Bad stat pills become good, free pill",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "X-Ray Vision",
+        "shown": true,
+        "text": "Automatically opens secret and super secret rooms",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "My Little Unicorn",
+        "shown": true,
+        "text": "Temporary invincibility, 40 contact dmg",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Book of Revelations",
+        "shown": true,
+        "bookworm": true,
+        "text": "+1 soul heart, changes floor boss to a horseman",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "dmg": "1",
+        "name": "The Mark",
+        "shown": true,
+        "leviathan": true,
+        "speed": "0.2",
+        "soul_hearts": "1",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "dmg": "0.5",
+        "name": "The Pact",
+        "shown": true,
+        "leviathan": true,
+        "tears": "0.7",
+        "soul_hearts": "2",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Dead Cat",
+        "shown": true,
+        "guppy": true,
+        "text": "+9 lives, sets heart containers to 1",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Lord of the Pit",
+        "speed": "0.3",
+        "shown": true,
+        "text": "Flying",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "dmg": "0.7",
+        "name": "The Nail",
+        "shown": true,
+        "speed": "-0.18",
+        "leviathan": true,
+        "text": "+1 soul heart, temporarily crush rocks",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "We Need To Go Deeper!",
+        "shown": true,
+        "text": "Spawns a trapdoor (10% chance for crawlspace)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Deck of Cards",
+        "shown": true,
+        "text": "Spawns a random card",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Monstro's Tooth",
+        "shown": true,
+        "text": "Summons monstro (120 dmg)",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Loki's Horns",
+        "shown": true,
+        "text": "Chance to shoot 4 tears instead of 1",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Little Chubby",
+        "shown": true,
+        "text": "Familiar (3.5 dmg \/ tick)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Spider Bite",
+        "shown": true,
+        "spiderbaby": true,
+        "text": "Chance to shoot slowing tears",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Small Rock",
+        "dmg": "1",
+        "speed": "-0.2",
+        "tears": "0.2",
+        "shown": true,
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Spelunker Hat",
+        "shown": true,
+        "text": "See adjacent special rooms on the map",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Super Bandage",
+        "health": "1",
+        "shown": true,
+        "health_only": true,
+        "soul_hearts": "2",
+        "text": "",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Gamekid",
+        "shown": true,
+        "text": "Temporary invincibility, 40 contact dmg",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Sack of Pennies",
+        "shown": true,
+        "text": "Spawns a coin every 2 rooms cleared",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Robo-Baby",
+        "shown": true,
+        "text": "Familiar (3.5 dmg \/ laser)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Little C.H.A.D.",
+        "shown": true,
+        "text": "Spawns a half heart every 2 rooms cleared",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Book of Sin",
+        "shown": true,
+        "bookworm": true,
+        "text": "Spawns a random pickup",
+        "space": true,
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "The Relic",
+        "shown": true,
+        "text": "Spawns a soul heart every few rooms cleared",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Little Gish",
+        "shown": true,
+        "text": "Familiar (3.5 dmg \/ tear, chance to slow)",
+        "introduced_in": "Rebirth"
+    },
+    {
+        "name": "Little Steven",
+        "shown": true,
+        "conjoined": true,
+        "text": "Familiar (3.5 dmg \/ tear, homing tears)",
+        "introduced_in": "Rebirth"
+    }
+]
