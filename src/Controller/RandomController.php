@@ -14,7 +14,7 @@ use App\Repository\ItemRepository;
 class RandomController extends AbstractController
 {
     #[Route('/random', name: 'app_random', methods: ['GET'])]
-    public function index(ItemRepository $itemRepository, BuildRepository $buildRepository,Request $request, SessionInterface $session): Response
+    public function index(ItemRepository $itemRepository, BuildRepository $buildRepository, Request $request, SessionInterface $session): Response
     {
         $totalItems = $itemRepository->findAll();
         $url = $request->query->get('status'); // Récupère le paramètre 'status'
@@ -54,9 +54,12 @@ class RandomController extends AbstractController
             $currentSet = $session->get('currentItemSet', []);
             $session->set('savedItemSet', $currentSet);
 
-            if($this->isGranted('IS_AUTHENTICATED_FULLY')){
+            if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
                 $build = new Build();
-                $build->setName('Build ' . count($currentSet));
+                $buildCount = $session->get('build_count', 0);
+                $build->setName('Build ' . ($buildCount + 1));
+                $session->set('build_count', $buildCount + 1);
+
                 $build->setUtilisateur($this->getUser());
 
                 foreach ($currentSet as $item) {
@@ -76,4 +79,14 @@ class RandomController extends AbstractController
         ]);
     }
 
+    #[Route('/random/saved', name: 'app_saved_items')]
+    public function savedItems(SessionInterface $session): Response
+    {
+        // Récupérer les items sauvegardés depuis la session
+        $savedItemSet = $session->get('savedItemSet', []);
+
+        return $this->render('random/saved_items.html.twig', [
+            'savedItemSet' => $savedItemSet,
+        ]);
+    }
 }

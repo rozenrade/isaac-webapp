@@ -26,18 +26,7 @@ class UserRepository extends ServiceEntityRepository
 
         return $user;
     }
-
-    public function findBuildsByUser(User $user): array
-    {
-        return $this->createQueryBuilder('u')
-            ->select('u.builds')
-            ->where('u.id = :id')
-            ->setParameter('id', $user->getId())
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
+    
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Build;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -25,6 +26,17 @@ class BuildRepository extends ServiceEntityRepository
         }
     }
 
+    public function findBuildsByUser(User $utilisateur): array
+    {
+        return $this->createQueryBuilder('b') // 'b' est l'alias de Build
+            ->leftJoin('b.item', 'i') // Jointure avec Items depuis Build
+            ->addSelect('i') // Sélection des Items pour éviter le lazy loading
+            ->where('b.utilisateur = :utilisateur') // Filtrer par utilisateur
+            ->setParameter('utilisateur', $utilisateur) // Associer l'utilisateur à la requête
+            ->getQuery()
+            ->getResult();
+    }
+    
 //    /**
 //     * @return Build[] Returns an array of Build objects
 //     */
