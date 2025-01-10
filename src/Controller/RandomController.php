@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Build;
+use App\Repository\BossRepository;
 use App\Repository\BuildRepository;
+use App\Repository\CharacterRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,46 +16,43 @@ use App\Repository\ItemRepository;
 class RandomController extends AbstractController
 {
     #[Route('/random', name: 'app_random', methods: ['GET'])]
-    public function index(ItemRepository $itemRepository, BuildRepository $buildRepository, Request $request, SessionInterface $session): Response
-    {
+    public function index(
+        ItemRepository $itemRepository,
+        BossRepository $bossRepository,
+        CharacterRepository $characterRepository,
+        BuildRepository $buildRepository,
+        Request $request,
+        SessionInterface $session
+    ): Response {
         $totalItems = $itemRepository->findAll();
+        $totalBosses = $bossRepository->findAll();
+        $totalCharacters = $characterRepository->findAll();
+
         $url = $request->query->get('status'); // Récupère le paramètre 'status'
-
         $statusController = ($url === 'random');
-        $itemSet = [];
+        $isSaved = ($url === 'saved'); // Vérifie si l'utilisateur veut sauvegarder
 
-        // Assurer que l'on ait bien 10 items
+        // ✅ GÉNÉRATION D'UN NOUVEAU BUILD SI "random" EST DANS L'URL
         if ($statusController) {
-            $attempts = 0;
-            $maxAttempts = 100;
+            $itemSet = $this->getRandomItems($totalItems);
+            $selectedBoss = $totalBosses[rand(0, count($totalBosses) - 1)];
+            $selectedCharacter = $totalCharacters[rand(0, count($totalCharacters) - 1)];
 
-            while (count($itemSet) < 10 && $attempts < $maxAttempts) {
-                $randomId = rand(0, count($totalItems) - 1);
-                $item = $totalItems[$randomId];
-
-                $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $item->getFilename();
-                $imageExists = file_exists($imagePath);
-
-                if ($imageExists && !in_array($item, $itemSet)) {
-                    $itemSet[] = $item;
-                }
-
-                $attempts++;
-            }
-
-            if (count($itemSet) < 10) {
-                $this->addFlash('warning', 'Moins de 10 items disponibles avec des images.');
-            }
-
-            // Sauvegarde le set actuel dans la session
-            $session->set('currentItemSet', $itemSet);
+            $session->set('currentItemSet', [
+                'itemSet' => $itemSet,
+                'boss' => $selectedBoss,
+                'character' => $selectedCharacter
+            ]);
         }
 
-        // Si l'utilisateur clique sur "sauvegarder"
-        if ($url === 'saved') {
-            $currentSet = $session->get('currentItemSet', []);
-            $session->set('savedItemSet', $currentSet);
+        // ✅ RÉCUPÉRATION DU BUILD ACTUEL
+        $currentItemSet = $session->get('currentItemSet', null);
 
+        // ✅ SAUVEGARDE DU BUILD LORSQUE L'UTILISATEUR CLIQUE SUR "SAUVEGARDER BUILD"
+        if ($isSaved && $currentItemSet) {
+            $session->set('savedItemSet', $currentItemSet); // Sauvegarde temporaire en session
+
+            // Vérifie si l'utilisateur est connecté
             if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
                 $build = new Build();
                 $buildCount = $session->get('build_count', 0);
@@ -62,31 +61,48 @@ class RandomController extends AbstractController
 
                 $build->setUtilisateur($this->getUser());
 
-                foreach ($currentSet as $item) {
+                // Ajoute les items, boss et personnage au build
+                foreach ($currentItemSet['itemSet'] as $item) {
                     $build->addItem($item);
                 }
+                $build->addBoss($currentItemSet['boss']);
+                $build->addCharacter($currentItemSet['character']);
 
                 $buildRepository->save($build);
+
                 $this->addFlash('success', 'Votre build a été sauvegardé');
             }
-
-            return $this->redirectToRoute('app_saved_items'); // Redirection vers une autre page
         }
 
+        // ✅ SUPPRESSION DES DONNÉES APRÈS AFFICHAGE
+        $session->remove('currentItemSet'); // Efface les données après récupération
+
         return $this->render('random/index.html.twig', [
-            'itemSet' => $itemSet,
             'statusURL' => $statusController,
+            'currentItemSet' => $currentItemSet, // Envoi des données à Twig
         ]);
     }
 
-    #[Route('/random/saved', name: 'app_saved_items')]
-    public function savedItems(SessionInterface $session): Response
+    /**
+     * 🔥 Fonction pour récupérer 10 items uniques avec image valide
+     */
+    private function getRandomItems(array $totalItems): array
     {
-        // Récupérer les items sauvegardés depuis la session
-        $savedItemSet = $session->get('savedItemSet', []);
+        $itemSet = [];
+        $attempts = 0;
+        $maxAttempts = 100;
 
-        return $this->render('random/saved_items.html.twig', [
-            'savedItemSet' => $savedItemSet,
-        ]);
+        while (count($itemSet) < 10 && $attempts < $maxAttempts) {
+            $randomId = rand(0, count($totalItems) - 1);
+            $item = $totalItems[$randomId];
+
+            $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $item->getFilename();
+            if (file_exists($imagePath) && !in_array($item, $itemSet)) {
+                $itemSet[] = $item;
+            }
+            $attempts++;
+        }
+
+        return $itemSet;
     }
 }

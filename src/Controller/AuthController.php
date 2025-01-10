@@ -24,18 +24,22 @@ class AuthController extends AbstractController
         $form = $this->createForm(SignUpForm::class, $user);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             // Vérification si l'email existe déjà
             // L'email est ce qui permet de vérifier l'authenticité de l'utilisateur
-            if($existingUser){
+            if ($existingUser) {
                 $this->addFlash('danger', 'Cet email est déjà utilisé');
                 return $this->redirectToRoute('app_signup');
             }
 
+            // Ajouter le rôle par défaut ROLE_USER
+            $user->setRoles(['ROLE_USER']);
+            
             // Hash du mot de passe si Utilisateur créé
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
+
 
             $repository->save($user);
             $this->addFlash('success', 'Votre compte a été créé avec succès');
@@ -48,11 +52,10 @@ class AuthController extends AbstractController
 
 
     #[Route('/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils)
+    public function login()
     {
         // On vérifie si l'utilisateur que l'utilisateur soit authentifié
-        if($this->isGranted('IS_AUTHENTICATED_FULLY')){
-
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('app_profile');
         }
 

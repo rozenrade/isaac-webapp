@@ -26,9 +26,23 @@ class Build
     #[ORM\JoinColumn(nullable: false)]
     private ?User $utilisateur = null;
 
+    /**
+     * @var Collection<int, Character>
+     */
+    #[ORM\ManyToMany(targetEntity: Character::class, inversedBy: 'builds')]
+    private Collection $character;
+
+    /**
+     * @var Collection<int, Boss>
+     */
+    #[ORM\ManyToMany(targetEntity: Boss::class, inversedBy: 'builds')]
+    private Collection $boss;
+
     public function __construct()
     {
         $this->item = new ArrayCollection();
+        $this->character = new ArrayCollection();
+        $this->boss = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +91,54 @@ class Build
     public function setUtilisateur(?User $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Character>
+     */
+    public function getCharacter(): Collection
+    {
+        return $this->character;
+    }
+
+    public function addCharacter(Character $character): static
+    {
+        if (!$this->character->contains($character)) {
+            $this->character->add($character);
+        }
+
+        return $this;
+    }
+
+    public function removeCharacter(Character $character): static
+    {
+        $this->character->removeElement($character);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Boss>
+     */
+    public function getBossId(): Collection
+    {
+        return $this->boss;
+    }
+
+    public function addBoss(Boss $boss): static
+    {
+        if (!$this->boss->contains($boss)) {
+            $this->boss->add($boss);
+        }
+
+        return $this;
+    }
+
+    public function removeBoss(Boss $boss): static
+    {
+        $this->boss->removeElement($boss);
 
         return $this;
     }

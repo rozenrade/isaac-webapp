@@ -2,31 +2,42 @@
 
 {% block title %}Isaac's bravery - Randomizer
 {% endblock %}
-
 {% block body %}
+	{% set currentItemSet = app.session.get('currentItemSet') %}
 
 	{% if not statusURL %}
 		<h1 class="p-4 text-center text-white">You can use our randomizer on this page</h1>
 	{% endif %}
 
-	<div class="flex flex-col items-center justify-center">
-		<a href="{{ path('app_random', {status: 'random'} ) }}" class="text-white p-4 bg-blue-500 rounded-lg">Randomize</a>
-		<div id="item-container" class="flex flex-col items-center">
-			{% if statusURL %}
-				<div id="item-container" class="flex flex-wrap">
-					{% for item in itemSet %}
-						<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-							<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
-							<p class="text-white">{{ item.name }}</p>
-						</div>
-					{% endfor %}
+	<div
+		class="bg-gray-800 shadow-lg p-8 rounded-lg flex justify-between w-full max-w-4xl mx-auto mt-8">
+		<!-- 📌 Section des items (2 colonnes de 5, à gauche) -->
+		{% if currentItemSet %}
+			<div class="w-2/3 grid grid-cols-2 gap-6">
+				<div class="flex flex-col justify-center items-center w-28 h-28 bg-gray-700 p-3 rounded-lg shadow-md">
+					<img src="{{ asset('images/items/' ~ currentItemSet.item.filename) }}" alt="{{ currentItemSet.item.name }}" class="w-16 h-16 object-cover">
+					<p class="text-white text-sm text-center mt-2">{{ currentItemSet.item.name }}</p>
+				</div>
+			</div>
+
+			<!-- 📌 Section personnage & boss (à droite) -->
+			<div
+				class="w-1/3 flex flex-col items-center gap-6">
+				<!-- 🧑 Personnage (plus grand) -->
+				<div class="flex flex-col justify-center items-center w-40 h-40 bg-gray-700 p-6 rounded-lg shadow-md">
+					<img src="{{ asset('images/characters/' ~ currentItemSet.character.filename) }}" alt="{{ currentItemSet.character.name }}" class="w-28 h-28 object-cover">
+					<p class="text-white text-base mt-3">{{ currentItemSet.character.name }}</p>
+				</div>
+
+				<!-- 👹 Boss (sous le personnage) -->
+				<div class="flex flex-col justify-center items-center w-32 h-32 bg-gray-700 p-4 rounded-lg shadow-md">
+					<img src="{{ asset('images/destinations/' ~ currentItemSet.boss.filename) }}" alt="{{ currentItemSet.boss.name }}" class="w-24 h-24 object-cover">
+					<p class="text-white text-sm mt-2">{{ currentItemSet.boss.name }}</p>
 				</div>
 			{% endif %}
-
-
+		</div>
+		<div class="flex flex-col">
 			<a href="{{ path('app_random', {status: 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">SAUVEGARDER BUILD</a>
-			<a href="{{ path('app_saved_items') }}" class="text-white p-4 bg-green-500 rounded-lg mt-4">Voir les items sauvegardés</a>
-
 		</div>
 	</div>
 

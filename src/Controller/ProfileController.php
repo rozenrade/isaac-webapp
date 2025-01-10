@@ -13,7 +13,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
-    public function index(BuildRepository $buildRepository, Security $security): Response
+    public function index(): Response
+    {
+        return $this->render('profile/index.html.twig');
+    }
+
+    #[Route('/profile/my-builds', name: 'app_user_show_builds')]
+    public function displayBuilds(BuildRepository $buildRepository, Security $security): Response
     {
         $loggedUser = $security->getUser();
         $userBuilds = $buildRepository->findBuildsByUser($loggedUser);
@@ -37,7 +43,7 @@ class ProfileController extends AbstractController
             ];
         }
         // return $this->render('profile/index.html.twig');
-        return $this->render('profile/index.html.twig', ['builds' => $formattedBuilds]);
+        return $this->render('profile/builds.html.twig', ['builds' => $formattedBuilds]);
         // return new JsonResponse($formattedBuilds);
     }
 

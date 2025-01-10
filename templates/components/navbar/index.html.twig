@@ -12,6 +12,7 @@
 		<li><a href="/about">A propos</a></li>
 
 		{% if is_granted('ROLE_USER') %}
+			<li><a href="{{ path('app_profile') }}">Mon profil</a></li>
 			<li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
 		{% else %}
 			<li><a href="{{ path('app_signup') }}">S'inscrire</a></li>

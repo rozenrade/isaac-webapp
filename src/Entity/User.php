@@ -32,18 +32,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * @var Collection<int, Boss>
-     */
-    #[ORM\OneToMany(targetEntity: Boss::class, mappedBy: 'utilisateur', orphanRemoval: true)]
-    private Collection $bosses;
-
-    /**
-     * @var Collection<int, Character>
-     */
-    #[ORM\OneToMany(targetEntity: Character::class, mappedBy: 'utilisateur', orphanRemoval: true)]
-    private Collection $characters;
-
-    /**
      * @var Collection<int, Synergy>
      */
     #[ORM\OneToMany(targetEntity: Synergy::class, mappedBy: 'utilisateur', orphanRemoval: true)]
@@ -65,8 +53,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->bosses = new ArrayCollection();
-        $this->characters = new ArrayCollection();
         $this->synergies = new ArrayCollection();
         $this->itemLists = new ArrayCollection();
         $this->builds = new ArrayCollection();
@@ -111,10 +97,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
+
     public function getSalt(): ?string
     {
         return null;
+    }
+
+    public function setRoles(array $roles): static
+    {
+        if (!in_array('ROLE_USER', $roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        $this->roles = array_unique($roles);
+
+        return $this;
     }
 
     public function getRoles(): array
@@ -135,66 +132,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
-    }
-    
-    /**
-     * @return Collection<int, Boss>
-     */
-    public function getBosses(): Collection
-    {
-        return $this->bosses;
-    }
-
-    public function addBoss(Boss $boss): static
-    {
-        if (!$this->bosses->contains($boss)) {
-            $this->bosses->add($boss);
-            $boss->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBoss(Boss $boss): static
-    {
-        if ($this->bosses->removeElement($boss)) {
-            // set the owning side to null (unless already changed)
-            if ($boss->getUtilisateur() === $this) {
-                $boss->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Character>
-     */
-    public function getCharacters(): Collection
-    {
-        return $this->characters;
-    }
-
-    public function addCharacter(Character $character): static
-    {
-        if (!$this->characters->contains($character)) {
-            $this->characters->add($character);
-            $character->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCharacter(Character $character): static
-    {
-        if ($this->characters->removeElement($character)) {
-            // set the owning side to null (unless already changed)
-            if ($character->getUtilisateur() === $this) {
-                $character->setUtilisateur(null);
-            }
-        }
-
-        return $this;
     }
 
     /**
@@ -286,6 +223,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-
 }
