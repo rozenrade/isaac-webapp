@@ -29,36 +29,15 @@ class BuildRepository extends ServiceEntityRepository
     public function findBuildsByUser(User $utilisateur): array
     {
         return $this->createQueryBuilder('b') // 'b' est l'alias de Build
-            ->leftJoin('b.item', 'i') // Jointure avec Items depuis Build
+            ->leftJoin('b.item', 'i') // Jointure avec Items
             ->addSelect('i') // Sélection des Items pour éviter le lazy loading
+            ->leftJoin('b.boss', 'boss') // Jointure avec Boss
+            ->addSelect('boss') // Sélectionner les Boss pour éviter le lazy loading
+            ->leftJoin('b.character', 'character') // Jointure avec Character
+            ->addSelect('character') // Sélectionner les Characters pour éviter le lazy loading
             ->where('b.utilisateur = :utilisateur') // Filtrer par utilisateur
             ->setParameter('utilisateur', $utilisateur) // Associer l'utilisateur à la requête
             ->getQuery()
             ->getResult();
     }
-    
-//    /**
-//     * @return Build[] Returns an array of Build objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Build
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

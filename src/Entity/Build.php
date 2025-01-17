@@ -21,21 +21,21 @@ class Build
     #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'builds', cascade: ['persist'])]
     #[ORM\JoinTable(name: 'build_item')]  // Nom de la table de liaison
     private Collection $item;
-
+    
     #[ORM\ManyToOne(inversedBy: 'builds')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $utilisateur = null;
-
+    
     /**
      * @var Collection<int, Character>
      */
-    #[ORM\ManyToMany(targetEntity: Character::class, inversedBy: 'builds')]
+    #[ORM\ManyToMany(targetEntity: Character::class, inversedBy: 'builds', cascade: ['persist'])]
     private Collection $character;
-
+    
     /**
      * @var Collection<int, Boss>
      */
-    #[ORM\ManyToMany(targetEntity: Boss::class, inversedBy: 'builds')]
+    #[ORM\ManyToMany(targetEntity: Boss::class, inversedBy: 'builds', cascade: ['persist'])]
     private Collection $boss;
 
     public function __construct()
@@ -95,9 +95,6 @@ class Build
         return $this;
     }
 
-    /**
-     * @return Collection<int, Character>
-     */
     public function getCharacter(): Collection
     {
         return $this->character;
@@ -119,10 +116,7 @@ class Build
         return $this;
     }
 
-    /**
-     * @return Collection<int, Boss>
-     */
-    public function getBossId(): Collection
+    public function getBoss(): Collection
     {
         return $this->boss;
     }

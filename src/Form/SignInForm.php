@@ -18,8 +18,20 @@ class SignInForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, ['label' => 'Email', 'constraints' => [new Assert\NotBlank(), new Assert\Email(['message' => 'Email incorrect'])]])
-            ->add('password', PasswordType::class, ['label' => 'Mot de passe', 'constraints' => [new Assert\NotBlank()]])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'required' => false,
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Email(['message' => 'Email incorrect'])
+                ]
+            ])
+
+            ->add('password', PasswordType::class, [
+                'label' => 'Mot de passe',
+                'required' => false,
+                'constraints' => [new Assert\NotBlank()]
+            ])
 
             ->add('submit', SubmitType::class)
         ;

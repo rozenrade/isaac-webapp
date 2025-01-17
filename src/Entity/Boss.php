@@ -73,7 +73,7 @@ class Boss
     {
         if (!$this->builds->contains($build)) {
             $this->builds->add($build);
-            $build->addBossId($this);
+            $build->addBoss($this);
         }
 
         return $this;
@@ -82,7 +82,7 @@ class Boss
     public function removeBuild(Build $build): static
     {
         if ($this->builds->removeElement($build)) {
-            $build->removeBossId($this);
+            $build->removeBoss($this);
         }
 
         return $this;

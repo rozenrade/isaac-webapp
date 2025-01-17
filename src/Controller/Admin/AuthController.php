@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Form\SignInForm;
@@ -29,22 +29,20 @@ class AuthController extends AbstractController
             // Vérification si l'email existe déjà
             // L'email est ce qui permet de vérifier l'authenticité de l'utilisateur
             if ($existingUser) {
-                $this->addFlash('danger', 'Cet email est déjà utilisé');
-                return $this->redirectToRoute('app_signup');
+                return $this->redirectToRoute('app_signup', ['error' => 'Cet email est déjà utilisé.']);
             }
 
             // Ajouter le rôle par défaut ROLE_USER
             $user->setRoles(['ROLE_USER']);
-            
+
             // Hash du mot de passe si Utilisateur créé
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
 
 
             $repository->save($user);
-            $this->addFlash('success', 'Votre compte a été créé avec succès');
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_home', ['success' => 'Votre compte a été créé avec succès']);
         }
 
         return $this->render('auth/signUp.html.twig', ['form' => $form]);
@@ -52,17 +50,21 @@ class AuthController extends AbstractController
 
 
     #[Route('/login', name: 'app_login')]
-    public function login()
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // On vérifie si l'utilisateur que l'utilisateur soit authentifié
+        // Si l'utilisateur est déjà authentifié
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('app_profile');
         }
-
         $user = new User();
         $form = $this->createForm(SignInForm::class, $user);
 
-        return $this->render('auth/signin.html.twig', ['form' => $form]);
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        return $this->render('auth/signin.html.twig', [
+            'error' => $error,
+            'form' => $form
+        ]);
     }
 
     #[Route('/logout', name: 'app_logout')]

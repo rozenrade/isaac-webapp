@@ -1,58 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's bravery - Mes builds
-{% endblock %}
+{% block title %}Isaac's Bravery - Accueil{% endblock %}
 
 {% block body %}
-	<div class="flex flex-col items-center justify-center mb-12">
-		<h2 class="text-white text-[24px]">Your builds</h2>
-		<div class="flex flex-wrap gap-4 mt-4 justify-center">
 
-			{% if  builds|length == 0 %}
-				<div class="mb-80">
-					<div class=" w-full sm:w-[15rem] md:w-[20rem] flex flex-col items-center justify-center">
-						<h3 class="bg-gray-800 p-4 rounded-lg shadow-lg text-center text-white font-semibold text-sm sm:text-base">You have no builds yet</h3>
-						<p class="text-white text-2xl">You can add a new build to your collection by clicking on the button below</p>
-						<a href="{{ path('app_random') }}" class="text-white text-2xl bg-blue-400 rounded-lg shadow-lg p-4 mt-4">Add a new build</a>
-					</div>
-				</div>
-			{% endif %}
+    <h1 class="p-4 text-4xl text-center text-white">Synergies</h1>
 
-			{% for build in builds %}
-				<div class="bg-gray-800 p-4 rounded-lg shadow-lg w-full sm:w-[15rem] md:w-[20rem] flex flex-col items-center justify-center">
-					<h3 class="text-center text-white font-semibold text-sm sm:text-base">{{ build.name }}</h3>
+    <table class="border-collapse border border-gray-500 mx-auto my-4">
+        <tbody>
+            {% for synergie in synergies %}
+                {# Découper les items en deux colonnes #}
+                {% set firstSynergieColumn = synergie|slice(0, 5) %}
+                {% set secondSynergieColumn = synergie|slice(5, 5) %}
 
-					<div class="grid grid-cols-2 gap-4 mt-4">
-						{% set itemsInFirstColumn = build.item|slice(0, 5) %}
-						{% set itemsInSecondColumn = build.item|slice(5, 10) %}
+                <tr class="bg-gray-300">
+                    {# Première colonne avec les 5 premiers éléments #}
+                    {% for item in firstSynergieColumn %}
+                        <td class="border border-gray-500 p-2 text-center">
+                            <div class="w-[8rem] h-[8rem] bg-gray-800 m-2 flex flex-col justify-center items-center">
+                                <img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
+                                <p class="text-white">{{ item.name }}</p>
+                            </div>
+                        </td>
+                    {% endfor %}
 
-						<div class="flex flex-col gap-2">
-							{% for item in itemsInFirstColumn %}
-								<div class="flex flex-col items-center">
-									<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover rounded-full mb-2">
-									<p class="text-white text-xs sm:text-sm text-center">{{ item.name }}</p>
-								</div>
-							{% endfor %}
-						</div>
+                    {# Deuxième colonne avec les 5 éléments suivants #}
+                    {% for item in secondSynergieColumn %}
+                        <td class="border border-gray-500 p-2 text-center">
+                            <div class="w-[8rem] h-[8rem] bg-gray-800 m-2 flex flex-col justify-center items-center">
+                                <img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
+                                <p class="text-white">{{ item.name }}</p>
+                            </div>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-						<div class="flex flex-col gap-2">
-							{% for item in itemsInSecondColumn %}
-								<div class="flex flex-col items-center">
-									<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover rounded-full mb-2">
-									<p class="text-white text-xs sm:text-sm text-center">{{ item.name }}</p>
-								</div>
-							{% endfor %}
-						</div>
-					</div>
-					<div class="flex flex-row gap-4">
-						<form method="post" action="{{ path('app_build_user_delete', {'id': build.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ build.id) }}">
-							<button class="bg-red-400 text-white p-2 rounded-lg mt-4">Delete build</button>
-						</form>
-					</div>
-				</div>
-			{% endfor %}
-
-		</div>
-	</div>
 {% endblock %}

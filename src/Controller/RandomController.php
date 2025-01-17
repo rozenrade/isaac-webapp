@@ -34,23 +34,23 @@ class RandomController extends AbstractController
 
         // ✅ GÉNÉRATION D'UN NOUVEAU BUILD SI "random" EST DANS L'URL
         if ($statusController) {
-            $itemSet = $this->getRandomItems($totalItems);
+            $items = $this->getRandomItems($totalItems);
             $selectedBoss = $totalBosses[rand(0, count($totalBosses) - 1)];
             $selectedCharacter = $totalCharacters[rand(0, count($totalCharacters) - 1)];
 
-            $session->set('currentItemSet', [
-                'itemSet' => $itemSet,
+            $session->set('currentBuild', [
+                'items' => $items,
                 'boss' => $selectedBoss,
                 'character' => $selectedCharacter
             ]);
         }
 
         // ✅ RÉCUPÉRATION DU BUILD ACTUEL
-        $currentItemSet = $session->get('currentItemSet', null);
+        $currentBuild = $session->get('currentBuild', null);
 
         // ✅ SAUVEGARDE DU BUILD LORSQUE L'UTILISATEUR CLIQUE SUR "SAUVEGARDER BUILD"
-        if ($isSaved && $currentItemSet) {
-            $session->set('savedItemSet', $currentItemSet); // Sauvegarde temporaire en session
+        if ($isSaved && $currentBuild) {
+            $session->set('savedBuild', $currentBuild); // Sauvegarde temporaire en session
 
             // Vérifie si l'utilisateur est connecté
             if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -62,35 +62,37 @@ class RandomController extends AbstractController
                 $build->setUtilisateur($this->getUser());
 
                 // Ajoute les items, boss et personnage au build
-                foreach ($currentItemSet['itemSet'] as $item) {
+                foreach ($currentBuild['items'] as $item) {
                     $build->addItem($item);
                 }
-                $build->addBoss($currentItemSet['boss']);
-                $build->addCharacter($currentItemSet['character']);
-
+                $build->addBoss($currentBuild['boss']);
+                $build->addCharacter($currentBuild['character']);
+                
                 $buildRepository->save($build);
+                $session->remove('currentBuild'); // Efface les données après récupération
 
-                $this->addFlash('success', 'Votre build a été sauvegardé');
+                $this->redirectToRoute('app_profile');
             }
         }
 
-        // ✅ SUPPRESSION DES DONNÉES APRÈS AFFICHAGE
-        $session->remove('currentItemSet'); // Efface les données après récupération
-
         return $this->render('random/index.html.twig', [
             'statusURL' => $statusController,
-            'currentItemSet' => $currentItemSet, // Envoi des données à Twig
+            'currentBuild' => $currentBuild, // Envoi des données à Twig
         ]);
     }
 
     /**
      * 🔥 Fonction pour récupérer 10 items uniques avec image valide
      */
-    private function getRandomItems(array $totalItems): array
+    private function getRandomItems(array $totalItems)
     {
         $itemSet = [];
         $attempts = 0;
         $maxAttempts = 100;
+
+        if ($totalItems == null) {
+            return "Cannot get items";
+        }
 
         while (count($itemSet) < 10 && $attempts < $maxAttempts) {
             $randomId = rand(0, count($totalItems) - 1);

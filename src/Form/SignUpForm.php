@@ -20,13 +20,15 @@ class SignUpForm extends AbstractType
     {
         $builder
             ->add('username', TextType::class, 
-                ['label' => 'Username', 
+                ['label' => 'Username',
+                    'required' => false,
                     'constraints' => [new Assert\NotBlank()]
                 ])
 
             ->add('email', EmailType::class, [
                     'label' => 'Email',
                     'attr' => ['placeholder' => 'xyz@email.xyz'],
+                    'required' => false,
                     'constraints' => [new Assert\NotBlank() , new Assert\Email(['message' => 'Email incorrect'])]
                 ])
                 
@@ -37,7 +39,7 @@ class SignUpForm extends AbstractType
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
                 'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
+                'required' => false,
 
                 'constraints' => [new Assert\NotBlank(), new Assert\Length([
 

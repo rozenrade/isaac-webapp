@@ -1,6 +1,6 @@
 <?php
 
-$directory = '../public/images/destinations'; // Dossier des images
+$directory = '../public/images/characters'; // Dossier des images
 
 // Connexion à la base de données (⚠️ MODIFIE avec tes identifiants)
 $pdo = new PDO('mysql:host=localhost;dbname=isaac_db;charset=utf8', 'root', '', [
@@ -26,13 +26,13 @@ foreach ($files as $file) {
     $name = ucfirst(str_replace('-', ' ', pathinfo($file, PATHINFO_FILENAME)));
 
     // Vérifier si l'image existe déjà en BDD pour éviter les doublons
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM `boss` WHERE filename = :filename");
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM `character` WHERE filename = :filename");
     $stmt->execute(['filename' => $file]);
     $exists = $stmt->fetchColumn();
 
     if (!$exists) {
         // Insérer en base de données
-        $stmt = $pdo->prepare("INSERT INTO `boss` (name, filename) VALUES (:name, :filename)");
+        $stmt = $pdo->prepare("INSERT INTO `character` (name, filename) VALUES (:name, :filename)");
         $stmt->execute([
             'name' => $name,
             'filename' => $file

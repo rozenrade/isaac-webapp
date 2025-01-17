@@ -36,16 +36,18 @@ class ProfileController extends AbstractController
                 ];
             }
 
+
             $formattedBuilds[] = [
                 'id' => $build->getId(), // Ajout de l'ID du build
                 'name' => $build->getName(),
                 'item' => $itemData,
+                'boss' => $build->getBoss(),
+                'character' => $build->getCharacter(),
             ];
         }
+
         // return $this->render('profile/index.html.twig');
         return $this->render('profile/builds.html.twig', ['builds' => $formattedBuilds]);
         // return new JsonResponse($formattedBuilds);
     }
-
-
 }
