@@ -36,7 +36,10 @@
 					{% endif %}
 
 				</div>
-				<a href="{{ path('app_random', {'status': 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">SAUVEGARDER BUILD</a>
+
+				{% if app.user %}
+					<a href="{{ path('app_random', {'status': 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">SAUVEGARDER BUILD</a>
+				{% endif %}
 
 			{% endif %}
 			<a href="{{ path('app_random', {status: 'random'} ) }}" class="text-white p-4 bg-blue-500 rounded-lg">Randomize</a>

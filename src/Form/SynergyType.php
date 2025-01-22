@@ -18,10 +18,9 @@ class SynergyType extends AbstractType
             ->add('name')
             ->add('item', EntityType::class, [
                 'class' => Item::class,
-                'choice_label' => 'name', // Ici, on affiche le nom de l'item (au lieu de l'ID)
-                'multiple' => true, // Pour permettre la sélection multiple
-                'expanded' => true,  // Pour afficher des cases à cocher
-                'label' => 'Liste des items', // Titre du champ
+                'choice_label' => 'name',  // Afficher le nom de l'item
+                'multiple' => true,        // Permet la sélection multiple
+                'expanded' => false,       // Ne pas afficher en cases à cocher normales
             ])
             ->add('utilisateurs', EntityType::class, [
                 'class' => User::class,

@@ -57,5 +57,16 @@
 			Back to list
 		</a>
 	</div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const element = document.getElementById('item_select');
+        const choices = new Choices(element, {
+            removeItemButton: true,
+            placeholder: true,
+            placeholderValue: 'Sélectionner des items...',
+            searchEnabled: true,  // Active la recherche dans la liste
+            itemSelectText: '',   // Texte affiché dans la liste déroulante
+        });
+    });
+</script>
 {% endblock %}
