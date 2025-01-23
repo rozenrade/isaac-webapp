@@ -3,10 +3,3 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
-
-# config/routes.yaml
-fallback:
-    path: /{url}
-    controller: App\Controller\FallbackController::index
-    requirements:
-        url: .+
