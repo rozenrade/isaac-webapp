@@ -1,0 +1,1366 @@
+[
+    {
+        "name": "The Sad Onion",
+        "filename": "the_sad_onion.png"
+    },
+    {
+        "name": "The Inner Eye",
+        "filename": "the_inner_eye.png"
+    },
+    {
+        "name": "Spoon Bender",
+        "filename": "spoon_bender.png"
+    },
+    {
+        "name": "Cricket's Head",
+        "filename": "cricket's_head.png"
+    },
+    {
+        "name": "My Reflection",
+        "filename": "my_reflection.png"
+    },
+    {
+        "name": "Number One",
+        "filename": "number_one.png"
+    },
+    {
+        "name": "Blood of the Martyr",
+        "filename": "blood_of_the_martyr.png"
+    },
+    {
+        "name": "Brother Bobby",
+        "filename": "brother_bobby.png"
+    },
+    {
+        "name": "Skatole",
+        "filename": "skatole.png"
+    },
+    {
+        "name": "Halo of Flies",
+        "filename": "halo_of_flies.png"
+    },
+    {
+        "name": "1UP",
+        "filename": "1up.png"
+    },
+    {
+        "name": "Magic Mushroom",
+        "filename": "magic_mushroom.png"
+    },
+    {
+        "name": "The Virus",
+        "filename": "the_virus.png"
+    },
+    {
+        "name": "Roid Rage",
+        "filename": "roid_rage.png"
+    },
+    {
+        "name": "<3",
+        "filename": "<3.png"
+    },
+    {
+        "name": "Raw Liver",
+        "filename": "raw_liver.png"
+    },
+    {
+        "name": "Skeleton Key",
+        "filename": "skeleton_key.png"
+    },
+    {
+        "name": "A Dollar",
+        "filename": "a_dollar.png"
+    },
+    {
+        "name": "Boom!",
+        "filename": "boom!.png"
+    },
+    {
+        "name": "Transcendence",
+        "filename": "transcendence.png"
+    },
+    {
+        "name": "The Compass",
+        "filename": "the_compass.png"
+    },
+    {
+        "name": "Lunch",
+        "filename": "lunch.png"
+    },
+    {
+        "name": "Dinner",
+        "filename": "dinner.png"
+    },
+    {
+        "name": "Dessert",
+        "filename": "dessert.png"
+    },
+    {
+        "name": "Breakfast",
+        "filename": "breakfast.png"
+    },
+    {
+        "name": "Rotten Meat",
+        "filename": "rotten_meat.png"
+    },
+    {
+        "name": "Wooden Spoon",
+        "filename": "wooden_spoon.png"
+    },
+    {
+        "name": "The Belt",
+        "filename": "the_belt.png"
+    },
+    {
+        "name": "Mom's Underwear",
+        "filename": "mom's_underwear.png"
+    },
+    {
+        "name": "Mom's Heels",
+        "filename": "mom's_heels.png"
+    },
+    {
+        "name": "Mom's Lipstick",
+        "filename": "mom's_lipstick.png"
+    },
+    {
+        "name": "Wire Coat Hanger",
+        "filename": "wire_coat_hanger.png"
+    },
+    {
+        "name": "The Bible",
+        "filename": "the_bible.png"
+    },
+    {
+        "name": "The Book of Belial",
+        "filename": "the_book_of_belial.png"
+    },
+    {
+        "name": "The Necronomicon",
+        "filename": "the_necronomicon.png"
+    },
+    {
+        "name": "The Poop",
+        "filename": "the_poop.png"
+    },
+    {
+        "name": "Mr. Boom",
+        "filename": "mr._boom.png"
+    },
+    {
+        "name": "Tammy's Head",
+        "filename": "tammy's_head.png"
+    },
+    {
+        "name": "Mom's Bra",
+        "filename": "mom's_bra.png"
+    },
+    {
+        "name": "Kamikaze",
+        "filename": "kamikaze.png"
+    },
+    {
+        "name": "Mom's Pad",
+        "filename": "mom's_pad.png"
+    },
+    {
+        "name": "Bob's Rotten Head",
+        "filename": "bob's_rotten_head.png"
+    },
+    {
+        "name": "Teleport",
+        "filename": "teleport.png"
+    },
+    {
+        "name": "Yum Heart",
+        "filename": "yum_heart.png"
+    },
+    {
+        "name": "Lucky Foot",
+        "filename": "lucky_foot.png"
+    },
+    {
+        "name": "Doctor's Remote",
+        "filename": "doctor's_remote.png"
+    },
+    {
+        "name": "Cupid's Arrow",
+        "filename": "cupid's_arrow.png"
+    },
+    {
+        "name": "Shoop Da Whoop",
+        "filename": "shoop_da_whoop.png"
+    },
+    {
+        "name": "Steven",
+        "filename": "steven.png"
+    },
+    {
+        "name": "Pentagram",
+        "filename": "pentagram.png"
+    },
+    {
+        "name": "Dr. Fetus",
+        "filename": "dr._fetus.png"
+    },
+    {
+        "name": "Magneto",
+        "filename": "magneto.png"
+    },
+    {
+        "name": "Treasure Map",
+        "filename": "treasure_map.png"
+    },
+    {
+        "name": "Mom's Eye",
+        "filename": "mom's_eye.png"
+    },
+    {
+        "name": "Lemon Mishap",
+        "filename": "lemon_mishap.png"
+    },
+    {
+        "name": "Distant Admiration",
+        "filename": "distant_admiration.png"
+    },
+    {
+        "name": "Book of Shadows",
+        "filename": "book_of_shadows.png"
+    },
+    {
+        "name": "The Ladder",
+        "filename": "the_ladder.png"
+    },
+    {
+        "name": "Charm of the Vampire",
+        "filename": "charm_of_the_vampire.png"
+    },
+    {
+        "name": "The Battery",
+        "filename": "the_battery.png"
+    },
+    {
+        "name": "Steam Sale",
+        "filename": "steam_sale.png"
+    },
+    {
+        "name": "Anarchist's Cookbook",
+        "filename": "anarchist's_cookbook.png"
+    },
+    {
+        "name": "The Hourglass",
+        "filename": "the_hourglass.png"
+    },
+    {
+        "name": "Sister Maggy",
+        "filename": "sister_maggy.png"
+    },
+    {
+        "name": "Technology",
+        "filename": "technology.png"
+    },
+    {
+        "name": "Chocolate Milk",
+        "filename": "chocolate_milk.png"
+    },
+    {
+        "name": "Growth Hormones",
+        "filename": "growth_hormones.png"
+    },
+    {
+        "name": "Mini Mush",
+        "filename": "mini_mush.png"
+    },
+    {
+        "name": "Rosary",
+        "filename": "rosary.png"
+    },
+    {
+        "name": "Cube of Meat",
+        "filename": "cube_of_meat.png"
+    },
+    {
+        "name": "A Quarter",
+        "filename": "a_quarter.png"
+    },
+    {
+        "name": "PhD",
+        "filename": "phd.png"
+    },
+    {
+        "name": "X-Ray Vision",
+        "filename": "x-ray_vision.png"
+    },
+    {
+        "name": "My Little Unicorn",
+        "filename": "my_little_unicorn.png"
+    },
+    {
+        "name": "Book of Revelations",
+        "filename": "book_of_revelations.png"
+    },
+    {
+        "name": "The Mark",
+        "filename": "the_mark.png"
+    },
+    {
+        "name": "The Pact",
+        "filename": "the_pact.png"
+    },
+    {
+        "name": "Dead Cat",
+        "filename": "dead_cat.png"
+    },
+    {
+        "name": "Lord of the Pit",
+        "filename": "lord_of_the_pit.png"
+    },
+    {
+        "name": "The Nail",
+        "filename": "the_nail.png"
+    },
+    {
+        "name": "We Need To Go Deeper!",
+        "filename": "we_need_to_go_deeper!.png"
+    },
+    {
+        "name": "Deck of Cards",
+        "filename": "deck_of_cards.png"
+    },
+    {
+        "name": "Monstro's Tooth",
+        "filename": "monstro's_tooth.png"
+    },
+    {
+        "name": "Loki's Horns",
+        "filename": "loki's_horns.png"
+    },
+    {
+        "name": "Little Chubby",
+        "filename": "little_chubby.png"
+    },
+    {
+        "name": "Spider Bite",
+        "filename": "spider_bite.png"
+    },
+    {
+        "name": "The Small Rock",
+        "filename": "the_small_rock.png"
+    },
+    {
+        "name": "Spelunker Hat",
+        "filename": "spelunker_hat.png"
+    },
+    {
+        "name": "Super Bandage",
+        "filename": "super_bandage.png"
+    },
+    {
+        "name": "The Gamekid",
+        "filename": "the_gamekid.png"
+    },
+    {
+        "name": "Sack of Pennies",
+        "filename": "sack_of_pennies.png"
+    },
+    {
+        "name": "Robo-Baby",
+        "filename": "robo-baby.png"
+    },
+    {
+        "name": "Little C.H.A.D.",
+        "filename": "little_c.h.a.d..png"
+    },
+    {
+        "name": "The Book of Sin",
+        "filename": "the_book_of_sin.png"
+    },
+    {
+        "name": "The Relic",
+        "filename": "the_relic.png"
+    },
+    {
+        "name": "Little Gish",
+        "filename": "little_gish.png"
+    },
+    {
+        "name": "Little Steven",
+        "filename": "little_steven.png"
+    },
+    {
+        "name": "The Halo",
+        "filename": "the_halo.png"
+    },
+    {
+        "name": "Mom's Bottle of Pills",
+        "filename": "mom's_bottle_of_pills.png"
+    },
+    {
+        "name": "The Common Cold",
+        "filename": "the_common_cold.png"
+    },
+    {
+        "name": "The Parasite",
+        "filename": "the_parasite.png"
+    },
+    {
+        "name": "The D6",
+        "filename": "the_d6.png"
+    },
+    {
+        "name": "Mr. Mega",
+        "filename": "mr._mega.png"
+    },
+    {
+        "name": "Pinking Shears",
+        "filename": "pinking_shears.png"
+    },
+    {
+        "name": "The Wafer",
+        "filename": "the_wafer.png"
+    },
+    {
+        "name": "Money = Power",
+        "filename": "money_=_power.png"
+    },
+    {
+        "name": "Mom's Contacts",
+        "filename": "mom's_contacts.png"
+    },
+    {
+        "name": "The Bean",
+        "filename": "the_bean.png"
+    },
+    {
+        "name": "Guardian Angel",
+        "filename": "guardian_angel.png"
+    },
+    {
+        "name": "Demon Baby",
+        "filename": "demon_baby.png"
+    },
+    {
+        "name": "Mom's Knife",
+        "filename": "mom's_knife.png"
+    },
+    {
+        "name": "Ouija Board",
+        "filename": "ouija_board.png"
+    },
+    {
+        "name": "9 Volt",
+        "filename": "9_volt.png"
+    },
+    {
+        "name": "Dead Bird",
+        "filename": "dead_bird.png"
+    },
+    {
+        "name": "Brimstone",
+        "filename": "brimstone.png"
+    },
+    {
+        "name": "Blood Bag",
+        "filename": "blood_bag.png"
+    },
+    {
+        "name": "Odd Mushroom (Thin)",
+        "filename": "odd_mushroom_(thin).png"
+    },
+    {
+        "name": "Odd Mushroom (Thick)",
+        "filename": "odd_mushroom_(thick).png"
+    },
+    {
+        "name": "Whore of Babylon",
+        "filename": "whore_of_babylon.png"
+    },
+    {
+        "name": "Monster Manual",
+        "filename": "monster_manual.png"
+    },
+    {
+        "name": "Dead Sea Scrolls",
+        "filename": "dead_sea_scrolls.png"
+    },
+    {
+        "name": "Bobby-Bomb",
+        "filename": "bobby-bomb.png"
+    },
+    {
+        "name": "Razor Blade",
+        "filename": "razor_blade.png"
+    },
+    {
+        "name": "Forget Me Now",
+        "filename": "forget_me_now.png"
+    },
+    {
+        "name": "Forever Alone",
+        "filename": "forever_alone.png"
+    },
+    {
+        "name": "Bucket of Lard",
+        "filename": "bucket_of_lard.png"
+    },
+    {
+        "name": "A Pony",
+        "filename": "a_pony.png"
+    },
+    {
+        "name": "Bomb Bag",
+        "filename": "bomb_bag.png"
+    },
+    {
+        "name": "A Lump of Coal",
+        "filename": "a_lump_of_coal.png"
+    },
+    {
+        "name": "Guppy's Paw",
+        "filename": "guppy's_paw.png"
+    },
+    {
+        "name": "Guppy's Tail",
+        "filename": "guppy's_tail.png"
+    },
+    {
+        "name": "IV Bag",
+        "filename": "iv_bag.png"
+    },
+    {
+        "name": "Best Friend",
+        "filename": "best_friend.png"
+    },
+    {
+        "name": "Remote Detonator",
+        "filename": "remote_detonator.png"
+    },
+    {
+        "name": "Stigmata",
+        "filename": "stigmata.png"
+    },
+    {
+        "name": "Mom's Purse",
+        "filename": "mom's_purse.png"
+    },
+    {
+        "name": "Bob's Curse",
+        "filename": "bob's_curse.png"
+    },
+    {
+        "name": "Pageant Boy",
+        "filename": "pageant_boy.png"
+    },
+    {
+        "name": "Scapular",
+        "filename": "scapular.png"
+    },
+    {
+        "name": "Speed Ball",
+        "filename": "speed_ball.png"
+    },
+    {
+        "name": "Bum Friend",
+        "filename": "bum_friend.png"
+    },
+    {
+        "name": "Guppy's Head",
+        "filename": "guppy's_head.png"
+    },
+    {
+        "name": "Prayer Card",
+        "filename": "prayer_card.png"
+    },
+    {
+        "name": "Notched Axe",
+        "filename": "notched_axe.png"
+    },
+    {
+        "name": "Infestation",
+        "filename": "infestation.png"
+    },
+    {
+        "name": "Ipecac",
+        "filename": "ipecac.png"
+    },
+    {
+        "name": "Tough Love",
+        "filename": "tough_love.png"
+    },
+    {
+        "name": "The Mulligan",
+        "filename": "the_mulligan.png"
+    },
+    {
+        "name": "Technology 2",
+        "filename": "technology_2.png"
+    },
+    {
+        "name": "Mutant Spider",
+        "filename": "mutant_spider.png"
+    },
+    {
+        "name": "Chemical Peel",
+        "filename": "chemical_peel.png"
+    },
+    {
+        "name": "The Peeper",
+        "filename": "the_peeper.png"
+    },
+    {
+        "name": "Habit",
+        "filename": "habit.png"
+    },
+    {
+        "name": "Bloody Lust",
+        "filename": "bloody_lust.png"
+    },
+    {
+        "name": "Crystal Ball",
+        "filename": "crystal_ball.png"
+    },
+    {
+        "name": "Spirit of the Night",
+        "filename": "spirit_of_the_night.png"
+    },
+    {
+        "name": "Crack The Sky",
+        "filename": "crack_the_sky.png"
+    },
+    {
+        "name": "Ankh",
+        "filename": "ankh.png"
+    },
+    {
+        "name": "Celtic Cross",
+        "filename": "celtic_cross.png"
+    },
+    {
+        "name": "Ghost Baby",
+        "filename": "ghost_baby.png"
+    },
+    {
+        "name": "The Candle",
+        "filename": "the_candle.png"
+    },
+    {
+        "name": "Cat-o-nine-tails",
+        "filename": "cat-o-nine-tails.png"
+    },
+    {
+        "name": "D20",
+        "filename": "d20.png"
+    },
+    {
+        "name": "Harlequin Baby",
+        "filename": "harlequin_baby.png"
+    },
+    {
+        "name": "Epic Fetus",
+        "filename": "epic_fetus.png"
+    },
+    {
+        "name": "Polyphemus",
+        "filename": "polyphemus.png"
+    },
+    {
+        "name": "Daddy Longlegs",
+        "filename": "daddy_longlegs.png"
+    },
+    {
+        "name": "Spider Butt",
+        "filename": "spider_butt.png"
+    },
+    {
+        "name": "Sacrificial Dagger",
+        "filename": "sacrificial_dagger.png"
+    },
+    {
+        "name": "Mitre",
+        "filename": "mitre.png"
+    },
+    {
+        "name": "Rainbow Baby",
+        "filename": "rainbow_baby.png"
+    },
+    {
+        "name": "Dad's Key",
+        "filename": "dad's_key.png"
+    },
+    {
+        "name": "Stem Cells",
+        "filename": "stem_cells.png"
+    },
+    {
+        "name": "Portable Slot",
+        "filename": "portable_slot.png"
+    },
+    {
+        "name": "Holy Water",
+        "filename": "holy_water.png"
+    },
+    {
+        "name": "Fate",
+        "filename": "fate.png"
+    },
+    {
+        "name": "The Black Bean",
+        "filename": "the_black_bean.png"
+    },
+    {
+        "name": "White Pony",
+        "filename": "white_pony.png"
+    },
+    {
+        "name": "Sacred Heart",
+        "filename": "sacred_heart.png"
+    },
+    {
+        "name": "Toothpicks",
+        "filename": "toothpicks.png"
+    },
+    {
+        "name": "Holy Grail",
+        "filename": "holy_grail.png"
+    },
+    {
+        "name": "Dead Dove",
+        "filename": "dead_dove.png"
+    },
+    {
+        "name": "Blood Rights",
+        "filename": "blood_rights.png"
+    },
+    {
+        "name": "Guppy's Hairball",
+        "filename": "guppy's_hairball.png"
+    },
+    {
+        "name": "Abel",
+        "filename": "abel.png"
+    },
+    {
+        "name": "SMB Super Fan",
+        "filename": "smb_super_fan.png"
+    },
+    {
+        "name": "Pyro",
+        "filename": "pyro.png"
+    },
+    {
+        "name": "3 Dollar Bill",
+        "filename": "3_dollar_bill.png"
+    },
+    {
+        "name": "Telepathy for Dummies",
+        "filename": "telepathy_for_dummies.png"
+    },
+    {
+        "name": "Meat!",
+        "filename": "meat!.png"
+    },
+    {
+        "name": "Magic 8-Ball",
+        "filename": "magic_8-ball.png"
+    },
+    {
+        "name": "Mom's Coin Purse",
+        "filename": "mom's_coin_purse.png"
+    },
+    {
+        "name": "Mr. Squeezy",
+        "filename": "mr._squeezy.png"
+    },
+    {
+        "name": "Jesus Juice",
+        "filename": "jesus_juice.png"
+    },
+    {
+        "name": "Box",
+        "filename": "box.png"
+    },
+    {
+        "name": "Mom's Key",
+        "filename": "mom's_key.png"
+    },
+    {
+        "name": "Mom's Eyeshadow",
+        "filename": "mom's_eyeshadow.png"
+    },
+    {
+        "name": "Iron Bar",
+        "filename": "iron_bar.png"
+    },
+    {
+        "name": "Midas Touch",
+        "filename": "midas_touch.png"
+    },
+    {
+        "name": "Humbling Bundle",
+        "filename": "humbling_bundle.png"
+    },
+    {
+        "name": "Fanny Pack",
+        "filename": "fanny_pack.png"
+    },
+    {
+        "name": "Sharp Plug",
+        "filename": "sharp_plug.png"
+    },
+    {
+        "name": "The Guillotine",
+        "filename": "the_guillotine.png"
+    },
+    {
+        "name": "Ball of Bandages",
+        "filename": "ball_of_bandages.png"
+    },
+    {
+        "name": "Champion Belt",
+        "filename": "champion_belt.png"
+    },
+    {
+        "name": "Butt Bombs",
+        "filename": "butt_bombs.png"
+    },
+    {
+        "name": "Gnawed Leaf",
+        "filename": "gnawed_leaf.png"
+    },
+    {
+        "name": "Spiderbaby",
+        "filename": "spiderbaby.png"
+    },
+    {
+        "name": "Guppy's Collar",
+        "filename": "guppy's_collar.png"
+    },
+    {
+        "name": "Lost Contact",
+        "filename": "lost_contact.png"
+    },
+    {
+        "name": "Anemic",
+        "filename": "anemic.png"
+    },
+    {
+        "name": "Goat Head",
+        "filename": "goat_head.png"
+    },
+    {
+        "name": "Ceremonial Robes",
+        "filename": "ceremonial_robes.png"
+    },
+    {
+        "name": "Mom's Wig",
+        "filename": "mom's_wig.png"
+    },
+    {
+        "name": "Placenta",
+        "filename": "placenta.png"
+    },
+    {
+        "name": "Old Bandage",
+        "filename": "old_bandage.png"
+    },
+    {
+        "name": "Sad Bombs",
+        "filename": "sad_bombs.png"
+    },
+    {
+        "name": "Rubber Cement",
+        "filename": "rubber_cement.png"
+    },
+    {
+        "name": "Anti-Gravity",
+        "filename": "anti-gravity.png"
+    },
+    {
+        "name": "Pyromaniac",
+        "filename": "pyromaniac.png"
+    },
+    {
+        "name": "Cricket's Body",
+        "filename": "cricket's_body.png"
+    },
+    {
+        "name": "Gimpy",
+        "filename": "gimpy.png"
+    },
+    {
+        "name": "Black Lotus",
+        "filename": "black_lotus.png"
+    },
+    {
+        "name": "Piggy Bank",
+        "filename": "piggy_bank.png"
+    },
+    {
+        "name": "Mom's Perfume",
+        "filename": "mom's_perfume.png"
+    },
+    {
+        "name": "Monstro's Lung",
+        "filename": "monstro's_lung.png"
+    },
+    {
+        "name": "Abaddon",
+        "filename": "abaddon.png"
+    },
+    {
+        "name": "Ball of Tar",
+        "filename": "ball_of_tar.png"
+    },
+    {
+        "name": "Stop Watch",
+        "filename": "stop_watch.png"
+    },
+    {
+        "name": "Tiny Planet",
+        "filename": "tiny_planet.png"
+    },
+    {
+        "name": "Infestation 2",
+        "filename": "infestation_2.png"
+    },
+    {
+        "name": "E. Coli",
+        "filename": "e._coli.png"
+    },
+    {
+        "name": "Death's Touch",
+        "filename": "death's_touch.png"
+    },
+    {
+        "name": "Key Piece #1",
+        "filename": "key_piece_#1.png"
+    },
+    {
+        "name": "Key Piece #2",
+        "filename": "key_piece_#2.png"
+    },
+    {
+        "name": "Experimental Treatment",
+        "filename": "experimental_treatment.png"
+    },
+    {
+        "name": "Contract From Below",
+        "filename": "contract_from_below.png"
+    },
+    {
+        "name": "Infamy",
+        "filename": "infamy.png"
+    },
+    {
+        "name": "Trinity Shield",
+        "filename": "trinity_shield.png"
+    },
+    {
+        "name": "Tech.5",
+        "filename": "tech.5.png"
+    },
+    {
+        "name": "20\/20",
+        "filename": "20\/20.png"
+    },
+    {
+        "name": "Blue Map",
+        "filename": "blue_map.png"
+    },
+    {
+        "name": "BFFS!",
+        "filename": "bffs!.png"
+    },
+    {
+        "name": "Hive Mind",
+        "filename": "hive_mind.png"
+    },
+    {
+        "name": "There's Options",
+        "filename": "there's_options.png"
+    },
+    {
+        "name": "Bogo Bombs",
+        "filename": "bogo_bombs.png"
+    },
+    {
+        "name": "Starter Deck",
+        "filename": "starter_deck.png"
+    },
+    {
+        "name": "Little Baggy",
+        "filename": "little_baggy.png"
+    },
+    {
+        "name": "Magic Scab",
+        "filename": "magic_scab.png"
+    },
+    {
+        "name": "Blood Clot",
+        "filename": "blood_clot.png"
+    },
+    {
+        "name": "Screw",
+        "filename": "screw.png"
+    },
+    {
+        "name": "Hot Bombs",
+        "filename": "hot_bombs.png"
+    },
+    {
+        "name": "Fire Mind",
+        "filename": "fire_mind.png"
+    },
+    {
+        "name": "Missing No.",
+        "filename": "missing_no..png"
+    },
+    {
+        "name": "Dark Matter",
+        "filename": "dark_matter.png"
+    },
+    {
+        "name": "Black Candle",
+        "filename": "black_candle.png"
+    },
+    {
+        "name": "Proptosis",
+        "filename": "proptosis.png"
+    },
+    {
+        "name": "Missing Page 2",
+        "filename": "missing_page_2.png"
+    },
+    {
+        "name": "Smart Fly",
+        "filename": "smart_fly.png"
+    },
+    {
+        "name": "Dry Baby",
+        "filename": "dry_baby.png"
+    },
+    {
+        "name": "Juicy Sack",
+        "filename": "juicy_sack.png"
+    },
+    {
+        "name": "Robo-Baby 2.0",
+        "filename": "robo-baby_2.0.png"
+    },
+    {
+        "name": "Rotten Baby",
+        "filename": "rotten_baby.png"
+    },
+    {
+        "name": "Headless Baby",
+        "filename": "headless_baby.png"
+    },
+    {
+        "name": "Leech",
+        "filename": "leech.png"
+    },
+    {
+        "name": "Mystery Sack",
+        "filename": "mystery_sack.png"
+    },
+    {
+        "name": "BBF",
+        "filename": "bbf.png"
+    },
+    {
+        "name": "Bob's Brain",
+        "filename": "bob's_brain.png"
+    },
+    {
+        "name": "Best Bud",
+        "filename": "best_bud.png"
+    },
+    {
+        "name": "Lil' Brimstone",
+        "filename": "lil'_brimstone.png"
+    },
+    {
+        "name": "Isaac's Heart",
+        "filename": "isaac's_heart.png"
+    },
+    {
+        "name": "Lil' Haunt",
+        "filename": "lil'_haunt.png"
+    },
+    {
+        "name": "Dark Bum",
+        "filename": "dark_bum.png"
+    },
+    {
+        "name": "Big Fan",
+        "filename": "big_fan.png"
+    },
+    {
+        "name": "Sissy Long Legs",
+        "filename": "sissy_long_legs.png"
+    },
+    {
+        "name": "Punching Bag",
+        "filename": "punching_bag.png"
+    },
+    {
+        "name": "How To Jump",
+        "filename": "how_to_jump.png"
+    },
+    {
+        "name": "D100",
+        "filename": "d100.png"
+    },
+    {
+        "name": "D4",
+        "filename": "d4.png"
+    },
+    {
+        "name": "D10",
+        "filename": "d10.png"
+    },
+    {
+        "name": "Blank Card",
+        "filename": "blank_card.png"
+    },
+    {
+        "name": "Book of Secrets",
+        "filename": "book_of_secrets.png"
+    },
+    {
+        "name": "Box of Spiders",
+        "filename": "box_of_spiders.png"
+    },
+    {
+        "name": "Red Candle",
+        "filename": "red_candle.png"
+    },
+    {
+        "name": "The Jar",
+        "filename": "the_jar.png"
+    },
+    {
+        "name": "FLUSH!",
+        "filename": "flush!.png"
+    },
+    {
+        "name": "The Satanic Bible",
+        "filename": "the_satanic_bible.png"
+    },
+    {
+        "name": "Head of Krampus",
+        "filename": "head_of_krampus.png"
+    },
+    {
+        "name": "Butter Bean",
+        "filename": "butter_bean.png"
+    },
+    {
+        "name": "Magic Fingers",
+        "filename": "magic_fingers.png"
+    },
+    {
+        "name": "Converter",
+        "filename": "converter.png"
+    },
+    {
+        "name": "Pandora's Box",
+        "filename": "pandora's_box.png"
+    },
+    {
+        "name": "Unicorn Stump",
+        "filename": "unicorn_stump.png"
+    },
+    {
+        "name": "Taurus",
+        "filename": "taurus.png"
+    },
+    {
+        "name": "Aries",
+        "filename": "aries.png"
+    },
+    {
+        "name": "Cancer",
+        "filename": "cancer.png"
+    },
+    {
+        "name": "Leo",
+        "filename": "leo.png"
+    },
+    {
+        "name": "Virgo",
+        "filename": "virgo.png"
+    },
+    {
+        "name": "Libra",
+        "filename": "libra.png"
+    },
+    {
+        "name": "Scorpio",
+        "filename": "scorpio.png"
+    },
+    {
+        "name": "Sagittarius",
+        "filename": "sagittarius.png"
+    },
+    {
+        "name": "Capricorn",
+        "filename": "capricorn.png"
+    },
+    {
+        "name": "Aquarius",
+        "filename": "aquarius.png"
+    },
+    {
+        "name": "Pisces",
+        "filename": "pisces.png"
+    },
+    {
+        "name": "Eve's Mascara",
+        "filename": "eve's_mascara.png"
+    },
+    {
+        "name": "Judas' Shadow",
+        "filename": "judas'_shadow.png"
+    },
+    {
+        "name": "Maggy's Bow",
+        "filename": "maggy's_bow.png"
+    },
+    {
+        "name": "Holy Mantle",
+        "filename": "holy_mantle.png"
+    },
+    {
+        "name": "Thunder Thighs",
+        "filename": "thunder_thighs.png"
+    },
+    {
+        "name": "Strange Attractor",
+        "filename": "strange_attractor.png"
+    },
+    {
+        "name": "Cursed Eye",
+        "filename": "cursed_eye.png"
+    },
+    {
+        "name": "Mysterious Liquid",
+        "filename": "mysterious_liquid.png"
+    },
+    {
+        "name": "Gemini",
+        "filename": "gemini.png"
+    },
+    {
+        "name": "Cain's Other Eye",
+        "filename": "cain's_other_eye.png"
+    },
+    {
+        "name": "???'s Only Friend",
+        "filename": "???'s_only_friend.png"
+    },
+    {
+        "name": "Samson's Chains",
+        "filename": "samson's_chains.png"
+    },
+    {
+        "name": "Mongo Baby",
+        "filename": "mongo_baby.png"
+    },
+    {
+        "name": "Isaac's Tears",
+        "filename": "isaac's_tears.png"
+    },
+    {
+        "name": "Undefined",
+        "filename": "undefined.png"
+    },
+    {
+        "name": "Scissors",
+        "filename": "scissors.png"
+    },
+    {
+        "name": "Breath of Life",
+        "filename": "breath_of_life.png"
+    },
+    {
+        "name": "The Polaroid",
+        "filename": "the_polaroid.png"
+    },
+    {
+        "name": "The Negative",
+        "filename": "the_negative.png"
+    },
+    {
+        "name": "The Ludovico Technique",
+        "filename": "the_ludovico_technique.png"
+    },
+    {
+        "name": "Soy Milk",
+        "filename": "soy_milk.png"
+    },
+    {
+        "name": "Godhead",
+        "filename": "godhead.png"
+    },
+    {
+        "name": "Lazarus' Rags",
+        "filename": "lazarus'_rags.png"
+    },
+    {
+        "name": "The Mind",
+        "filename": "the_mind.png"
+    },
+    {
+        "name": "The Body",
+        "filename": "the_body.png"
+    },
+    {
+        "name": "The Soul",
+        "filename": "the_soul.png"
+    },
+    {
+        "name": "Dead Onion",
+        "filename": "dead_onion.png"
+    },
+    {
+        "name": "Broken Watch",
+        "filename": "broken_watch.png"
+    },
+    {
+        "name": "Boomerang",
+        "filename": "boomerang.png"
+    },
+    {
+        "name": "Safety Pin",
+        "filename": "safety_pin.png"
+    },
+    {
+        "name": "Caffeine Pill",
+        "filename": "caffeine_pill.png"
+    },
+    {
+        "name": "Torn Photo",
+        "filename": "torn_photo.png"
+    },
+    {
+        "name": "Blue Cap",
+        "filename": "blue_cap.png"
+    },
+    {
+        "name": "Latch Key",
+        "filename": "latch_key.png"
+    },
+    {
+        "name": "Match Book",
+        "filename": "match_book.png"
+    },
+    {
+        "name": "Synthoil",
+        "filename": "synthoil.png"
+    },
+    {
+        "name": "A Snack",
+        "filename": "a_snack.png"
+    }
+]

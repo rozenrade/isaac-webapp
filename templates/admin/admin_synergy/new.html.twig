@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Synergy
+{% endblock %}
+
+{% block body %}
+	<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+		<h1 class="text-3xl font-bold mb-6 text-gray-800">Créer une nouvelle Synergie</h1>
+
+		<form method="post" class="space-y-6">
+			{{ form_start(form) }}
+			<div class="flex flex-col">
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+					<div class="sm:col-span-1">
+						{{ form_label(form.name, 'Nom de la synergie', {'label_attr': {'class': 'text-sm font-medium text-gray-600'}}) }}
+						<div class="mt-1">
+							{{ form_widget(form.name, {'attr': {'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 sm:text-sm'}}) }}
+						</div>
+						{{ form_errors(form.name) }}
+					</div>
+
+					<div class="sm:col-span-1">
+						{{ form_label(form.item, 'Liste des items présents dans la base de données', {'label_attr': {'class': 'text-sm font-medium text-gray-600'}}) }}
+						<div class="mt-1">
+							{{ form_widget(form.item, {'attr': {'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 sm:text-sm'}}) }}
+						</div>
+						{{ form_errors(form.item) }}
+					</div>
+
+					<div class="sm:col-span-1">
+						{{ form_label(form.utilisateurs, 'Liste des utilisateurs', {'label_attr': {'class': 'text-sm font-medium text-gray-600'}}) }}
+						<div class="mt-1">
+							{{ form_widget(form.utilisateurs, {'attr': {'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 sm:text-sm'}}) }}
+						</div>
+						{{ form_errors(form.utilisateurs) }}
+					</div>
+				</div>
+
+				<div>
+					<button type="submit" class="w-full py-3 px-4 bg-gray-600 text-white font-bold rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+						Ajouter
+					</button>
+				</div>
+
+			</div>
+			{{ form_end(form) }}
+		</form>
+
+		<a href="{{ path('app_admin_synergy_index') }}" class="inline-block p-4 mt-4 text-gray-800 bg-gray-200 rounded-lg shadow-sm hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50">
+			Back to list
+		</a>
+	</div>
+
+
+{% endblock %}

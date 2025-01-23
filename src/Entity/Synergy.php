@@ -24,13 +24,13 @@ class Synergy
     #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'synergies')]
     private Collection $item;
 
-    #[ORM\ManyToOne(inversedBy: 'synergies')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $utilisateur = null;
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'synergies')]
+    private Collection $utilisateurs;
 
     public function __construct()
     {
         $this->item = new ArrayCollection();
+        $this->utilisateurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,14 +74,24 @@ class Synergy
         return $this;
     }
 
-    public function getUtilisateur(): ?User
+    // Utilisateurs Relationship methods (MANY TO MANY)
+    public function getUtilisateurs(): Collection
     {
-        return $this->utilisateur;
+        return $this->utilisateurs;
     }
 
-    public function setUtilisateur(?User $utilisateur): static
+    public function addUtilisateur(User $utilisateur): self
     {
-        $this->utilisateur = $utilisateur;
+        if (!$this->utilisateurs->contains($utilisateur)) {
+            $this->utilisateurs[] = $utilisateur;
+        }
+
+        return $this;
+    }
+
+    public function removeUtilisateur(User $utilisateur): self
+    {
+        $this->utilisateurs->removeElement($utilisateur);
 
         return $this;
     }

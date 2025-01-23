@@ -7,13 +7,14 @@
 			{% endblock %}
 		</title>
 
-		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
-		{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-		<link rel="stylesheet" href={{ asset('styles/app.css') }}>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+		
 	</head>
 	<body class="bg-cover bg-center">
 

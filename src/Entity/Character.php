@@ -3,8 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+#[ORM\Table(name: "`character`")]
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
 class Character
 {
@@ -19,9 +23,16 @@ class Character
     #[ORM\Column(length: 255)]
     private ?string $Filename = null;
 
-    #[ORM\ManyToOne(inversedBy: 'characters')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $utilisateur = null;
+    /**
+     * @var Collection<int, Build>
+     */
+    #[ORM\ManyToMany(targetEntity: Build::class, mappedBy: 'character_id')]
+    private Collection $builds;
+
+    public function __construct()
+    {
+        $this->builds = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,15 +63,32 @@ class Character
         return $this;
     }
 
-    public function getUtilisateur(): ?User
+    /**
+     * @return Collection<int, Build>
+     */
+    public function getBuilds(): Collection
     {
-        return $this->utilisateur;
+        return $this->builds;
     }
 
-    public function setUtilisateur(?User $utilisateur): static
+    public function addBuild(Build $build): static
     {
-        $this->utilisateur = $utilisateur;
+        if (!$this->builds->contains($build)) {
+            $this->builds->add($build);
+            $build->addCharacterId($this);
+        }
 
         return $this;
     }
+
+    public function removeBuild(Build $build): static
+    {
+        if ($this->builds->removeElement($build)) {
+            $build->removeCharacterId($this);
+        }
+
+        return $this;
+    }
+
+    
 }

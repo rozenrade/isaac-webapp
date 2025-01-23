@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's Bravery - Your Profile
+{% block title %}Isaac's Bravery - My Profile
 {% endblock %}
 
 {% block body %}
 	<div class="flex flex-col items-center justify-center">
 		<h1 class="text-white text-[32px]">Welcome to your very own profile page</h1>
-        
+
+		<a href="{{ path( 'app_user_show_builds' )}}" class="text-white">See my builds</a>
 	</div>
-
-
 {% endblock %}

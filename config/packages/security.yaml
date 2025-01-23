@@ -30,6 +30,7 @@ security:
 
                 username_parameter: email
                 password_parameter: password
+                use_referer: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

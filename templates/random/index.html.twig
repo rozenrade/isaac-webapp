@@ -2,31 +2,48 @@
 
 {% block title %}Isaac's bravery - Randomizer
 {% endblock %}
-
 {% block body %}
+	{% set currentItemSet = app.session.get('currentItemSet') %}
 
 	{% if not statusURL %}
 		<h1 class="p-4 text-center text-white">You can use our randomizer on this page</h1>
 	{% endif %}
 
 	<div class="flex flex-col items-center justify-center">
-		<a href="{{ path('app_random', {status: 'random'} ) }}" class="text-white p-4 bg-blue-500 rounded-lg">Randomize</a>
+
 		<div id="item-container" class="flex flex-col items-center">
+
 			{% if statusURL %}
+
 				<div id="item-container" class="flex flex-wrap">
-					{% for item in itemSet %}
+					{% if currentBuild %}
+						{% for item in currentBuild.items %}
+							<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
+								<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
+								<p class="text-white">{{ item.name }}</p>
+							</div>
+						{% endfor %}
+
 						<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-							<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
-							<p class="text-white">{{ item.name }}</p>
+							<img src="{{ asset('images/destinations/' ~ currentBuild.boss.filename) }}" alt="{{ currentBuild.boss.name }}" class="w-16 h-16 object-cover mt-2">
+							<p class="text-white">{{ currentBuild.boss.name }}</p>
 						</div>
-					{% endfor %}
+
+						<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
+							<img src="{{ asset('images/characters/' ~ currentBuild.character.filename) }}" alt="{{ currentBuild.character.name }}" class="w-16 h-16 object-cover mt-2">
+							<p class="text-white">{{ currentBuild.character.name }}</p>
+						</div>
+
+					{% endif %}
+
 				</div>
+
+				{% if app.user %}
+					<a href="{{ path('app_random', {'status': 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">SAUVEGARDER BUILD</a>
+				{% endif %}
+
 			{% endif %}
-
-
-			<a href="{{ path('app_random', {status: 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">SAUVEGARDER BUILD</a>
-			<a href="{{ path('app_saved_items') }}" class="text-white p-4 bg-green-500 rounded-lg mt-4">Voir les items sauvegardés</a>
-
+			<a href="{{ path('app_random', {status: 'random'} ) }}" class="text-white p-4 bg-blue-500 rounded-lg">Randomize</a>
 		</div>
 	</div>
 
