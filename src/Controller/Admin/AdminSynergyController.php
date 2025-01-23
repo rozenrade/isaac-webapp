@@ -12,7 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/admin/synergie')]
-final class AdminSynergyController extends AbstractController{
+final class AdminSynergyController extends AbstractController
+{
     #[Route(name: 'app_admin_synergy_index', methods: ['GET'])]
     public function index(SynergyRepository $synergyRepository): Response
     {
@@ -21,6 +22,7 @@ final class AdminSynergyController extends AbstractController{
         ]);
     }
 
+    // ? add synergy
     #[Route('/new', name: 'app_admin_synergy_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -41,6 +43,7 @@ final class AdminSynergyController extends AbstractController{
         ]);
     }
 
+    // ? show synergy
     #[Route('/{id}', name: 'app_admin_synergy_show', methods: ['GET'])]
     public function show(Synergy $synergy): Response
     {
@@ -49,6 +52,7 @@ final class AdminSynergyController extends AbstractController{
         ]);
     }
 
+    // ? edit synergy
     #[Route('/{id}/edit', name: 'app_admin_synergy_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Synergy $synergy, EntityManagerInterface $entityManager): Response
     {
@@ -67,10 +71,11 @@ final class AdminSynergyController extends AbstractController{
         ]);
     }
 
+    // ? delete synergy
     #[Route('/{id}', name: 'app_admin_synergy_delete', methods: ['POST'])]
     public function delete(Request $request, Synergy $synergy, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$synergy->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $synergy->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($synergy);
             $entityManager->flush();
         }
