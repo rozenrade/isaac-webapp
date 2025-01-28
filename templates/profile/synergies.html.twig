@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Isaac's Bravery - My Synergies
+{% endblock %}
+
+{% block body %}
+	<div class="flex flex-col items-center justify-center">
+		<h1 class="text-white text-[32px] mb-8">My Synergies</h1>
+
+		<div
+			class="flex flex-wrap gap-8 w-full justify-center">
+			<!-- Container pour toutes les synergies -->
+			{% if synergies is empty %}
+				<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
+					<p class="text-white text-sm">Vous n'avez pas encore de synergies.</p>
+				</div>
+				<a href="{{ path('app_synergies') }}" class="text-white p-4 bg-blue-500 rounded-lg shadow-lg">Ajouter une synergie</a>
+
+			{% endif %}
+
+			{% for synergy in synergies %}
+				<div
+					class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 bg-gray-500 rounded-lg shadow-lg">
+					<!-- Chaque synergie est une "carte" avec une taille responsive -->
+					<div class="synergy-row space-y-4">
+						<div class="synergy-header">
+							<h2 class="text-xl font-semibold text-white">{{ synergy.name }}</h2>
+						</div>
+
+						<div class="flex flex-wrap gap-4 justify-start">
+							{% if synergy.item is not empty %}
+								{% for item in synergy.item %}
+									<div class="flex flex-col justify-center items-center w-32 h-32 bg-gray-800 rounded-lg shadow-lg">
+										<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2 rounded-md">
+										<p class="text-white text-sm mt-2 text-center">{{ item.name }}</p>
+									</div>
+
+								{% endfor %}
+								<form action="{{ path('app_synergies_remove_from_user', { 'id' : synergy.id } ) }}" method="post">
+									<button type="submit" class="px-4 py-2 bg-red-500 text-white rounded">
+										Supprimer
+									</button>
+								</form>
+							{% else %}
+								<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
+									<p class="text-white text-sm">Pas d'items pour cette synergie.</p>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

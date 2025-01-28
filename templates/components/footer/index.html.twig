@@ -6,46 +6,46 @@
 			class="flex flex-wrap justify-between">
 			<!-- À propos de nous -->
 			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
-				<h3 class="font-bold text-lg mb-2">À propos de nous</h3>
+				<h3 class="font-bold text-lg mb-2">About us</h3>
 				<p class="text-gray-400">
-					Nous sommes des adorateurs du jeu
+					We are fans of the game
 					<a href="#" class="hover:text-white">The Binding of Isaac</a>.
 				</p>
 			</div>
 
 			<!-- Navigation rapide -->
 			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
-				<h3 class="font-bold text-lg mb-2">Navigation rapide</h3>
+				<h3 class="font-bold text-lg mb-2">Quick navigation</h3>
 				<ul class="text-gray-400">
 					<li>
-						<a href="#" class="hover:text-white">Accueil</a>
+						<a href="{{ path('app_home') }}" class="hover:text-white">Home</a>
 					</li>
 					<li>
-						<a href="#" class="hover:text-white">Services</a>
+						<a href="{{ path('app_random') }}" class="hover:text-white">Randomize</a>
 					</li>
 					<li>
-						<a href="#" class="hover:text-white">Blog</a>
+						<a href="{{ path('app_synergies') }}" class="hover:text-white">Synergies</a>
 					</li>
 					<li>
-						<a href="#" class="hover:text-white">Contact</a>
+						{# <a href="{{ path('app_about') }}" class="hover:text-white">About</a> #}
 					</li>
 				</ul>
 			</div>
 
 			<!-- Contact -->
 			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
-				<h3 class="font-bold text-lg mb-2">Nous contacter</h3>
+				<h3 class="font-bold text-lg mb-2">Contact us</h3>
 				<ul class="text-gray-400">
-					<li>Cliquez
-						<a href="#" class="hover:text-white text-blue-500">ici</a>
-						pour remplir le formulaire afin de nous contacter.</li>
+					<li>Click
+						<a href="#" class="hover:text-white text-blue-500">here</a>
+						to fill out the form to contact us.</li>
 				</ul>
 			</div>
 		</div>
 
 		<!-- Section inférieure du footer -->
 		<div class="border-t border-gray-700 mt-8 pt-4 text-center">
-			<p class="text-gray-500 text-sm">&copy; 2024 Isaac's Bravery Company. Tous droits réservés.</p>
+			<p class="text-gray-500 text-sm">&copy; 2024 Isaac's Bravery Company. All rights reserved.</p>
 		</div>
 	</div>
 </footer>

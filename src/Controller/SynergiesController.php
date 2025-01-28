@@ -1,58 +1,61 @@
-<?php 
+<?php
+
 namespace App\Controller;
 
-use App\Repository\ItemRepository;
 use App\Repository\SynergyRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SynergiesController extends AbstractController
 {
-    #[Route('/synergies', name: 'app_synergies')]
-    public function index(ItemRepository $itemRepository): Response
+    #[Route('/synergie/save/{id}', name: 'app_synergies_save_to_user')]
+    public function save(int $id, SynergyRepository $synergyRepository): Response
     {
-        $synergie1 = [
-            $itemRepository->findItemById(1),
-            $itemRepository->findItemById(2),
-            $itemRepository->findItemById(3),
-            $itemRepository->findItemById(4),
-            $itemRepository->findItemById(5),
-        ];
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            // Récupérer la synergie par son ID
+            $synergy = $synergyRepository->find($id);
 
-        $synergie2 = [
-            $itemRepository->findItemById(14),
-            $itemRepository->findItemById(26),
-            $itemRepository->findItemById(46),
-            $itemRepository->findItemById(54),
-            $itemRepository->findItemById(63),
-        ];
+            // Si la synergie n'existe pas, rediriger
+            if (!$synergy) {
+                return $this->redirectToRoute('app_synergies');
+            }
 
-        $synergie3 = [
-            $itemRepository->findItemById(120),
-            $itemRepository->findItemById(239),
-            $itemRepository->findItemById(345),
-            $itemRepository->findItemById(135),
-            $itemRepository->findItemById(256),
-        ];
+            // Ajouter l'utilisateur connecté à la synergie
+            $synergy->addUtilisateur($this->getUser());
 
-        $synergies = [
-            ['item' => $synergie1],
-            ['item' => $synergie2],
-            ['item' => $synergie3],
-        ];
+            // Sauvegarder les modifications via le repository
+            $synergyRepository->save($synergy);
 
-        return $this->render('synergies/index.html.twig', ['synergies' => $synergies]);
+            // Redirection après traitement
+            return $this->redirectToRoute('app_synergies');
+        }
+
+        // Si l'utilisateur n'est pas authentifié, le rediriger vers la page de connexion
+        return $this->redirectToRoute('app_login');
     }
 
-    #[Route('/synergie/add', name: 'app_save_synergy_to_user_profile')]
-    public function addSynergyToUserProfile(SynergyRepository $synergyRepository, UserRepository $userRepository, Request $request, SessionInterface $session)
+    #[Route('/synergies/remove/{id}', name: 'app_synergies_remove_from_user', methods: ['POST'])]
+    public function removeSynergieFromUser(int $id, Security $security, SynergyRepository $synergyRepository): Response
     {
+        // Vérifier que l'utilisateur est connecté
+        $user = $security->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
 
+        // Récupérer la synergie par son ID
+        $synergy = $synergyRepository->find($id);
+
+        // Si la synergie n'existe pas, rediriger
+        if (!$synergy) {
+            return $this->redirectToRoute('app_user_show_synergies');
+        }
+
+        // Supprimer la synergie de l'utilisateur
+        $synergyRepository->removeSynergieFromUser($synergy, $user);
+
+        return $this->redirectToRoute('app_user_show_synergies');
     }
-
-
 }

@@ -7,20 +7,21 @@
 			{% endblock %}
 		</title>
 
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-		
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
 	</head>
 	<body class="bg-cover bg-center">
 
 		{{ include('components/navbar/index.html.twig') }}
-		<div> {% block body %}{% endblock %}
-			</div>
-			{{ include ('components/footer/index.html.twig') }}
-		</body>
-	</html>
+		<div class="container mx-auto">
+			{% block body %}{% endblock %}
+		</div>
+		{{ include ('components/footer/index.html.twig') }}
+	</body>
+</html>

@@ -9,14 +9,17 @@
 
 		<li><a href="/random">Random</a></li>
 
-		<li><a href="/about">A propos</a></li>
+		<li><a href="/about">About us</a></li>
+		{% if is_granted('ROLE_ADMIN') %}
+			<li><a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a></li >
+		{% endif %}
 
 		{% if is_granted('ROLE_USER') %}
-			<li><a href="{{ path('app_profile') }}">Mon profil</a></li>
-			<li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+			<li><a href="{{ path('app_profile') }}">My profile</a></li>
+			<li><a href="{{ path('app_logout') }}">Log out</a></li>
 		{% else %}
-			<li><a href="{{ path('app_signup') }}">S'inscrire</a></li>
-			<li><a href="{{ path('app_login') }}">Se connecter</a></li>
+			<li><a href="{{ path('app_signup') }}">Sign up</a></li>
+			<li><a href="{{ path('app_login') }}">Log in</a></li>
 		{% endif %}
 
 	</ul>

@@ -29,7 +29,7 @@ class AuthController extends AbstractController
             // Vérification si l'email existe déjà
             // L'email est ce qui permet de vérifier l'authenticité de l'utilisateur
             if ($existingUser) {
-                return $this->redirectToRoute('app_signup', ['error' => 'Cet email est déjà utilisé.']);
+                return $this->redirectToRoute('app_signup', ['error' => 'This email is already used.']);
             }
 
             // Ajouter le rôle par défaut ROLE_USER
@@ -42,7 +42,7 @@ class AuthController extends AbstractController
 
             $repository->save($user);
 
-            return $this->redirectToRoute('app_home', ['success' => 'Votre compte a été créé avec succès']);
+            return $this->redirectToRoute('app_login', ['success' => 'Successfully created your account']);
         }
 
         return $this->render('auth/signUp.html.twig', ['form' => $form]);

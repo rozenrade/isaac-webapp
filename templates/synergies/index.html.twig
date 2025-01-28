@@ -1,11 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's Bravery - Accueil
+{% block title %}Isaac's Bravery - Synergies
 {% endblock %}
 
 {% block body %}
 
-	<h1 class="p-4 text-4xl text-center text-white">Synergies</h1>
+	<h1 class="p-4 text-4xl text-center text-white">Known synergies</h1>
+
+	<div class="synergies-container space-y-8">
+		{% for synergy in synergies %}
+			<!-- Conteneur de chaque synergie -->
+			<div
+				class="synergy-row space-y-4">
+				<!-- Titre de la synergie -->
+				<div class="synergy-header">
+					<h2 class="text-xl font-semibold text-white">{{ synergy.name }}</h2>
+				</div>
+				<div>
+					{% if synergy is empty %}
+
+						<p>No synergies could be found.</p>
+
+					{% endif %}
+				</div>
+				<!-- Items de la synergie -->
+				<div class="flex flex-wrap gap-4">
+					{% if synergy.item is not empty %}
+						{% for item in synergy.item %}
+							<div class="flex flex-col justify-center items-center w-32 h-32 bg-gray-800 rounded-lg shadow-lg">
+								<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2 rounded-md">
+								<p class="text-white text-sm mt-2 text-center">{{ item.name }}</p>
+							</div>
 
 
-{% endblock %}
+						{% endfor %}
+						{% if is_granted('ROLE_USER')%}
+
+							<form action={{ path('app_synergies_save_to_user', { 'id' : synergy.id } ) }} methods="post">
+								<button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+									Save
+								</button>
+							</form>
+
+						{% endif %}
+
+					{% else %}
+						<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
+							<p class="text-white text-sm">No items were retrieved for this synergy.</p>
+						</div>
+					{% endif %}
+
+
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+
+</div>{% endblock %}
