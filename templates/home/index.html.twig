@@ -7,38 +7,45 @@
 
 	<div class="flex flex-row">
 		<div class="flex flex-col justify-center items-center m-16 p-16 bg-gray-300">
-			<h1 class="p-4 text-xl">Bienvenue sur mon site dédié à
+			<h1 class="p-4 text-xl">Welcome to my site dedicated to
 				<a href="#" class="text-blue-500 justify-center items-center">The Binding of Isaac</a>!</h1>
 			<p class="p-4 text-xl text-white">
-				Si vous êtes un fan de ce jeu captivant et imprévisible, vous êtes au bon endroit. Ici, vous trouverez un concept unique inspiré d'Ultimate Bravery de League of Legends, mais adapté à The Binding of Isaac. Notre objectif est simple, rendre vos runs encore plus chaotiques et funs en générant des builds totalement randomisés!</p>
+				If you're a fan of this captivating and unpredictable game, you're in the right place. Here, you'll find a unique concept inspired by Ultimate Bravery from League of Legends but adapted to The Binding of Isaac. Our goal is simple: to make your runs even more chaotic and fun by generating completely randomized builds!</p>
 
-			<p class="p-4 text-xl text-white">Que vous soyez à la recherche d'un défi supplémentaire ou que vous vouliez juste pimenter votre expérience de jeu, notre générateur de builds vous imposera des combinaisons d'objets et d'éléments aléatoires pour chaque partie. Préparez-vous à des surprises inattendues, des synergies improbables et des moments mémorables dans votre quête pour vaincre Isaac, Satan ou tout autre boss épique du jeu. Bonne chance, et surtout... amusez-vous avec le chaos !</p>
+			<p class="p-4 text-xl text-white">Whether you're looking for an extra challenge or just want to spice up your gaming experience, our build generator will impose random combinations of items and elements for each game. Get ready for unexpected surprises, improbable synergies, and memorable moments as you quest to defeat Isaac, Satan, or any other epic boss in the game. Good luck, and above all... enjoy the chaos!</p>
 		</div>
-		<div class="border-2 border-black">
-			<div>
 
-				<div class="relative w-full overflow-hidden">
-					<div class="flex transition-transform duration-700 ease-in-out " id="carousel-container">
-
-						<div>
-							<img src={{ asset('images/characters/Isaac.png') }} alt="Isaac" class="w-32">
-						</div>
-
-						<div>
-							<img src={{ asset('images/characters/Cain.png') }} alt="Cain" class="w-32">
-						</div>
-
-						<div>
-							<img src={{ asset('images/characters/Eve.png') }} alt="Eve" class="w-32">
-						</div>
-
+		<div
+			class="border-2 border-black relative">
+			<!-- Conteneur principal -->
+			<div
+				class="relative w-full overflow-hidden">
+				<!-- Conteneur des slides -->
+				<div
+					class="flex transition-transform duration-700 ease-in-out" id="carousel-container">
+					<!-- Slide individuel -->
+					<div class="w-full flex justify-center">
+						<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-32">
+					</div>
+					<div class="w-full flex justify-center">
+						<img src="{{ asset('images/characters/Cain.png') }}" alt="Cain" class="w-32">
+					</div>
+					<div class="w-full flex justify-center">
+						<img src="{{ asset('images/characters/Eve.png') }}" alt="Eve" class="w-32">
 					</div>
 				</div>
-
 			</div>
 
-			<button class="p-16">Générer un build</button>
+			<!-- Boutons pour la navigation -->
+			<button id="prev-btn" class="absolute top-1/2 left-0 -translate-y-1/2 p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700">
+				⟨
+			</button>
+			<button id="next-btn" class="absolute top-1/2 right-0 -translate-y-1/2 p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700">
+				⟩
+			</button>
 		</div>
+
+
 	</div>
 
 {% endblock %}

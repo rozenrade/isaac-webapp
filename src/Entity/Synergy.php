@@ -18,9 +18,6 @@ class Synergy
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    /**
-     * @var Collection<int, Item>
-     */
     #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'synergies')]
     private Collection $item;
 

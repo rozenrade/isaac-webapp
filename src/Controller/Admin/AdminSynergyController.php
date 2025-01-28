@@ -2,8 +2,10 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Item;
 use App\Entity\Synergy;
 use App\Form\SynergyType;
+use App\Repository\ItemRepository;
 use App\Repository\SynergyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,31 +26,37 @@ final class AdminSynergyController extends AbstractController
 
     // ? add synergy
     #[Route('/new', name: 'app_admin_synergy_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, ItemRepository $itemRepository): Response
     {
         $synergy = new Synergy();
+    
         $form = $this->createForm(SynergyType::class, $synergy);
         $form->handleRequest($request);
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistre la synergie
             $entityManager->persist($synergy);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_admin_synergy_index', [], Response::HTTP_SEE_OTHER);
         }
-
+    
         return $this->render('Admin/admin_synergy/new.html.twig', [
             'synergy' => $synergy,
             'form' => $form,
         ]);
     }
+    
 
     // ? show synergy
     #[Route('/{id}', name: 'app_admin_synergy_show', methods: ['GET'])]
     public function show(Synergy $synergy): Response
     {
+        $items = $synergy->getItem();
+
         return $this->render('Admin/admin_synergy/show.html.twig', [
             'synergy' => $synergy,
+            'items' => $items
         ]);
     }
 

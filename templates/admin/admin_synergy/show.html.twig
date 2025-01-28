@@ -15,7 +15,17 @@
 				</tr>
 				<tr class="border-b">
 					<th class="px-4 py-2 text-left font-medium text-gray-700">Name</th>
-					<td class="px-4 py-2 text-gray-900">    {{ synergy.name }}</td>
+					<td class="px-4 py-2 text-gray-900">
+						{{ synergy.name }}</td>
+				</tr>
+				<tr class="border-b">
+					<th class="px-4 py-2 text-left font-medium text-gray-700">Liste des items présents</th>
+					{% for item in items %}
+						<td class="px-4 py-2 text-gray-900">
+							{{ item.name }}</td>
+					{% else %}
+						<li class="text-gray-500">Aucun item associé à cette synergie.</li>
+					{% endfor %}
 				</tr>
 			</tbody>
 		</table>
