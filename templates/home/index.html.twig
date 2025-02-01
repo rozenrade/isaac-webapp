@@ -5,53 +5,61 @@
 
 {% block body %}
 
-	<div class="flex">
-		<div class="flex flex-col justify-center items-center m-16 p-16 bg-red-400 opacity-85 w-full">
-			<h1 class="p-4 text-xl">Welcome to my site dedicated to
-				<a href="#" class="text-blue-500 justify-center items-center">The Binding of Isaac</a>!</h1>
-			<p class="p-4 text-xl text-white">
-				If you're a fan of this captivating and unpredictable game, you're in the right place. Here, you'll find a unique concept inspired by Ultimate Bravery from League of Legends but adapted to The Binding of Isaac. Our goal is simple: to make your runs even more chaotic and fun by generating completely randomized builds!</p>
+	<div class="flex flex-col md:flex-row">
+		<div class="flex flex-col justify-center items-center m-2 p-2 bg-red-400 opacity-85 w-full ">
 
-			<p class="p-4 text-xl text-white">Whether you're looking for an extra challenge or just want to spice up your gaming experience, our build generator will impose random combinations of items and elements for each game. Get ready for unexpected surprises, improbable synergies, and memorable moments as you quest to defeat Isaac, Satan, or any other epic boss in the game. Good luck, and above all... enjoy the chaos!</p>
+			<div class="flex flex-col xl:flex-row text-center">
+				<h1 class="p-4 text-xl">Welcome to my site dedicated to
+					<a href="https://bindingofisaacrebirth.fandom.com/wiki/Binding_of_Isaac:_Rebirth_Wiki" class="text-blue-500 justify-center items-center hover:underline">The Binding of Isaac</a>
+				</h1>
+			</div>
+			<div>
+				<p class="p-4 text-xl text-white">
+					If you're a fan of this captivating and unpredictable game, you're in the right place. Here, you'll find a unique concept inspired by Ultimate Bravery from League of Legends but adapted to The Binding of Isaac. Our goal is simple: to make your runs even more chaotic and fun by generating completely randomized builds!</p>
+			</div>
+			<div>
+				<p class="p-4 text-xl text-white">Whether you're looking for an extra challenge or just want to spice up your gaming experience, our build generator will impose random combinations of items and elements for each game. Get ready for unexpected surprises, improbable synergies, and memorable moments as you quest to defeat Isaac, Satan, or any other epic boss in the game. Good luck, and above all... enjoy the chaos!</p>
+			</div>
 		</div>
 
 
 		{# Carousel #}
 		<section
-			class="flex flex-col m-16 p-16 bg-gray-500 rounded-2xl">
+			class="flex flex-col m-16 p-2 bg-gray-500 rounded-2xl max-h-96 md:max-h-[26pc] lg:max-h-96 overflow-hidden">
 			<!-- Bouton gauche -->
 			<div class="flex items-center w-full">
-				<button id="slide-left-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center">
-					
-				</button>
+				<button id="slide-left-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center"></button>
 
 				<!-- Conteneur principal -->
 				<div
 					id="slide-container" class="relative overflow-hidden w-full">
 					<!-- Liste des slides -->
 					<ul id="slide-list" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0);">
-						<li class="w-full flex-shrink-0">
-							<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-full h-auto">
+						<li class="w-full flex-shrink-0 flex justify-center flex-col items-center">
+							<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-24 h-28 sm:w-32 sm:h-36 md:w-40 md:h-44 lg:w-48 lg:h-52 xl:w-56 xl:h-60">
+							<p class="text-xl sm:text-2xl md:text-3xl text-white font-bold p-4">Isaac</p>
 						</li>
-						<li class="w-full flex-shrink-0">
-							<img src="{{ asset('images/characters/Eve.png') }}" alt="Eve" class="w-full h-auto">
+						<li class="w-full flex-shrink-0 flex justify-center flex-col items-center">
+							<img src="{{ asset('images/characters/Eve.png') }}" alt="Eve" class="w-24 h-28 sm:w-32 sm:h-36 md:w-40 md:h-44 lg:w-48 lg:h-52 xl:w-56 xl:h-60">
+							<p class="text-xl sm:text-2xl md:text-3xl text-white font-bold p-4">Eve</p>
 						</li>
-						<li class="w-full flex-shrink-0">
-							<img src="{{ asset('images/characters/Eden.png') }}" alt="Eden" class="w-full h-auto">
+						<li class="w-full flex-shrink-0 flex justify-center flex-col items-center">
+							<img src="{{ asset('images/characters/Eden.png') }}" alt="Eden" class="w-24 h-28 sm:w-32 sm:h-36 md:w-40 md:h-44 lg:w-48 lg:h-52 xl:w-56 xl:h-60">
+							<p class="text-xl sm:text-2xl md:text-3xl text-white font-bold p-4">Eden</p>
 						</li>
-						<li class="w-full flex-shrink-0">
-							<img src="{{ asset('images/characters/Lazarus.png') }}" alt="Lazarus" class="w-full h-auto">
+						<li class="w-full flex-shrink-0 flex justify-center flex-col items-center">
+							<img src="{{ asset('images/characters/Lazarus.png') }}" alt="Lazarus" class="w-24 h-28 sm:w-32 sm:h-36 md:w-40 md:h-44 lg:w-48 lg:h-52 xl:w-56 xl:h-60">
+							<p class="text-xl sm:text-2xl md:text-3xl text-white font-bold p-4">Lazarus</p>
 						</li>
+
 					</ul>
 				</div>
 
 				<!-- Bouton droit -->
-				<button id="slide-right-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center">
-					
-				</button>
+				<button id="slide-right-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center"></button>
 			</div>
-				<a href="{{ path('app_random') }}" class="p-4 m-4 bg-blue-400 text-center rounded-2xl shadow-lg text-white hover:bg-blue-300 transition-all">Use the randomizer</a>
+			<a href="{{ path('app_random') }}" class="p-4 m-4 bg-blue-400 text-center rounded-2xl shadow-lg text-white hover:bg-green-200 transition-all duration-1000 text-2xl font-bold">Try the randomizer out</a>
 		</section>
 	</div>
-	
+
 {% endblock %}

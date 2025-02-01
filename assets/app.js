@@ -2,6 +2,15 @@ import "./styles/app.css";
 
 // Saving button
 document.addEventListener("DOMContentLoaded", () => {
+
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("max-h-0");   // Cache le menu en le ramenant à une hauteur max de 0
+        mobileMenu.classList.toggle("max-h-[500px]"); // Ouvre le menu avec une hauteur max suffisante pour tout afficher
+    });
+
     const saveButton = document.getElementById("save-button");
 
     // Vérification de l'existence du bouton avant d'ajouter un event listener

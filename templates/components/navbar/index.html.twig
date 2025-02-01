@@ -1,27 +1,97 @@
-<nav class="bg-red-400 text-white">
-    {# <img src={{ asset('img/4_Bosses/BabyPlum.png') }} alt="Baby Plum" class="babyplum"> #}
+<!-- Navbar principale -->
+<nav
+	class="bg-red-950 text-white">
+	<!-- Container de la navbar -->
+	<div
+		class="container mx-auto flex justify-between items-center p-5">
+		<!-- Logo -->
+		<a href="/" class="text-2xl font-bold">Baby Plum</a>
 
-	<ul class="flex flex-row justify-center items-center p-8 space-x-24 text-2xl">
+		<!-- Bouton Burger pour le menu mobile -->
+		<button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+			☰
+		</button>
 
-		<li><a href="/">Home</a></li>
+		<!-- Liens de navigation pour desktop -->
+		<ul id="menu" class="hidden md:flex flex-row space-x-8 text-xl">
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<li>
+				<a href="/synergies">Synergies</a>
+			</li>
+			<li>
+				<a href="/random">Random</a>
+			</li>
+			<li>
+				<a href="/about">About us</a>
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a>
+				</li>
+			{% endif %}
+			{% if is_granted('ROLE_USER') %}
+				<li>
+					<a href="{{ path('app_profile') }}">My profile</a>
+				</li>
+				<li>
+					<a href="{{ path('app_logout') }}">Log out</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{ path('app_signup') }}">Sign up</a>
+				</li>
+				<li>
+					<a href="{{ path('app_login') }}">Log in</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
 
-		<li><a href="/synergies">Synergies</a></li>
+    {# 	
+        Menu Mobile (pour les écrans plus petits)
+	- Reste dans le flux normal pour repousser le contenu lorsqu'il s'ouvre
+	- max-h-0 et overflow-hidden permettent de le cacher quand il est fermé
+	- La transition animée permet un déploiement fluide 
+    #}
 
-		<li><a href="/random">Random</a></li>
-
-		<li><a href="/about">About us</a></li>
-		{% if is_granted('ROLE_ADMIN') %}
-			<li><a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a></li >
-		{% endif %}
-
-		{% if is_granted('ROLE_USER') %}
-			<li><a href="{{ path('app_profile') }}">My profile</a></li>
-			<li><a href="{{ path('app_logout') }}">Log out</a></li>
-		{% else %}
-			<li><a href="{{ path('app_signup') }}">Sign up</a></li>
-			<li><a href="{{ path('app_login') }}">Log in</a></li>
-		{% endif %}
-
+	<ul
+		id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-50 text-right">
+		<!-- Wrapper avec padding et fond pour le contenu du menu -->
+		<div class="flex flex-col text-left space-y-4  text-xl p-5">
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<li>
+				<a href="/synergies">Synergies</a>
+			</li>
+			<li>
+				<a href="/random">Random</a>
+			</li>
+			<li>
+				<a href="/about">About us</a>
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a>
+				</li>
+			{% endif %}
+			{% if is_granted('ROLE_USER') %}
+				<li>
+					<a href="{{ path('app_profile') }}">My profile</a>
+				</li>
+				<li>
+					<a href="{{ path('app_logout') }}">Log out</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{ path('app_signup') }}">Sign up</a>
+				</li>
+				<li>
+					<a href="{{ path('app_login') }}">Log in</a>
+				</li>
+			{% endif %}
+		</div>
 	</ul>
-
 </nav>
