@@ -1,79 +1,124 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * This file will be included onto the page via the importmap() Twig function,
- * which should already be in your base.html.twig.
- */
 import "./styles/app.css";
 
-// Carousel
-
+// Saving button
 document.addEventListener("DOMContentLoaded", () => {
-    const carouselContainer = document.getElementById("carousel-container");
-    const slides = document.querySelectorAll("#carousel-container > div");
-    const prevBtn = document.getElementById("prev-btn");
-    const nextBtn = document.getElementById("next-btn");
+    const saveButton = document.getElementById("save-button");
+
+    // Vérification de l'existence du bouton avant d'ajouter un event listener
+    if (saveButton) {
+        saveButton.addEventListener("click", async () => {
+            // récupérer les id des items
+            const itemIds = Array.from(document.querySelectorAll(".item")).map(
+                (item) => item.id
+            );
+            try {
+                const response = await fetch("/random/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ items: itemIds }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.success);
+                } else {
+                    alert(result.error);
+                }
+            } catch (error) {
+                console.log("An error occurred while saving the build:", error);
+            }
+        });
+    } else {
+        console.log("Save button not found in the DOM, skipping event listener.");
+    }
+
+
+    // Gestion du carrousel
+    const slideContainer = document.getElementById("slide-container");
+    const slideList = document.getElementById("slide-list");
+    const slides = Array.from(slideList ? slideList.children : []);
+    const prevButton = document.getElementById("slide-left-button");
+    const nextButton = document.getElementById("slide-right-button");
+
+    // Vérification de la présence des éléments avant de manipuler
+
+    // console.log("slideContainer:", slideContainer);
+    // console.log("slideList:", slideList);
+    // console.log("prevButton:", prevButton);
+    // console.log("nextButton:", nextButton);
+
+    // Vérifier que tous les éléments nécessaires sont trouvés
+    if (!slideContainer || !slideList || !prevButton || !nextButton) {
+        console.error("Carousel elements not found in the DOM");
+        return; // Arrêter l'exécution si les éléments sont introuvables
+    }
 
     let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoSlideInterval; // Déclare l'intervalle pour le défilement automatique
 
-    const updateCarousel = () => {
-        // Translate le conteneur pour afficher uniquement le slide actif
-        carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-    };
-
-    prevBtn.addEventListener("click", () => {
-        currentIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
-        updateCarousel();
-    });
-
-    nextBtn.addEventListener("click", () => {
-        currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-        updateCarousel();
-    });
-});
-
-let autoScroll = setInterval(() => {
-    currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-    updateCarousel();
-}, 3000);
-
-// Arrête le défilement automatique quand la souris est sur le carrousel
-carouselContainer.addEventListener("mouseenter", () =>
-    clearInterval(autoScroll)
-);
-carouselContainer.addEventListener("mouseleave", () => {
-    autoScroll = setInterval(() => {
-        currentIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
-        updateCarousel();
-    }, 3000);
-});
-
-// Saving button
-
-document.getElementById("save-button").addEventListener("click", async () => {
-    // récupérer les id des items
-
-    const itemIds = Array.from(document.querySelectorAll(".item")).map(
-        (item) => item.id
-    );
-    try {
-        const response = await fetch("/random/save", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            },
-            body: JSON.stringify({ items: itemIds }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            alert(result.success);
-        } else {
-            alert(result.error);
-        }
-    } catch (error) {
-        console.log("An error occurred while saving the build:", error);
+    function updateSlidePosition() {
+        const slideWidth = slideContainer.clientWidth; // Largeur d'une image
+        slideList.style.transform = `translateX(-${currentIndex * slideWidth}px)`; // Déplace la liste des slides
+        console.log(
+            "Updating position to:",
+            `translateX(-${currentIndex * slideWidth}px)`
+        );
     }
+
+    // Fonction pour faire défiler automatiquement
+    function autoSlide() {
+        // Utilisation du modulo pour revenir à la première diapositive après la dernière
+        currentIndex = (currentIndex + 1) % totalSlides; // Si currentIndex devient égal à totalSlides, cela le ramène à 0
+        updateSlidePosition();
+    }
+
+    // Démarrer l'intervalle de défilement automatique
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(autoSlide, 3000); // Intervalle de 3 secondes
+    }
+
+    // Arrêter l'intervalle de défilement automatique
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    // Démarrer l'auto défilement au chargement
+    startAutoSlide();
+
+    // Bouton gauche
+    prevButton.addEventListener("click", () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = slides.length - 1;
+        }
+        stopAutoSlide(); // Arrêter l'auto défilement quand l'utilisateur clique
+        startAutoSlide(); // Redémarrer l'auto défilement après le clic
+        updateSlidePosition();
+    });
+
+    // Bouton droit
+    nextButton.addEventListener("click", () => {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Ramène à la première valeur
+        }
+        stopAutoSlide(); // Arrêter l'auto défilement quand l'utilisateur clique
+        startAutoSlide(); // Redémarrer l'auto défilement après le clic
+        updateSlidePosition();
+    });
+
+    // Réajuster sur redimensionnement
+    window.addEventListener("resize", () => {
+        console.log("Window resized. Recalculating slide position...");
+        updateSlidePosition();
+    });
+
+    // Initialiser la position au chargement
+    updateSlidePosition();
 });

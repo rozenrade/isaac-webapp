@@ -5,8 +5,8 @@
 
 {% block body %}
 
-	<div class="flex flex-row">
-		<div class="flex flex-col justify-center items-center m-16 p-16 bg-gray-300">
+	<div class="flex">
+		<div class="flex flex-col justify-center items-center m-16 p-16 bg-red-400 opacity-85 w-full">
 			<h1 class="p-4 text-xl">Welcome to my site dedicated to
 				<a href="#" class="text-blue-500 justify-center items-center">The Binding of Isaac</a>!</h1>
 			<p class="p-4 text-xl text-white">
@@ -15,37 +15,43 @@
 			<p class="p-4 text-xl text-white">Whether you're looking for an extra challenge or just want to spice up your gaming experience, our build generator will impose random combinations of items and elements for each game. Get ready for unexpected surprises, improbable synergies, and memorable moments as you quest to defeat Isaac, Satan, or any other epic boss in the game. Good luck, and above all... enjoy the chaos!</p>
 		</div>
 
-		<div
-			class="border-2 border-black relative">
-			<!-- Conteneur principal -->
-			<div
-				class="relative w-full overflow-hidden">
-				<!-- Conteneur des slides -->
+
+		{# Carousel #}
+		<section
+			class="flex flex-col m-16 p-16 bg-gray-500 rounded-2xl">
+			<!-- Bouton gauche -->
+			<div class="flex items-center w-full">
+				<button id="slide-left-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center">
+					
+				</button>
+
+				<!-- Conteneur principal -->
 				<div
-					class="flex transition-transform duration-700 ease-in-out" id="carousel-container">
-					<!-- Slide individuel -->
-					<div class="w-full flex justify-center">
-						<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-32">
-					</div>
-					<div class="w-full flex justify-center">
-						<img src="{{ asset('images/characters/Cain.png') }}" alt="Cain" class="w-32">
-					</div>
-					<div class="w-full flex justify-center">
-						<img src="{{ asset('images/characters/Eve.png') }}" alt="Eve" class="w-32">
-					</div>
+					id="slide-container" class="relative overflow-hidden w-full">
+					<!-- Liste des slides -->
+					<ul id="slide-list" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0);">
+						<li class="w-full flex-shrink-0">
+							<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-full h-auto">
+						</li>
+						<li class="w-full flex-shrink-0">
+							<img src="{{ asset('images/characters/Eve.png') }}" alt="Eve" class="w-full h-auto">
+						</li>
+						<li class="w-full flex-shrink-0">
+							<img src="{{ asset('images/characters/Eden.png') }}" alt="Eden" class="w-full h-auto">
+						</li>
+						<li class="w-full flex-shrink-0">
+							<img src="{{ asset('images/characters/Lazarus.png') }}" alt="Lazarus" class="w-full h-auto">
+						</li>
+					</ul>
 				</div>
+
+				<!-- Bouton droit -->
+				<button id="slide-right-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center">
+					
+				</button>
 			</div>
-
-			<!-- Boutons pour la navigation -->
-			<button id="prev-btn" class="absolute top-1/2 left-0 -translate-y-1/2 p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700">
-				⟨
-			</button>
-			<button id="next-btn" class="absolute top-1/2 right-0 -translate-y-1/2 p-2 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-700">
-				⟩
-			</button>
-		</div>
-
-
+				<a href="{{ path('app_random') }}" class="p-4 m-4 bg-blue-400 text-center rounded-2xl shadow-lg text-white hover:bg-blue-300 transition-all">Use the randomizer</a>
+		</section>
 	</div>
-
+	
 {% endblock %}
