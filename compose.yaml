@@ -1,4 +1,3 @@
-
 services:
 ###> doctrine/doctrine-bundle ###
   database:
@@ -38,6 +37,7 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
+
 
 ###> doctrine/mongodb-odm-bundle ###
   mongodb_data:
