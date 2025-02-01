@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Save button not found in the DOM, skipping event listener.");
     }
 
+
+    // Gestion du carrousel
     const slideContainer = document.getElementById("slide-container");
     const slideList = document.getElementById("slide-list");
     const slides = Array.from(slideList ? slideList.children : []);
@@ -42,10 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextButton = document.getElementById("slide-right-button");
 
     // Vérification de la présence des éléments avant de manipuler
-    console.log("slideContainer:", slideContainer);
-    console.log("slideList:", slideList);
-    console.log("prevButton:", prevButton);
-    console.log("nextButton:", nextButton);
+
+    // console.log("slideContainer:", slideContainer);
+    // console.log("slideList:", slideList);
+    // console.log("prevButton:", prevButton);
+    // console.log("nextButton:", nextButton);
 
     // Vérifier que tous les éléments nécessaires sont trouvés
     if (!slideContainer || !slideList || !prevButton || !nextButton) {
@@ -90,20 +93,24 @@ document.addEventListener("DOMContentLoaded", () => {
     prevButton.addEventListener("click", () => {
         if (currentIndex > 0) {
             currentIndex--;
-            updateSlidePosition();
+        } else {
+            currentIndex = slides.length - 1;
         }
         stopAutoSlide(); // Arrêter l'auto défilement quand l'utilisateur clique
         startAutoSlide(); // Redémarrer l'auto défilement après le clic
+        updateSlidePosition();
     });
 
     // Bouton droit
     nextButton.addEventListener("click", () => {
         if (currentIndex < slides.length - 1) {
             currentIndex++;
-            updateSlidePosition();
+        } else {
+            currentIndex = 0; // Ramène à la première valeur
         }
         stopAutoSlide(); // Arrêter l'auto défilement quand l'utilisateur clique
         startAutoSlide(); // Redémarrer l'auto défilement après le clic
+        updateSlidePosition();
     });
 
     // Réajuster sur redimensionnement
