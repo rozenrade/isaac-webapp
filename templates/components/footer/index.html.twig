@@ -3,9 +3,9 @@
 		class="container mx-auto px-4">
 		<!-- Section supérieure du footer -->
 		<div
-			class="flex flex-wrap justify-between">
-			<!-- À propos de nous -->
-			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
+			class="flex flex-col md:flex-row justify-between items-center md:items-start">
+			<!-- About us -->
+			<div class="w-full sm:w-1/2 md:w-1/4 mb-6 text-center md:text-start">
 				<h3 class="font-bold text-2xl mb-2">About us</h3>
 				<p class=" text-black font-bold">
 					We are fans of the game
@@ -14,7 +14,7 @@
 			</div>
 
 			<!-- Navigation rapide -->
-			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
+			<div class="w-full sm:w-1/2 md:w-1/4 mb-6 text-center md:text-start">
 				<h3 class="font-bold text-2xl mb-2">Quick navigation</h3>
 				<ul class=" text-black font-bold">
 					<li>
@@ -33,11 +33,11 @@
 			</div>
 
 			<!-- Contact -->
-			<div class="w-full sm:w-1/2 md:w-1/4 mb-6">
+			<div class="w-full sm:w-1/2 md:w-1/4 mb-6 text-center md:text-start">
 				<h3 class="font-bold text-2xl mb-2">Contact us</h3>
 				<ul class=" text-black text-lg font-bold">
 					<li>Click
-						<a href="#" class="hover:text-white text-blue-500">here</a>
+						<a href="{{ path('app_contact') }}" class="hover:text-white text-blue-500">here</a>
 						to fill out the form to contact us.</li>
 				</ul>
 			</div>
@@ -45,7 +45,7 @@
 
 		<!-- Section inférieure du footer -->
 		<div class="border-t bg-red-400 mt-8 pt-4 text-center">
-			<p class="text-gray-500 text-sm">&copy; 2024 Isaac's Bravery Company. All rights reserved.</p>
+			<p class="text-white text-sm">&copy; 2024 Isaac's Bravery Company. All rights reserved.</p>
 		</div>
 	</div>
 </footer>

@@ -27,7 +27,7 @@
         ]
     },
     "doctrine/mongodb-odm-bundle": {
-        "version": "5.1",
+        "version": "5.2",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "main",
