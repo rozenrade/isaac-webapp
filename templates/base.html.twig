@@ -14,14 +14,18 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-
 	</head>
-	<body class="bg-cover bg-center">
-
+	<!-- Le body prend toute la hauteur de l'écran, et la mise en page est en flex pour la structure -->
+	<body
+		class="min-h-screen flex flex-col bg-cover bg-center">
+		<!-- Navbar -->
 		{{ include('components/navbar/index.html.twig') }}
-		<div class="container mx-auto">
-			{% block body %}{% endblock %}
-		</div>
-		{{ include ('components/footer/index.html.twig') }}
-	</body>
-</html>
+
+		<!-- Zone principale avec un padding-bottom pour ne pas coller au footer -->
+		<main class="flex-grow container mx-auto pb-10"> {% block body %}{% endblock %}
+			</main>
+
+			<!-- Footer -->
+			{{ include('components/footer/index.html.twig') }}
+		</body>
+	</html>

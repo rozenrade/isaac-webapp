@@ -19,7 +19,7 @@
 					{% if currentBuild %}
 						{% for item in currentBuild.items %}
 							<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-								<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
+								<img src="{{ asset( 'images/items/' ~ item.filename ) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
 								<p class="text-white">{{ item.name }}</p>
 							</div>
 						{% endfor %}
@@ -35,7 +35,6 @@
 						</div>
 
 					{% endif %}
-
 				</div>
 
 				{% if app.user %}

@@ -91,23 +91,31 @@ class RandomController extends AbstractController
         $attempts = 0;
         $maxAttempts = 100;
 
-        if ($totalItems == null) {
-            return "Cannot get items";
+        if (empty($totalItems)) {
+            return []; // Aucune donnée trouvée en BDD
         }
 
         while (count($itemSet) < 10 && $attempts < $maxAttempts) {
             $randomId = rand(0, count($totalItems) - 1);
             $item = $totalItems[$randomId];
 
-            $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $item->getFilename();
-            if (file_exists($imagePath) && !in_array($item, $itemSet)) {
+            // 🔹 Nettoyage du filename : Suppression de "public/images/items/"
+            $filename = str_replace('public/images/items/', '', $item->getFilename());
+
+            // 🔹 Construction du chemin réel du fichier image
+            $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $filename;
+
+            // 🔹 Vérification de l'existence du fichier
+            if (file_exists($imagePath) && !in_array($item, $itemSet, true)) {
                 $itemSet[] = $item;
             }
+
             $attempts++;
         }
 
         return $itemSet;
     }
+
 
     #[Route('build/user/{id}', name: 'app_build_user_delete')]
     public function delete(Request $request, int $id, EntityManagerInterface $entityManager): Response

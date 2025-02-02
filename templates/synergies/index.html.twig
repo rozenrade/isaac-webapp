@@ -35,12 +35,13 @@
 
 						{% endfor %}
 						{% if is_granted('ROLE_USER')%}
-
-							<form action={{ path('app_synergies_save_to_user', { 'id' : synergy.id } ) }} methods="post">
-								<button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
-									Save
-								</button>
-							</form>
+							<div class="flex justify-start items-center w-full rounded-lg shadow-lg">
+								<form action={{ path('app_synergies_save_to_user', { 'id' : synergy.id } ) }} methods="post">
+									<button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
+										Save
+									</button>
+								</form>
+							</div>
 
 						{% endif %}
 

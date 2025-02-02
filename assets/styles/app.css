@@ -21,3 +21,11 @@ body {
     /* équivalent à p-5 */
     padding-bottom: 1.25rem;
 }
+
+.custom-color-component {
+    background-color: #5A0B0B;
+}
+
+.custom-color-randomizer {
+    background-color: rgb(98, 98, 150);
+}

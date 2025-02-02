@@ -1,11 +1,11 @@
 <!-- Navbar principale -->
 <nav
-	class="bg-red-950 text-white">
+	class="custom-color-component text-white">
 	<!-- Container de la navbar -->
 	<div
 		class="container mx-auto flex justify-between items-center p-5">
 		<!-- Logo -->
-		<a href="/" class="text-2xl font-bold">Baby Plum</a>
+		<a href="/" class="text-2xl font-bold">Isaac's bravery</a>
 
 		<!-- Bouton Burger pour le menu mobile -->
 		<button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
@@ -15,35 +15,35 @@
 		<!-- Liens de navigation pour desktop -->
 		<ul id="menu" class="hidden md:flex flex-row space-x-8 text-xl">
 			<li>
-				<a href="/">Home</a>
+				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
 			</li>
 			<li>
-				<a href="/synergies">Synergies</a>
+				<a href="/synergies" class="hover:text-blue-300 transition-all duration-300 ">Synergies</a>
 			</li>
 			<li>
-				<a href="/random">Random</a>
+				<a href="/random" class="hover:text-blue-300 transition-all duration-300 ">Random</a>
 			</li>
 			<li>
-				<a href="/about">About us</a>
+				<a href="/about" class="hover:text-blue-300 transition-all duration-300 ">About us</a>
 			</li>
 			{% if is_granted('ROLE_ADMIN') %}
 				<li>
-					<a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a>
+					<a href="{{ path('app_admin_synergy_index') }}" class="hover:text-blue-300 transition-all duration-300 ">Add a synergy</a>
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_USER') %}
 				<li>
-					<a href="{{ path('app_profile') }}">My profile</a>
+					<a href="{{ path('app_profile') }}" class="hover:text-blue-300 transition-all duration-300 ">My profile</a>
 				</li>
 				<li>
-					<a href="{{ path('app_logout') }}">Log out</a>
+					<a href="{{ path('app_logout') }}" class="hover:text-blue-300 transition-all duration-300 ">Log out</a>
 				</li>
 			{% else %}
 				<li>
-					<a href="{{ path('app_signup') }}">Sign up</a>
+					<a href="{{ path('app_signup') }}" class="hover:text-blue-300 transition-all duration-300 ">Sign up</a>
 				</li>
 				<li>
-					<a href="{{ path('app_login') }}">Log in</a>
+					<a href="{{ path('app_login') }}" class="hover:text-blue-300 transition-all duration-300 ">Log in</a>
 				</li>
 			{% endif %}
 		</ul>
@@ -61,35 +61,35 @@
 		<!-- Wrapper avec padding et fond pour le contenu du menu -->
 		<div class="flex flex-col text-left space-y-4  text-xl p-5">
 			<li>
-				<a href="/">Home</a>
+				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
 			</li>
 			<li>
-				<a href="/synergies">Synergies</a>
+				<a href="/synergies" class="hover:text-blue-300 transition-all duration-300 ">Synergies</a>
 			</li>
 			<li>
-				<a href="/random">Random</a>
+				<a href="/random" class="hover:text-blue-300 transition-all duration-300 ">Random</a>
 			</li>
 			<li>
-				<a href="/about">About us</a>
+				<a href="/about" class="hover:text-blue-300 transition-all duration-300 ">About us</a>
 			</li>
 			{% if is_granted('ROLE_ADMIN') %}
 				<li>
-					<a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a>
+					<a href="{{ path('app_admin_synergy_index') }}" class="hover:text-blue-300 transition-all duration-300 ">Add a synergy</a>
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_USER') %}
 				<li>
-					<a href="{{ path('app_profile') }}">My profile</a>
+					<a href="{{ path('app_profile') }}" class="hover:text-blue-300 transition-all duration-300 ">My profile</a>
 				</li>
 				<li>
-					<a href="{{ path('app_logout') }}">Log out</a>
+					<a href="{{ path('app_logout') }}" class="hover:text-blue-300 transition-all duration-300 ">Log out</a>
 				</li>
 			{% else %}
 				<li>
-					<a href="{{ path('app_signup') }}">Sign up</a>
+					<a href="{{ path('app_signup') }}" class="hover:text-blue-300 transition-all duration-300 ">Sign up</a>
 				</li>
 				<li>
-					<a href="{{ path('app_login') }}">Log in</a>
+					<a href="{{ path('app_login') }}" class="hover:text-blue-300 transition-all duration-300 ">Log in</a>
 				</li>
 			{% endif %}
 		</div>

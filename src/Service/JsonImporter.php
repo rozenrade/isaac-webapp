@@ -1,48 +1,48 @@
 <?php
-
 // src/Service/JsonImporter.php
 namespace App\Service;
 
-use App\Entity\Item;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use App\Entity\Item; // Remplacez par l'entité concernée
 
 class JsonImporter
 {
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-    public function importJsonData(string $jsonFilePath)
+    /**
+     * Importer les données à partir d'un fichier JSON
+     *
+     * @param string $jsonFilePath Chemin complet vers le fichier JSON
+     *
+     * @throws \Exception En cas d'erreur d'importation
+     */
+    public function importJsonData(string $jsonFilePath): void
     {
-        // Vérifier si le fichier existe
         if (!file_exists($jsonFilePath)) {
-            throw new FileException("Le fichier JSON n'existe pas.");
+            throw new \Exception("Le fichier JSON n'existe pas: $jsonFilePath");
         }
 
-        // Charger le contenu du fichier JSON
-        $jsonData = file_get_contents($jsonFilePath);
-        $data = json_decode($jsonData, true);
+        $jsonContent = file_get_contents($jsonFilePath);
+        $data = json_decode($jsonContent, true);
 
-        if ($data === null) {
-            throw new \Exception("Erreur lors du décodage du JSON.");
+        if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+            throw new \Exception("Erreur lors de l'analyse du JSON: " . json_last_error_msg());
         }
 
-        // Pour chaque élément dans le JSON
         foreach ($data as $itemData) {
-            // Créer une nouvelle instance de l'entité Item
             $item = new Item();
             $item->setName($itemData['name']);
             $item->setFilename($itemData['filename']);
+            // Si d'autres champs existent, les setter ici
 
-            // Persister l'entité dans la base de données
             $this->entityManager->persist($item);
         }
 
-        // Effectuer la sauvegarde en base de données
         $this->entityManager->flush();
     }
 }
