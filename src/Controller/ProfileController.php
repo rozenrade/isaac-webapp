@@ -101,4 +101,6 @@ class ProfileController extends AbstractController
         return $this->render('profile/builds.html.twig', ['builds' => $formattedBuilds]);
         // return new JsonResponse($formattedBuilds);
     }
+
+    
 }
