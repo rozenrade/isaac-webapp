@@ -1,18 +1,14 @@
-<!-- Navbar principale -->
+
 <nav
-	class="custom-color-component text-white">
-	<!-- Container de la navbar -->
+	class="heart-100 text-white">
 	<div
 		class="container mx-auto flex justify-between items-center p-5">
-		<!-- Logo -->
 		<a href="/" class="text-2xl font-bold">Isaac's bravery</a>
 
-		<!-- Bouton Burger pour le menu mobile -->
 		<button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
 			☰
 		</button>
 
-		<!-- Liens de navigation pour desktop -->
 		<ul id="menu" class="hidden md:flex flex-row space-x-8 text-xl">
 			<li>
 				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
@@ -49,16 +45,8 @@
 		</ul>
 	</div>
 
-    {# 	
-        Menu Mobile (pour les écrans plus petits)
-	- Reste dans le flux normal pour repousser le contenu lorsqu'il s'ouvre
-	- max-h-0 et overflow-hidden permettent de le cacher quand il est fermé
-	- La transition animée permet un déploiement fluide 
-    #}
-
 	<ul
 		id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-50 text-right">
-		<!-- Wrapper avec padding et fond pour le contenu du menu -->
 		<div class="flex flex-col text-left space-y-4  text-xl p-5">
 			<li>
 				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
@@ -95,3 +83,4 @@
 		</div>
 	</ul>
 </nav>
+

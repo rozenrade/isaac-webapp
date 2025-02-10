@@ -4,53 +4,55 @@
 {% endblock %}
 
 {% block body %}
-	<div class="flex flex-col items-center justify-center">
-		<h1 class="text-white text-[32px] mb-8">My Synergies</h1>
 
-		<div
-			class="flex flex-wrap gap-8 w-full justify-center">
-			<!-- Container pour toutes les synergies -->
-			{% if synergies is empty %}
-				<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
-					<p class="text-white text-sm">Vous n'avez pas encore de synergies.</p>
-				</div>
-				<a href="{{ path('app_synergies') }}" class="text-white p-4 bg-blue-500 rounded-lg shadow-lg">Ajouter une synergie</a>
+	<h1 class="p-4 text-4xl text-center text-white">My Synergies</h1>
 
-			{% endif %}
+	<div class="text-white bg-synergie-color p-4 rounded-xl shadow-lg mx-4 sm:mx-0">
+		{% if synergies is empty %}
+			<div class="flex flex-col items-center justify-center gap-8 ">
+				<p class="text-white">You don't have any synergies yet.</p>
+				<a href="{{ path('app_synergies') }}" class="text-white p-4 bg-blue-500 rounded-lg shadow-lg hover:bg-blue-600 transition-all duration-300 mt-16">Ajouter une synergie</a>
+			</div>
+		{% endif %}
 
-			{% for synergy in synergies %}
-				<div
-					class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 bg-gray-500 rounded-lg shadow-lg">
-					<!-- Chaque synergie est une "carte" avec une taille responsive -->
-					<div class="synergy-row space-y-4">
-						<div class="synergy-header">
-							<h2 class="text-xl font-semibold text-white">{{ synergy.name }}</h2>
-						</div>
-
-						<div class="flex flex-wrap gap-4 justify-start">
-							{% if synergy.item is not empty %}
-								{% for item in synergy.item %}
-									<div class="flex flex-col justify-center items-center w-32 h-32 bg-gray-800 rounded-lg shadow-lg">
-										<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2 rounded-md">
-										<p class="text-white text-sm mt-2 text-center">{{ item.name }}</p>
-									</div>
-
-								{% endfor %}
-								<form action="{{ path('app_synergies_remove_from_user', { 'id' : synergy.id } ) }}" method="post">
-									<button type="submit" class="px-4 py-2 bg-red-500 text-white rounded">
-										Supprimer
-									</button>
-								</form>
-							{% else %}
-								<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
-									<p class="text-white text-sm">Pas d'items pour cette synergie.</p>
-								</div>
-							{% endif %}
-						</div>
+		{% for synergy in synergies %}
+			<div class="flex flex-row gap-4">
+				{% if is_granted('ROLE_USER') %}
+					<div>
+						{% set is_favorite = synergy.utilisateurs.contains(app.user) %}
+						<form action="{{ is_favorite ? path('app_synergies_remove_from_user', { 'id': synergy.id }) : path('app_synergies_save_to_user', { 'id': synergy.id }) }}" method="post">
+							<button type="submit" class="{{ is_favorite ? 'text-yellow-500 text-2xl' : 'text-gray-500 text-2xl' }}">
+								{{ is_favorite ? '⭐' : '☆' }}
+							</button>
+						</form>
 					</div>
+				{% endif %}
+				<h2 class="text-left text-2xl">{{ synergy.name }}</h2>
+			</div>
+
+			<div>
+				{% if synergy is empty %}
+					<p>No synergies could be found.</p>
+				{% endif %}
+			</div>
+
+			<div class="flex flex-row border-b-2 border-gray-500 items-center p-4">
+				<div class="flex flex-wrap space-x-12">
+					{% if synergy.item is not empty %}
+						{% for item in synergy.item %}
+							<div>
+								<div class="p-2 bg-indigo-300 rounded-[50%] shadow-xl">
+									<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="md:w-24 md:h-24 w-16 h-16">
+								</div>
+								<p class="text-center bg-white shadow-lg rounded-lg p-0.5 my-2 mt-8 text-black font-bold break-words max-w-[6rem] mx-auto">
+									{{ item.name }}
+								</p>
+							</div>
+						{% endfor %}
+					{% endif %}
 				</div>
-			{% endfor %}
-		</div>
+			</div>
+		{% endfor %}
 	</div>
 
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -19,20 +20,23 @@ class SignUpForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, 
-                ['label' => 'Username',
+            ->add(
+                'username',
+                TextType::class,
+                [
+                    'label' => 'Username',
                     'required' => false,
                     'constraints' => [new Assert\NotBlank()]
-                ])
+                ]
+            )
 
             ->add('email', EmailType::class, [
-                    'label' => 'Email',
-                    'attr' => ['placeholder' => 'xyz@email.xyz'],
-                    'required' => false,
-                    'constraints' => [new Assert\NotBlank() , new Assert\Email(['message' => 'Email incorrect'])]
-                ])
-                
-                // On utilise RepeatedType afin de confirmer que les deux mots de passe soient identiques
+                'label' => 'Email',
+                'attr' => ['placeholder' => 'xyz@email.xyz'],
+                'required' => false,
+                'constraints' => [new Assert\NotBlank(), new Assert\Email(['message' => 'Email incorrect'])]
+            ])
+
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe ne correspondent pas',
@@ -40,19 +44,29 @@ class SignUpForm extends AbstractType
                 'second_options' => ['label' => 'Confirmer le mot de passe'],
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => false,
-
-                'constraints' => [new Assert\NotBlank(), new Assert\Length([
-
-                    // On met une condition de taille de mot de passe minimale et maximale
-                    'min' => 6, 'minMessage' => 'Votre mot de passe est trop court',
-                    'max' => 12, 'maxMessage' => 'Votre mot de passe est trop long',]),
-                    new Assert\Regex(
-
-                    // On rajoute également une Regex pour faire en sorte que le mot de passe contienne au moins un chiffre
-                        ['pattern' => '/\d/',
-                        'message' => 'Votre mot de passe doit contenir au moins un chiffre'
-                        ]
-                    )],
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre mot de passe est trop court',
+                        'max' => 12,
+                        'maxMessage' => 'Votre mot de passe est trop long',
+                    ]),
+                    new Assert\Regex([
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,12}$/',
+                        'message' => '.'
+                    ])
+                ]
+            ])
+            
+            ->add('cgu', CheckboxType::class, [
+                'mapped' => false,
+                'label' => 'J\'accepte les Conditions Générales d\'Utilisation',
+                'constraints' => [
+                    new Assert\IsTrue([
+                        'message' => 'Vous devez accepter les Conditions Générales d\'Utilisation.',
+                    ]),
+                ],
             ])
 
             ->add('submit', SubmitType::class)
@@ -66,5 +80,3 @@ class SignUpForm extends AbstractType
         ]);
     }
 }
-
-

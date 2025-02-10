@@ -1,42 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's Bravery - Log in
-{% endblock %}
+{% block title %}Isaac's Bravery - Log in{% endblock %}
 
 {% block body %}
-	<div class="p-16 flex flex-row justify-start min-h-screen">
-		<div class="bg-gray-200 p-16 shadow-md rounded-xl w-full max-w-lg">
-			<h1 class="text-2xl font-bold text-center mb-8">Log in</h1>
+	<div class="max-w-2xl mx-auto p-6 dep-300 shadow-lg rounded-lg my-16">
+		<h2 class="text-2xl font-bold mb-4 text-center text-white">Log in</h2>
 
-			<!-- Affichage de l'erreur globale de sécurité -->
-			{% if error %}
-				<div class="text-red-500 text-sm mb-4">
-					{{ error.messageKey|trans(error.messageData, 'security') }}
-				</div>
-			{% endif %}
+		{# Affichage de l'erreur globale de sécurité ou des messages flash #}
+		{% if error %}
+			<div class="mb-4 p-2 bg-red-200 text-red-800 rounded">
+				{{ error.messageKey|trans(error.messageData, 'security') }}
+			</div>
+		{% endif %}
 
-			{{ form_start(form) }}
-			
-			<div class="mb-4">
-				{{ form_label(form.email, 'Email', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-				{{ form_widget(form.email, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}, full_name:'email'}) }}
-				<div class="text-red-500 text-sm">
-					{{ form_errors(form.email) }}
-				</div>
+		{% for message in app.flashes('error') %}
+			<div class="mb-4 p-2 bg-red-200 text-red-800 rounded">
+				{{ message }}
 			</div>
-			<div class="mb-4">
-				{{ form_label(form.password, 'Password', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-				{{ form_widget(form.password, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}, full_name:'password'}) }}
-				<div class="text-red-500 text-sm">
-					{{ form_errors(form.password) }}
-				</div>
+		{% endfor %}
+		{% for message in app.flashes('success') %}
+			<div class="mb-4 p-2 bg-green-200 text-green-800 rounded">
+				{{ message }}
 			</div>
-			<div class="mt-8">
-				{{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full'}}) }}
+		{% endfor %}
+
+		{{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+			<div class="my-8 text-white">
+				<label class="block text-white font-semibold">{{ form.email.vars.label }}</label>
+				{{ form_widget(form.email, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}, full_name:'email'}) }}
+				{{ form_errors(form.email) }}
 			</div>
 
-			{{ form_end(form) }}
+			<div class="my-8 text-white">
+				<label class="block text-white font-semibold">{{ form.password.vars.label }}</label>
+				{{ form_widget(form.password, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}, full_name:'password'}) }}
+				{{ form_errors(form.password) }}
+			</div>
 
-		</div>
+			<div class="text-center mt-16">
+				{{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full'}}) }}
+			</div>
+		{{ form_end(form) }}
 	</div>
 {% endblock %}

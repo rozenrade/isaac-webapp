@@ -5,27 +5,27 @@
 
 {% block body %}
 	<div class="flex flex-col items-center justify-center">
-		<h1 class="text-white text-[32px] mt-4 bg-green-300 p-4 rounded-lg shadow-lg">This is just the very start of your journey.</h1>
+		<h1 class="text-white text-[32px] mt-4 coin-100 p-4 rounded-lg shadow-lg">This is just the very start of your journey {{ app.user.username }}.</h1>
 
-		<div class="flex flex-row items-start justify-start mt-10 bg-gray-300 rounded-lg p-5 shadow-md w-full h-96">
+		<div class="flex flex-row items-start justify-start mt-10 dep-300 rounded-lg p-5 shadow-md w-full h-96">
 
 			<div class="flex flex-col items-center justify-center">
-				<a href="{{ path( 'app_user_show_builds' )}}" class="text-white p-4 m-4 bg-blue-300 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Check your builds</a>
-				<img src="{{ asset( 'images/build-template.png' ) }}" alt="Build Image" class="w-1/2 h-1/2 rounded-lg mt-10 transition-transform hover:scale-110 duration-300">
+				<a href="{{ path( 'app_user_show_builds' )}}" class="text-white p-4 m-4 tear-500 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Check your builds</a>
+				<img src="{{ asset( 'images/build-template.png' ) }}" alt="Build Image" class="shadow-lg hover:shadow-xl w-1/2 h-1/2 rounded-lg mt-10 transition-transform hover:scale-110 duration-300">
 
 			</div>
 
 			<div class="flex flex-col items-center justify-center">
 
-				<a href="{{ path( 'app_user_show_synergies' )}}" class="text-white p-4 m-4 bg-blue-300 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Check your registered synergies</a>
-				<img src="{{ asset( 'images/synergie-template.png' ) }}" alt="Synergies Image" class="w-1/2 h-1/2 rounded-lg ml-10 mt-10 transition-transform hover:scale-110 duration-300">
+				<a href="{{ path( 'app_user_show_synergies' )}}" class="text-white p-4 m-4 tear-500 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Check your registered synergies</a>
+				<img src="{{ asset( 'images/synergie-template.png' ) }}" alt="Synergies Image" class="shadow-lg hover:shadow-xl w-1/2 h-1/2 rounded-lg mt-10 transition-transform hover:scale-110 duration-300">
 
 			</div>
 
 			<div class="flex flex-col items-center justify-center">
 
-				<a href="{{ path( 'app_user_show_synergies' )}}" class="text-white p-4 m-4 bg-blue-300 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Edit your profile</a>
-				<img src="{{ asset( 'images/synergie-template.png' ) }}" alt="Synergies Image" class="w-1/2 h-1/2 rounded-lg ml-10 mt-10 transition-transform hover:scale-110 duration-300">
+				<a href="{{ path( 'app_profile_edit' )}}" class="text-white p-4 m-4 tear-500 shadow-lg rounded-lg hover:bg-blue-200 transition-all duration-300">Edit your profile</a>
+				<img src="{{ asset( 'images/isaac-icon.png' ) }}" alt="Isaac Image" class="shadow-lg hover:shadow-xl w-1/2 h-1/2 rounded-lg mt-10 transition-transform hover:scale-110 duration-300">
 
 			</div>
 

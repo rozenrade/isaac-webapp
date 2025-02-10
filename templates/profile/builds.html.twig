@@ -10,60 +10,60 @@
 		<p class="text-center text-white">You have no setup builds yet.</p>
 	{% endif %}
 
-	{% for build in builds %}
-
-		{# Découper les items en deux colonnes #}
-		{% set firstBuildColumn = build.item|slice(0, 5) %}
-		{% set secondBuildColumn = build.item|slice(5, 5) %}
-
-		<div class="w-full max-w-7xl mx-auto my-4 bg-gray-800 p-6 rounded-lg shadow-lg">
-			<div
-				class="grid grid-cols-2 gap-4">
-				{# Colonne de gauche : Items (2 colonnes de 5) #}
-				<div class="flex flex-col gap-4">
-					<div class="grid grid-cols-1 gap-4">
-						{% for item in firstBuildColumn %}
-							<div class="bg-gray-600 p-4 flex flex-col justify-center items-center rounded-lg shadow-md">
-								<img src="{{ asset('images/items/' ~ item.filename ?: '') }}" alt="{{ item.name }}" class="w-12 h-12 object-cover mt-2">
-								<p class="text-white mt-2 text-sm">{{ item.name }}</p>
-							</div>
-						{% endfor %}
-					</div>
-					<div class="grid grid-cols-1 gap-4">
-						{% for item in secondBuildColumn %}
-							<div class="bg-gray-600 p-4 flex flex-col justify-center items-center rounded-lg shadow-md">
-								<img src="{{ asset('images/items/' ~ item.filename ?: '') }}" alt="{{ item.name }}" class="w-12 h-12 object-cover mt-2">
-								<p class="text-white mt-2 text-sm">{{ item.name }}</p>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
-
-				{# Colonne droite : Personnage et Boss #}
+	<div class="flex flex-wrap gap-8 items-center justify-center">
+		{% for build in builds %}
+			<div class="flex flex-col items-center justify-center my-8">
 				<div
-					class="flex flex-col gap-4">
-					{# Personnage en haut à droite #}
-					<div class="bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col justify-center items-center">
-						{% for character in build.character %}
-							<p class="text-white text-xl">{{ character.name }}</p>
-							<img src="{{ asset('images/characters/' ~ character.filename ?: '') }}" alt="{{ character.name }}" class="w-32 h-32 object-cover mt-4 rounded-full">
-						{% endfor %}
+					class="inline-flex tear-200 justify-center w-[45pc] p-4 rounded-lg">
+
+					<!-- Première colonne : Items -->
+					<div class="flex flex-col items-start">
+						<p class="text-white">Your item set :</p>
+						<div class="grid grid-cols-3 gap-8">
+							{% for item in build.item %}
+								<div class="flex flex-col items-center">
+									<div class="w-24 h-24 flex items-center justify-center bg-gray-500 rounded-lg">
+										<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="object-cover w-full h-full">
+									</div>
+									<p class="text-white text-center min-h-[40px]">
+										{{ item.name }}
+									</p>
+								</div>
+							{% endfor %}
+						</div>
 					</div>
 
-					{# Boss en bas à droite #}
-					<div class="bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col justify-center items-center">
-						{% for boss in build.boss %}
-							<p class="text-white text-xl">{{ boss.name }}</p>
-							<img src="{{ asset('images/destinations/' ~ boss.filename ?: '') }}" alt="{{ boss.name }}" class="w-32 h-32 object-cover mt-4 rounded-full">
-						{% endfor %}
+					<!-- Deuxième colonne : Personnage, Boss et bouton Randomize -->
+					<div class="flex flex-col items-center ml-8 gap-8">
+						<div flex="flex flex-col">
+							<p class="text-white">Your character :</p>
+							{% for character in build.character %}
+
+								<div class="w-64 h-80 flex flex-col items-center justify-center bg-gray-500 pt-6 rounded-lg p-8">
+									<img src="{{ asset('images/characters/' ~ character.filename) }}" alt="{{ character.name }}" class="w-full h-full object-cover">
+								</div>
+								<p class="text-white text-center">{{ character.name }}</p>
+
+							{% endfor %}
+						</div>
+						<div class="flex flex-col items-center">
+							<p class="text-white ">Your boss :</p>
+							{% for boss in build.boss %}
+								<div class="w-64 h-80 flex flex-col items-center justify-center bg-gray-500 pt-6 rounded-lg p-8">
+									<img src="{{ asset('images/destinations/' ~ boss.filename) }}" alt="{{ boss.name }}" class="w-full h-full object-cover">
+								</div>
+									<p class="text-white text-center">{{ boss.name }}</p>
+							{% endfor %}
+						</div>
+						<form method="post" action="{{ path('app_build_user_delete', {'id': build.id}) }}" onsubmit="return confirm('Are you sure you want to delete this Build?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ build.id) }}">
+							<button class="bg-red-500 text-white px-6 py-3 rounded-lg mt-4 shadow-lg hover:bg-red-700 transition">
+								Delete
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
-			<form method="post" action="{{ path('app_build_user_delete', {'id': build.id}) }}" onsubmit="return confirm('Are you sure you want to delete this Build?');">
-				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ build.id) }}">
-				<button class="bg-red-500 p-4 rounded-lg shadow-lg text-white">Delete</button>
-			</form>
-		</div>
-	{% endfor %}
-
+		{% endfor %}
+	</div>
 {% endblock %}

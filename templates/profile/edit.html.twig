@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="max-w-2xl mx-auto mt-10 p-6 dep-300 shadow-lg rounded-lg">
+		<h2 class="text-2xl font-bold mb-4 text-white">Edit your profile</h2>
+
+		{% for message in app.flashes('error') %}
+			<div class="mb-4 p-2 bg-red-200 text-red-800 rounded">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{% for message in app.flashes('success') %}
+			<div class="mb-4 p-2 bg-green-200 text-green-800 rounded">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{{ form_start(form, {'attr': {'class': 'space-y-8 mt-4'}}) }}
+
+		<div class="text-white space-y-4">
+			<label class="block text-white font-semibold">{{ form.username.vars.label }}</label>
+			{{ form_widget(form.username, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}}) }}
+		</div>
+
+		<div class="text-white space-y-4">
+			<label class="block text-white font-semibold">{{ form.email.vars.label }}</label>
+			{{ form_widget(form.email, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}}) }}
+		</div>
+
+		<div class="text-white space-y-4">
+			<label class="block text-white font-semibold">{{ form.currentPassword.vars.label }}</label>
+			{{ form_widget(form.currentPassword, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}}) }}
+		</div>
+		<div class="flex flex-col justify-between sm:flex-row">
+
+			<a href="{{ path( 'app_edit_password' )}}" class="tear-300 text-white px-4 py-2 rounded tear-hover transition-all duration-300 text-left w-42">Edit your password</a>
+
+			<div class="text-left mt-4 sm:mt-0 sm:text-right">
+				{{ form_widget(form.save, {'attr': {'class': 'tear-300 text-white px-4 py-2 rounded tear-hover transition-all duration-300'}}) }}
+			</div>
+
+		</div>
+		{{ form_end(form) }}
+
+		{% if app.user %}
+			<form
+				method="post" action="{{ path('app_user_delete') }}" onsubmit="return confirm('Are you sure you want to delete your account?');">
+				{# Génère le token CSRF basé sur l'ID de l'utilisateur #}
+				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
+				<button type="submit" class="btn text-white bg-red-500 px-4 py-2 rounded-lg mt-4">
+					Delete my account
+				</button>
+			</form>
+		{% endif %}
+
+
+	</div>
+{% endblock %}

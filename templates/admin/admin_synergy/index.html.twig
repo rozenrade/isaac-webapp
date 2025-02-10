@@ -4,16 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-		<h1 class="text-3xl font-bold mb-6 text-gray-900">Synergy Index</h1>
+
+	<div class="max-w-4xl mx-auto dep-300 p-6 rounded-lg shadow-lg flex justify-center items-center flex-col mt-16">
+		<h1 class="text-3xl font-bold mb-6 text-white">Synergy Index</h1>
 
 		<table class="min-w-full table-auto border-collapse mb-6">
 			<thead>
-				<tr class="bg-gray-100">
+				<tr class="dep-500">
 
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Id</th>
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Name</th>
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Actions</th>
+					<th class="px-4 py-2 text-left font-medium text-white">Id</th>
+					<th class="px-4 py-2 text-left font-medium text-white">Name</th>
+					<th class="px-4 py-2 text-left font-medium text-white">Actions</th>
 
 				</tr>
 			</thead>
@@ -22,12 +23,17 @@
 				{% for synergy in synergies %}
 					<tr class="border-b">
 
-						<td class="px-4 py-2 text-gray-900">{{ synergy.id }}</td>
-						<td class="px-4 py-2 text-gray-900">{{ synergy.name }}</td>
-						<td class="px-4 py-2 text-gray-900">
-
-							<a href="{{ path('app_admin_synergy_show', {'id': synergy.id}) }}" class="text-blue-600 hover:text-blue-800 font-medium mr-4">Show</a>
-							<a href="{{ path('app_admin_synergy_edit', {'id': synergy.id}) }}" class="text-blue-600 hover:text-blue-800 font-medium">Edit</a>
+						<td class="px-4 py-2 text-white">{{ synergy.id }}</td>
+						<td class="px-4 py-2 text-white">{{ synergy.name }}</td>
+						<td class="px-4 py-2 text-white">
+							<div class="flex flex-row justify-between">
+								<a href="{{ path('app_admin_synergy_show', {'id': synergy.id}) }}" class="text-gray-400 hover:text-green-700 font-medium mr-4">Show</a>
+								<a href="{{ path('app_admin_synergy_edit', {'id': synergy.id}) }}" class="text-gray-400 hover:text-green-700 font-medium">Edit</a>
+								<form method="post" action="{{ path('app_admin_synergy_delete', {'id': synergy.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ synergy.id) }}">
+									<button class="btn text-gray-400 hover:text-green-700 font-medium">Delete</button>
+								</form>
+							</div>
 						</td>
 					</tr>
 				{% else %}

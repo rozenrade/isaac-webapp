@@ -6,7 +6,7 @@
 {% block body %}
 
 	<div class="flex flex-col md:flex-row">
-		<div class="flex flex-col justify-center items-center lg:m-2 lg:px-2 lg:pb-2 mt-8 bg-red-400 opacity-85 overflow-hidden w-full ">
+		<div class="flex flex-col justify-center items-center lg:m-2 lg:px-2 lg:pb-2 heart-400 opacity-85 overflow-hidden w-full">
 
 			<div class="flex flex-col xl:flex-row text-center">
 				<h1 class="p-4 text-xl">Welcome to my site dedicated to
@@ -23,17 +23,12 @@
 		</div>
 
 
-		{# Carousel #}
-		<section
-			class="flex flex-col m-16 p-2 custom-color-randomizer rounded-2xl max-h-96 md:max-h-[26pc] overflow-hidden">
-			<!-- Bouton gauche -->
+		<section class="flex flex-col m-16 p-2 tear-400 rounded-2xl max-h-96 md:max-h-[26pc] overflow-hidden">
+
 			<div class="flex items-center w-full">
 				<button id="slide-left-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center"></button>
 
-				<!-- Conteneur principal -->
-				<div
-					id="slide-container" class="relative overflow-hidden w-full">
-					<!-- Liste des slides -->
+				<div id="slide-container" class="relative overflow-hidden w-full">
 					<ul id="slide-list" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0);">
 						<li class="w-full flex-shrink-0 flex justify-center flex-col items-center">
 							<img src="{{ asset('images/characters/Isaac.png') }}" alt="Isaac" class="w-24 h-28 sm:w-32 sm:h-36 md:w-40 md:h-44 lg:w-48 lg:h-52 xl:w-56 xl:h-60">
@@ -55,10 +50,9 @@
 					</ul>
 				</div>
 
-				<!-- Bouton droit -->
 				<button id="slide-right-button" class="text-xl p-2 m-4 bg-gray-400 hover:bg-gray-300 transition-all rounded-lg text-center item center"></button>
 			</div>
-			<a href="{{ path('app_random') }}" class="p-4 m-4 bg-blue-400 text-center rounded-2xl shadow-lg text-white hover:bg-green-200 transition-all duration-1000 text-2xl font-bold">Try the randomizer out</a>
+			<a href="{{ path('app_random') }}" class="p-4 m-4 tear-100 text-center rounded-2xl shadow-lg text-white random-hover transition-all duration-1000 text-2xl font-bold">Try the randomizer out</a>
 		</section>
 	</div>
 
