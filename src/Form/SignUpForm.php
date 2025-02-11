@@ -60,6 +60,7 @@ class SignUpForm extends AbstractType
             ])
             
 
+            
             ->add('cgu', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'J\'accepte les Conditions Générales d\'Utilisation',
