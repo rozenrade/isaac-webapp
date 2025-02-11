@@ -45,6 +45,18 @@ class SynergyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findAllWithUsersAndItems(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.item', 'i')
+            ->addSelect('i')
+            ->leftJoin('s.utilisateurs', 'u')
+            ->addSelect('u')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     public function removeSynergieFromUser(Synergy $synergy, User $user): void
     {
         $synergy->removeUtilisateur($user);

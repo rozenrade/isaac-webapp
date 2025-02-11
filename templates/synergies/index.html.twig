@@ -7,54 +7,54 @@
 
 	<h1 class="p-4 text-4xl text-center text-white">Known synergies</h1>
 
-	<div class="synergies-container space-y-8">
+	<div class="text-white tear-100 p-4 rounded-lg shadow-lg">
 		{% for synergy in synergies %}
-			<!-- Conteneur de chaque synergie -->
-			<div
-				class="synergy-row space-y-4">
-				<!-- Titre de la synergie -->
-				<div class="synergy-header">
-					<h2 class="text-xl font-semibold text-white">{{ synergy.name }}</h2>
-				</div>
-				<div>
-					{% if synergy is empty %}
+			<div class="flex flex-row gap-4">
 
-						<p>No synergies could be found.</p>
+				{% if is_granted('ROLE_USER') %}
+					<div>
+						{% set is_favorite = synergy.utilisateurs.contains(app.user) %}
+						<form action="{{ is_favorite ? path('app_synergies_remove_from_user', { 'id': synergy.id }) : path('app_synergies_save_to_user', { 'id': synergy.id }) }}" method="post">
+							<button type="submit" class="{{ is_favorite ? 'text-yellow-500 text-2xl' : 'text-gray-500 text-2xl' }}">
+								{{ is_favorite ? '⭐' : '☆' }}
+							</button>
+						</form>
+					</div>
+				{% endif %}
 
-					{% endif %}
-				</div>
-				<!-- Items de la synergie -->
-				<div class="flex flex-wrap gap-4">
+				<h2 class="text-left text-2xl">{{ synergy.name }}</h2>
+			</div>
+
+			<div>
+				{% if synergy is empty %}
+					<p>No synergies could be found.</p>
+				{% endif %}
+			</div>
+			<div class="flex flex-row items-center p-4 border-b-2 border-gray-500">
+
+				<div class="flex flex-wrap space-x-12 ">
 					{% if synergy.item is not empty %}
 						{% for item in synergy.item %}
-							<div class="flex flex-col justify-center items-center w-32 h-32 bg-gray-800 rounded-lg shadow-lg">
-								<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2 rounded-md">
-								<p class="text-white text-sm mt-2 text-center">{{ item.name }}</p>
+							<div>
+
+								<div class="p-2 bg-indigo-300 rounded-[50%] shadow-xl">
+									<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="md:w-24 md:h-24 w-16 h-16">
+								</div>
+								<p class="text-center bg-white shadow-lg rounded-lg p-0.5 my-2 mt-8 text-black font-bold break-words max-w-[6rem] mx-auto">
+									{{ item.name }}
+								</p>
+
 							</div>
-
-
 						{% endfor %}
-						{% if is_granted('ROLE_USER')%}
-
-							<form action={{ path('app_synergies_save_to_user', { 'id' : synergy.id } ) }} methods="post">
-								<button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">
-									Save
-								</button>
-							</form>
-
-						{% endif %}
-
 					{% else %}
-						<div class="flex justify-center items-center w-full h-32 bg-gray-800 rounded-lg shadow-lg">
-							<p class="text-white text-sm">No items were retrieved for this synergy.</p>
+						<div>
+							<p>No items were retrieved for this synergy.</p>
 						</div>
 					{% endif %}
-
-
 				</div>
 			</div>
 		{% endfor %}
 	</div>
 
 
-</div>{% endblock %}
+{% endblock %}

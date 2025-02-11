@@ -1,27 +1,86 @@
-<nav class="bg-red-400 text-white">
-    {# <img src={{ asset('img/4_Bosses/BabyPlum.png') }} alt="Baby Plum" class="babyplum"> #}
 
-	<ul class="flex flex-row justify-center items-center p-8 space-x-24 text-2xl">
+<nav
+	class="heart-100 text-white">
+	<div
+		class="container mx-auto flex justify-between items-center p-5">
+		<a href="/" class="text-2xl font-bold">Isaac's bravery</a>
 
-		<li><a href="/">Home</a></li>
+		<button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+			☰
+		</button>
 
-		<li><a href="/synergies">Synergies</a></li>
+		<ul id="menu" class="hidden md:flex flex-row space-x-8 text-xl">
+			<li>
+				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
+			</li>
+			<li>
+				<a href="/synergies" class="hover:text-blue-300 transition-all duration-300 ">Synergies</a>
+			</li>
+			<li>
+				<a href="/random" class="hover:text-blue-300 transition-all duration-300 ">Random</a>
+			</li>
+			<li>
+				<a href="/about" class="hover:text-blue-300 transition-all duration-300 ">About us</a>
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{ path('app_admin_synergy_index') }}" class="hover:text-blue-300 transition-all duration-300 ">Add a synergy</a>
+				</li>
+			{% endif %}
+			{% if is_granted('ROLE_USER') %}
+				<li>
+					<a href="{{ path('app_profile') }}" class="hover:text-blue-300 transition-all duration-300 ">My profile</a>
+				</li>
+				<li>
+					<a href="{{ path('app_logout') }}" class="hover:text-blue-300 transition-all duration-300 ">Log out</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{ path('app_signup') }}" class="hover:text-blue-300 transition-all duration-300 ">Sign up</a>
+				</li>
+				<li>
+					<a href="{{ path('app_login') }}" class="hover:text-blue-300 transition-all duration-300 ">Log in</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
 
-		<li><a href="/random">Random</a></li>
-
-		<li><a href="/about">About us</a></li>
-		{% if is_granted('ROLE_ADMIN') %}
-			<li><a href="{{ path('app_admin_synergy_index') }}">Add a synergy</a></li >
-		{% endif %}
-
-		{% if is_granted('ROLE_USER') %}
-			<li><a href="{{ path('app_profile') }}">My profile</a></li>
-			<li><a href="{{ path('app_logout') }}">Log out</a></li>
-		{% else %}
-			<li><a href="{{ path('app_signup') }}">Sign up</a></li>
-			<li><a href="{{ path('app_login') }}">Log in</a></li>
-		{% endif %}
-
+	<ul
+		id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-50 text-right">
+		<div class="flex flex-col text-left space-y-4  text-xl p-5">
+			<li>
+				<a href="/" class="hover:text-blue-300 transition-all duration-300 ">Home</a>
+			</li>
+			<li>
+				<a href="/synergies" class="hover:text-blue-300 transition-all duration-300 ">Synergies</a>
+			</li>
+			<li>
+				<a href="/random" class="hover:text-blue-300 transition-all duration-300 ">Random</a>
+			</li>
+			<li>
+				<a href="/about" class="hover:text-blue-300 transition-all duration-300 ">About us</a>
+			</li>
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{ path('app_admin_synergy_index') }}" class="hover:text-blue-300 transition-all duration-300 ">Add a synergy</a>
+				</li>
+			{% endif %}
+			{% if is_granted('ROLE_USER') %}
+				<li>
+					<a href="{{ path('app_profile') }}" class="hover:text-blue-300 transition-all duration-300 ">My profile</a>
+				</li>
+				<li>
+					<a href="{{ path('app_logout') }}" class="hover:text-blue-300 transition-all duration-300 ">Log out</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{ path('app_signup') }}" class="hover:text-blue-300 transition-all duration-300 ">Sign up</a>
+				</li>
+				<li>
+					<a href="{{ path('app_login') }}" class="hover:text-blue-300 transition-all duration-300 ">Log in</a>
+				</li>
+			{% endif %}
+		</div>
 	</ul>
-
 </nav>
+

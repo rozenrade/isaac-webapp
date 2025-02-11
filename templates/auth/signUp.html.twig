@@ -1,36 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Isaac's Bravery - Sign up{% endblock %}
+{% block title %}Isaac's Bravery - Sign up
+{% endblock %}
 
 {% block body %}
-<div class="p-16 flex flex-row justify-start min-h-screen">
-	<div class="bg-gray-200 p-16 shadow-md rounded-xl w-full max-w-lg">
-		<h1 class="text-2xl font-bold text-center mb-8">Sign up</h1>
-		{{ form_start(form) }}
-		<div>
-			{{ form_label(form.username, 'Username', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-			{{ form_widget(form.username, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}}) }}
+	<div class="max-w-2xl mx-auto my-16 p-6 dep-300 shadow-lg rounded-lg">
+		<h2 class="text-2xl font-bold mb-4 text-center text-white">Sign up</h2>
+
+		{# Affichage des messages flash #}
+		{% for message in app.flashes('error') %}
+			<div class="mb-4 p-2 bg-red-200 text-red-800 rounded">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('success') %}
+			<div class="mb-4 p-2 bg-green-200 text-green-800 rounded">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{{ form_start(form, {'attr': {'class': 'space-y-4 text-white'}}) }}
+		<div class="my-8 text-white">
+			<label class="block text-white font-semibold">{{ form.username.vars.label }}</label>
+			{{ form_widget(form.username, {'attr': {'class': 'w-full px-4 py-2 border rounded-md'}}) }}
 			{{ form_errors(form.username) }}
 		</div>
-		<div>
-			{{ form_label(form.email, 'Email', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-			{{ form_widget(form.email, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}}) }}
+
+		<div class="my-8 text-white">
+			<label class="block text-white font-semibold">{{ form.email.vars.label }}</label>
+			{{ form_widget(form.email, {'attr': {'class': 'w-full px-4 py-2 border rounded-md '}}) }}
 			{{ form_errors(form.email) }}
 		</div>
-		<div>
-			{{ form_label(form.password.first, 'Password', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-			{{ form_widget(form.password.first, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}}) }}
+
+		<div class="my-8 text-white">
+			<label class="block text-white font-semibold">{{ form.password.first.vars.label }}</label>
+			{{ form_widget(form.password.first, {'attr': {'class': 'w-full px-4 py-2 border rounded-md '}}) }}
 			{{ form_errors(form.password.first) }}
 		</div>
-		<div>
-			{{ form_label(form.password.second, 'Confirm password', {'label_attr': {'class': 'text-xl font-bold text-blue-500'}}) }}
-			{{ form_widget(form.password.second, {'attr': {'class': 'p-4 text-[24px] focus:outline-none w-full'}}) }}
+
+		<div class="my-8 text-white">
+			<label class="block text-white font-semibold">{{ form.password.second.vars.label }}</label>
+			{{ form_widget(form.password.second, {'attr': {'class': 'w-full px-4 py-2 border rounded-md '}}) }}
 			{{ form_errors(form.password.second) }}
 		</div>
-		<div class="mt-8">
-			{{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full'}}) }}
+
+		<div class="my-8 flex items-center text-white">
+			{{ form_widget(form.cgu, {'attr': {'class': 'mr-2'}}) }}
+			<label class="text-white">
+				J'accepte les
+				<a href="{{ path('app_cgu') }}" class="text-blue-500 hover:underline ">Conditions Générales d'Utilisation</a>.
+			</label>
+			{{ form_errors(form.cgu) }}
+		</div>
+
+		<div class="text-center mt-4 text-white">
+			{{ form_widget(form.submit, {'attr': {'class': 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full '}}) }}
 		</div>
 		{{ form_end(form) }}
 	</div>
-</div>
 {% endblock %}

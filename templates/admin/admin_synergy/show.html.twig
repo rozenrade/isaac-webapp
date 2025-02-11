@@ -4,24 +4,24 @@
 {% endblock %}
 
 {% block body %}
-	<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-		<h1 class="text-3xl font-bold mb-6 text-gray-900">Synergy</h1>
+	<div class="max-w-4xl mx-auto dep-300 p-6 rounded-lg shadow-lg mt-16">
+		<h1 class="text-3xl font-bold mb-6 text-white">Synergy</h1>
 
 		<table class="min-w-full table-auto border-collapse">
 			<tbody>
 				<tr class="border-b">
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Id</th>
-					<td class="px-4 py-2 text-gray-900">{{ synergy.id }}</td>
+					<th class="px-4 py-2 text-left font-medium text-white">Id</th>
+					<td class="px-4 py-2 text-white">{{ synergy.id }}</td>
 				</tr>
 				<tr class="border-b">
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Name</th>
-					<td class="px-4 py-2 text-gray-900">
+					<th class="px-4 py-2 text-left font-medium text-white">Name</th>
+					<td class="px-4 py-2 text-white">
 						{{ synergy.name }}</td>
 				</tr>
 				<tr class="border-b">
-					<th class="px-4 py-2 text-left font-medium text-gray-700">Liste des items présents</th>
+					<th class="px-4 py-2 text-left font-medium text-white">Liste des items présents</th>
 					{% for item in items %}
-						<td class="px-4 py-2 text-gray-900">
+						<td class="px-4 py-2 text-white">
 							{{ item.name }}</td>
 					{% else %}
 						<li class="text-gray-500">Aucun item associé à cette synergie.</li>

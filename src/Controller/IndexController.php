@@ -29,4 +29,16 @@ class IndexController extends AbstractController
     {
         return $this->render('profile/index.html.twig');
     }
+
+    #[Route('about', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('about/index.html.twig');
+    }
+
+    #[Route('cgu', name: 'app_cgu')]
+    public function cgu(): Response
+    {
+        return $this->render('cgu/index.html.twig');
+    }
 }

@@ -4,29 +4,29 @@
 {% endblock %}
 
 {% block body %}
-	<div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
-		<h1 class="text-3xl font-bold mb-6 text-gray-800">Create your synergy</h1>
+	<div class="max-w-4xl mx-auto dep-300 p-6 rounded-lg shadow-md mt-16">
+		<h1 class="text-3xl font-bold mb-6 text-white">Create your synergy</h1>
 
 		<form method="post" class="space-y-6">
 			{{ form_start(form) }}
 			<div class="flex flex-col">
 				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 					<div class="sm:col-span-1">
-						{{ form_label(form.name, "Synergy's name", {'label_attr': {'class': 'text-sm font-medium text-gray-600'}}) }}
+						{{ form_label(form.name, "Synergy's name", {'label_attr': {'class': 'text-sm font-medium text-gray-600 text-white'}}) }}
 						<div class="mt-1">
-							{{ form_widget(form.name, {'attr': {'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 sm:text-sm'}}) }}
+							{{ form_widget(form.name, {'attr': {'class': 'block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 sm:text-sm text-white'}}) }}
 						</div>
 						{{ form_errors(form.name) }}
 					</div>
 
 					<div class="sm:col-span-2">
-						{{ form_label(form.item, 'All the items available in the database', {'label_attr': {'class': 'text-sm font-medium text-gray-600'}}) }}
+						{{ form_label(form.item, 'All the items available in the database', {'label_attr': {'class': 'text-sm font-medium text-gray-600 text-white'}}) }}
 						{# Overflow pour activer le scroll sur la liste #}
 						<div class="mt-4 overflow-y-auto max-h-60 border border-gray-300 rounded-md p-4">
 							{% for child in form.item %}
 								<div class="flex items-center space-x-2">
-									{{ form_widget(child, {'attr': {'class': 'h-4 w-4 rounded border-gray-300 focus:ring-blue-500'}}) }}
-									<label class="text-sm text-gray-700">{{ child.vars.label }}</label>
+									{{ form_widget(child, {'attr': {'class': 'h-4 w-4 rounded border-gray-300 focus:ring-blue-500 text-white'}}) }}
+									<label class="text-sm text-white">{{ child.vars.label }}</label>
 								</div>
 							{% endfor %}
 						</div>
@@ -35,7 +35,7 @@
 
 				</div>
 
-				<div>
+				<div class="mt-8">
 					<button type="submit" class="w-full py-3 px-4 bg-gray-600 text-white font-bold rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
 						Add
 					</button>
@@ -52,3 +52,4 @@
 
 
 {% endblock %}
+

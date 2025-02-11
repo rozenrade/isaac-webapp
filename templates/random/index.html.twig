@@ -2,6 +2,7 @@
 
 {% block title %}Isaac's bravery - Randomizer
 {% endblock %}
+
 {% block body %}
 	{% set currentItemSet = app.session.get('currentItemSet') %}
 
@@ -9,42 +10,76 @@
 		<h1 class="p-4 text-center text-white">You can use our randomizer on this page</h1>
 	{% endif %}
 
-	<div class="flex flex-col items-center justify-center">
+	<div
+		class="flex flex-col items-center justify-center my-8">
+		<!-- Conteneur principal -->
+		<div class="relative inline-flex tear-200 justify-center w-[45pc] p-4 rounded-lg">
+			{% if app.user and statusURL %}
+				<a href="{{ path('app_random', {'status': 'saved'}) }}" class="absolute top-0.5 mb-0.5 right-2 z-10 p-2">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" viewbox="0 0 20 20" fill="currentColor">
+						<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.956a1 1 0 00.95.69h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.286 3.956c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.175 0l-3.37 2.448c-.785.57-1.84-.197-1.54-1.118l1.286-3.956a1 1 0 00-.364-1.118L2.07 9.383c-.783-.57-.38-1.81.588-1.81h4.163a1 1 0 00.95-.69l1.286-3.956z"/>
+					</svg>
+				</a>
+			{% endif %}
 
-		<div id="item-container" class="flex flex-col items-center">
-
-			{% if statusURL %}
-
-				<div id="item-container" class="flex flex-wrap">
-					{% if currentBuild %}
+			<!-- Première colonne : Items -->
+			<div class="flex flex-col items-start gap-8">
+				<p class="text-white">Your item set :</p>
+				<div class="grid grid-cols-3 gap-8">
+					{% if currentBuild is not empty and currentBuild.items is defined %}
 						{% for item in currentBuild.items %}
-							<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-								<img src="{{ asset('images/items/' ~ item.filename) }}" alt="{{ item.name }}" class="w-16 h-16 object-cover mt-2">
-								<p class="text-white">{{ item.name }}</p>
+							<div class="flex flex-col items-center">
+								<div class="w-24 h-24 flex items-center justify-center bg-gray-500 rounded-lg">
+									{{ (statusURL 
+                                    ? '<img src="' ~ asset('images/items/' ~ item.filename) ~ '" alt="' ~ item.name ~ '" class="object-cover w-full h-full">' 
+                                    : '<span class="text-2xl text-white">?</span>')|raw }}
+								</div>
+								<p class="text-white text-center min-h-[40px]">
+									{{ statusURL ? item.name : '' }}
+								</p>
 							</div>
 						{% endfor %}
-
-						<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-							<img src="{{ asset('images/destinations/' ~ currentBuild.boss.filename) }}" alt="{{ currentBuild.boss.name }}" class="w-16 h-16 object-cover mt-2">
-							<p class="text-white">{{ currentBuild.boss.name }}</p>
-						</div>
-
-						<div class="flex flex-col justify-center items-center w-[8rem] h-[8rem] bg-gray-800 m-4">
-							<img src="{{ asset('images/characters/' ~ currentBuild.character.filename) }}" alt="{{ currentBuild.character.name }}" class="w-16 h-16 object-cover mt-2">
-							<p class="text-white">{{ currentBuild.character.name }}</p>
-						</div>
-
+					{% else %}
+						{% for i in 1..12 %}
+							<div class="flex flex-col items-center">
+								<div class="w-24 h-24 flex items-center justify-center bg-gray-500 rounded-lg">
+									<span class="text-2xl text-white">?</span>
+								</div>
+							</div>
+						{% endfor %}
 					{% endif %}
-
 				</div>
+			</div>
 
-				{% if app.user %}
-					<a href="{{ path('app_random', {'status': 'saved'}) }}" class="text-white p-4 bg-blue-500 rounded-lg" id="save-button">Save your build</a>
-				{% endif %}
-
-			{% endif %}
-			<a href="{{ path('app_random', {status: 'random'} ) }}" class="text-white p-4 bg-blue-500 rounded-lg">Randomize</a>
+			<!-- Deuxième colonne : Personnage, Boss et bouton Randomize -->
+			<div class="flex flex-col items-center ml-8 gap-8">
+				<div flex="flex flex-col">
+					<p class="text-white">Your character :</p>
+					<div class="w-64 h-80 flex flex-col items-center justify-center bg-gray-500 pt-6 rounded-lg p-8">
+						{{ (statusURL 
+                        ? '<img src="' ~ asset('images/characters/' ~ currentBuild.character.filename) ~ '" alt="' ~ currentBuild.character.name ~ '" class="w-full h-full object-cover">' 
+                        : '<img src="' ~ asset('images/characters/Isaac.png') ~ '" alt="' ~ '" class="w-full h-full object-cover">')|raw }}
+					</div>
+					<p class="text-white text-center">
+						{{ statusURL ? currentBuild.character.name : "Isaac!" }}
+					</p>
+				</div>
+				<div class="flex flex-col items-center">
+					<p class="text-white ">Your boss :</p>
+					<div class="w-44 h-52 mt-2 flex flex-col items-center justify-center bg-gray-500 rounded-lg p-8">
+						{{ (statusURL 
+                        ? '<img src="' ~ asset('images/destinations/' ~ currentBuild.boss.filename) ~ '" alt="' ~ currentBuild.boss.name ~ '" class="w-full h-full object-cover">' 
+                        : '<img src="' ~ asset('images/destinations/Mom.png') ~ '" alt="' ~ '" class="w-full h-full object-cover">')|raw }}
+					</div>
+					<p class="text-white text-center min-h-[40px]">
+						{{ statusURL ? currentBuild.boss.name : 'Mom!' }}
+					</p>
+				</div>
+				<a href="{{ path('app_random', {status: 'random'}) }}" class="bg-green-800 text-white px-16 py-6 rounded-lg">
+				{{ statusURL ? 'Randomize' : 'Click me!' }}
+					
+				</a>
+			</div>
 		</div>
 	</div>
-
 {% endblock %}

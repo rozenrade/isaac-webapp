@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Item;
 use App\Entity\Synergy;
 use App\Form\SynergyType;
 use App\Repository\ItemRepository;
@@ -26,7 +25,7 @@ final class AdminSynergyController extends AbstractController
 
     // ? add synergy
     #[Route('/new', name: 'app_admin_synergy_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, ItemRepository $itemRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $synergy = new Synergy();
     

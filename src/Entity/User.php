@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -91,9 +91,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
+
     {
+
         $this->password = $password;
+
+
 
         return $this;
     }
@@ -119,19 +123,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles = $this->roles;
 
         $roles[] = 'ROLE_USER';
-        // Ceci est un rôle par défault
         return array_unique($roles);
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here (e.g. the password)
         // $this->plainPassword = null;
-    }
-
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
     }
 
     /**
@@ -146,7 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->synergies->contains($synergy)) {
             $this->synergies->add($synergy);
-            $synergy->setUtilisateur($this);
+            $synergy->addUtilisateur($this);
         }
 
         return $this;
@@ -156,8 +159,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->synergies->removeElement($synergy)) {
             // set the owning side to null (unless already changed)
-            if ($synergy->getUtilisateur() === $this) {
-                $synergy->setUtilisateur(null);
+            if ($synergy->getUtilisateurs() === $this) {
+                $synergy->addUtilisateur($this);
             }
         }
 

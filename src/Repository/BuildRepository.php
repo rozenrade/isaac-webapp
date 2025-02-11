@@ -28,16 +28,17 @@ class BuildRepository extends ServiceEntityRepository
 
     public function findBuildsByUser(User $utilisateur): array
     {
-        return $this->createQueryBuilder('b') // 'b' est l'alias de Build
-            ->leftJoin('b.item', 'i') // Jointure avec Items
-            ->addSelect('i') // Sélection des Items pour éviter le lazy loading
-            ->leftJoin('b.boss', 'boss') // Jointure avec Boss
-            ->addSelect('boss') // Sélectionner les Boss pour éviter le lazy loading
-            ->leftJoin('b.character', 'character') // Jointure avec Character
-            ->addSelect('character') // Sélectionner les Characters pour éviter le lazy loading
-            ->where('b.utilisateur = :utilisateur') // Filtrer par utilisateur
-            ->setParameter('utilisateur', $utilisateur) // Associer l'utilisateur à la requête
+        return $this->createQueryBuilder('b') 
+            ->leftJoin('b.item', 'i')
+            ->addSelect('i') 
+            ->leftJoin('b.boss', 'boss') 
+            ->addSelect('boss') 
+            ->leftJoin('b.character', 'character') 
+            ->addSelect('character')
+            ->where('b.utilisateur = :utilisateur') 
+            ->setParameter('utilisateur', $utilisateur) 
             ->getQuery()
             ->getResult();
     }
 }
+

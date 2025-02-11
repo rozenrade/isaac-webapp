@@ -10,24 +10,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ImportController extends AbstractController
 {
-
     #[Route('/import', name: 'import')]
     public function import(JsonImporter $jsonImporter): Response
     {
-        // // Chemin vers votre fichier JSON
-        // $jsonFilePath = __DIR__ . '/../../public/assets/data/cleaned_items.json';
+        // $projectDir = $this->getParameter('kernel.project_dir');
+        // $jsonFilePath = $projectDir . '/items.json';
 
         // try {
-        //     // Appeler le service pour importer les données
-        //     $jsonImporter->importJsonData($jsonFilePath);
+        //     // $jsonImporter->importJsonData($jsonFilePath);
 
-        //     // Réponse indiquant que l'importation a réussi
-        //     return new Response('Données importées avec succès !');
+        //     // return new Response('Données importées avec succès !');
         // } catch (\Exception $e) {
-        //     // Réponse en cas d'erreur
-        //     return new Response('Erreur : ' . $e->getMessage());
+            // return new Response('Erreur lors de l\'importation : ' . $e->getMessage());
         // }
 
-        return new Response('Importation failed, no data could be retrieved.');
+        return new Response('No items could be imported.');
     }
 }
+

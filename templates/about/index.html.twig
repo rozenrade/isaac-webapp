@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Isaac's Bravery - À propos
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mx-auto px-4 py-8 text-white">
+
+		<h1 class="text-3xl font-bold mb-8 text-center">À propos</h1>
+
+		<div class="flex flex-col md:flex-row items-center gap-8 mb-8">
+
+			<div class="md:w-1/2 order-2 md:order-1">
+				<img src="{{ asset('images/about-us-ultimate-bravery.png') }}" alt="Image du concept" class="w-full h-auto object-cover rounded shadow-lg"/>
+			</div>
+
+			<div class="md:w-1/2 space-y-4 heart-400 p-4 rounded-lg shadow-lg order-1 md:order-2">
+				<p>
+					Mon inspiration pour ce site sur The Binding of Isaac vient avant tout de ma passion pour le genre "rogue-like". Ce type de jeu se caractérise par des niveaux générés de manière procédurale et une rejouabilité infinie, où chaque partie (ou "run") peut être totalement différente de la précédente. C’est cet aspect imprévisible, où chaque décision peut avoir des conséquences radicalement différentes, qui m’a captivé dès mes premières heures sur The Binding of Isaac. En effet, après plus d'un an et près de 600 heures de jeu, je continue de découvrir des nuances et des combinaisons inédites, rendant chaque session unique.
+				</p>
+
+				<p>
+					Ce que j’aime particulièrement dans ce jeu, c’est son côté délirant. Les interactions entre les objets peuvent complètement bouleverser le cours d’une run, offrant des moments de pur chaos où tout semble possible.
+				</p>
+			</div>
+		</div>
+
+		<div class="flex flex-col md:flex-row items-center gap-8">
+
+
+			<div class="md:w-1/2 space-y-4 order-1 md:order-2 heart-400 p-4 rounded-lg shadow-lg">
+				<p>
+					Ce qui m'a surtout fasciné, c'est la mécanique du "gamebreak", une technique souvent illustrée par le créateur de contenu Nagaserya, où il devient possible de générer une quantité illimitée de ressources telles que des pièces, des cœurs, des bombes ou des clés. Ce concept de dépassement des limites du jeu m'a inspiré à créer un site où les joueurs peuvent expérimenter eux-mêmes la création de builds aléatoires pour chaque run, rendant chaque partie encore plus imprévisible et passionnante.
+				</p>
+
+				<p>
+					Le site s'adresse à des joueurs qui ont déjà une bonne connaissance des objets du jeu, car certains d'entre eux peuvent avoir des effets ravageurs lorsqu'ils sont combinés. Mon objectif est de proposer un générateur de builds aléatoires, encourageant ainsi une diversité totale d'une run à l'autre. Cela permet aux joueurs de sortir de leur zone de confort et de redécouvrir le jeu sous des angles totalement différents à chaque nouvelle tentative.
+				</p>
+
+				<p>
+					Côté visuel, j'ai voulu refléter l'essence sombre et troublante de l'univers de The Binding of Isaac. Le design du site est donc teinté de rouge, en référence au sang omniprésent dans le jeu, de bleu pour évoquer les larmes, et de noir pour accentuer l'ambiance oppressante et mystérieuse qui fait partie intégrante de l’expérience de jeu. Le thème central qui me touche le plus dans ce jeu reste celui de la rédemption, un sujet profond et complexe qui donne une profondeur inattendue à un univers en apparence si délirant.
+				</p>
+				<p>Enfin, ce projet s’inscrit dans mon parcours professionnel, car je me destine à devenir développeur web. Ce site est à la fois une manière de partager ma passion pour ce jeu emblématique et de montrer mes compétences techniques dans le cadre de mon projet de fin d'année.
+				</p>
+			</div>
+			<div class="md:w-1/2 order-1 md:order-2">
+				<img src="{{ asset('images/isaac-no-bg.png') }}" alt="Image du concept" class="w-full object-contain bg-gray-200 p-4 rounded-lg shadow-lg"/>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

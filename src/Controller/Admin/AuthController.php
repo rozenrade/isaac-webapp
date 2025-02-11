@@ -26,23 +26,20 @@ class AuthController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // Vérification si l'email existe déjà
-            // L'email est ce qui permet de vérifier l'authenticité de l'utilisateur
             if ($existingUser) {
-                return $this->redirectToRoute('app_signup', ['error' => 'This email is already used.']);
+                $this->addFlash('error', 'This email is already used.');
+                return $this->redirectToRoute('app_signup');
             }
 
-            // Ajouter le rôle par défaut ROLE_USER
             $user->setRoles(['ROLE_USER']);
 
-            // Hash du mot de passe si Utilisateur créé
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
 
-
             $repository->save($user);
 
-            return $this->redirectToRoute('app_login', ['success' => 'Successfully created your account']);
+            $this->addFlash('success', 'Successfully created your account');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('auth/signUp.html.twig', ['form' => $form]);
@@ -52,7 +49,6 @@ class AuthController extends AbstractController
     #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // Si l'utilisateur est déjà authentifié
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('app_profile');
         }
@@ -73,3 +69,5 @@ class AuthController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 }
+
+

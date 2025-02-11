@@ -14,14 +14,15 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
-
 	</head>
-	<body class="bg-cover bg-center">
-
+	<body
+		class="min-h-screen flex flex-col bg-cover bg-center">
 		{{ include('components/navbar/index.html.twig') }}
-		<div class="container mx-auto">
-			{% block body %}{% endblock %}
-		</div>
-		{{ include ('components/footer/index.html.twig') }}
-	</body>
-</html>
+
+		<main class="flex-grow container mx-auto pb-10"> {% block body %}{% endblock %}
+			</main>
+
+			{{ include('components/footer/index.html.twig') }}
+		</body>
+	</html>
+

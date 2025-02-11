@@ -1,5 +1,176 @@
 @import "tailwindcss";
 
 body {
-    background-image: url('../img/appBg.png');
+    background-image: url("../img/appBg.png");
 }
+
+#mobile-menu {
+    transition: max-height 300ms ease-in-out, padding 300ms ease-in-out;
+}
+
+#mobile-menu.closed {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#mobile-menu.open {
+    max-height: 500px;
+    /* ou une valeur suffisante */
+    padding-top: 1.25rem;
+    /* équivalent à p-5 */
+    padding-bottom: 1.25rem;
+}
+
+.custom-color-component {
+    background-color: #5A0B0B;
+}
+
+.custom-color-randomizer {
+    background-color: rgb(98, 98, 150);
+}
+
+.bg-synergie-color {
+    background-color: #302F54;
+}
+
+.random-hover:hover {
+    background-color: #302F54;
+}
+/*  YELLOW  */
+.coin-100 {
+    background-color: #7F8204;
+}
+
+.coin-200 {
+    background-color: #999C05;
+}
+
+.coin-300 {
+    background-color: #BBBF07;
+}
+
+.coin-400 {
+    background-color: #D1D603;
+}
+
+.coin-500 {
+    background-color: #E2E700;
+}
+
+
+/* BLUE */
+.tear-100 {
+    background-color: #24233D;
+}
+
+.tear-200 {
+    background-color: #29294A;
+}
+
+.tear-300 {
+    background-color: #302F54;
+}
+
+.tear-400 {
+    background-color: #3C3B6A;
+}
+
+.tear-500 {
+    background-color: #424175;
+}
+
+.tear-hover:hover {
+    background-color: #424175;
+}
+
+/* GRAY */
+.dep-100 {
+    background-color: #252525;
+}
+
+.dep-200 {
+    background-color: #2D2D2D;
+}
+
+.dep-300 {
+    background-color: #323232;
+}
+
+.dep-400 {
+    background-color: #3D3C3C;
+}
+
+.dep-500 {
+    background-color: #4A4A4A;
+}
+
+
+/* PURPLE */
+.purple-100 {
+    background-color: #46215C;
+}
+
+.purple-200 {
+    background-color: #4E2866;
+}
+
+.purple-300 {
+    background-color: #562B70;
+}
+
+.purple-400 {
+    background-color: #5D2E79;
+}
+
+.purple-500 {
+    background-color: #683587;
+}   
+
+
+
+/* RED */
+.heart-100 {
+    background-color: #3C0808;
+}
+
+.heart-200 {
+    background-color: #4D0909;
+}
+
+.heart-300 {
+    background-color: #5A0B0B;
+}
+
+.heart-400 {
+    background-color: #710A0A;
+}
+
+.heart-500 {
+    background-color: #850B0B;
+}   
+
+.heart-hover:hover {
+    background-color: #850B0B;
+}
+
+/* GREEN */
+.life-100 {
+    background-color: #374F05;
+}
+
+.life-200 {
+    background-color: #446008;
+}
+
+.life-300 {
+    background-color: #4C6812;
+}
+
+.life-400 {
+    background-color: #4D631E;
+}
+
+.life-500 {
+    background-color: #566B27;
+}   

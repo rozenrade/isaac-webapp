@@ -16,24 +16,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RandomController extends AbstractController
 {
-    #[Route('/random', name: 'app_random', methods: ['GET'])]
-    public function index(
-        ItemRepository $itemRepository,
-        BossRepository $bossRepository,
-        CharacterRepository $characterRepository,
-        BuildRepository $buildRepository,
-        Request $request,
-        SessionInterface $session
+    #[Route('/random', name: 'app_random', methods: ['GET'])]public function index(ItemRepository $itemRepository,BossRepository $bossRepository,CharacterRepository $characterRepository,BuildRepository $buildRepository,Request $request,SessionInterface $session
     ): Response {
         $totalItems = $itemRepository->findAll();
         $totalBosses = $bossRepository->findAll();
         $totalCharacters = $characterRepository->findAll();
 
-        $url = $request->query->get('status'); // Récupère le paramètre 'status'
+        $url = $request->query->get('status');
         $statusController = ($url === 'random');
-        $isSaved = ($url === 'saved'); // Vérifie si l'utilisateur veut sauvegarder
+        $isSaved = ($url === 'saved'); 
 
-        // ✅ GÉNÉRATION D'UN NOUVEAU BUILD SI "random" EST DANS L'URL
         if ($statusController) {
             $items = $this->getRandomItems($totalItems);
             $selectedBoss = $totalBosses[rand(0, count($totalBosses) - 1)];
@@ -46,14 +38,11 @@ class RandomController extends AbstractController
             ]);
         }
 
-        // ✅ RÉCUPÉRATION DU BUILD ACTUEL
         $currentBuild = $session->get('currentBuild', null);
 
-        // ✅ SAUVEGARDE DU BUILD LORSQUE L'UTILISATEUR CLIQUE SUR "SAUVEGARDER BUILD"
         if ($isSaved && $currentBuild) {
-            $session->set('savedBuild', $currentBuild); // Sauvegarde temporaire en session
+            $session->set('savedBuild', $currentBuild); 
 
-            // Vérifie si l'utilisateur est connecté
             if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
                 $build = new Build();
                 $buildCount = $session->get('build_count', 0);
@@ -62,7 +51,6 @@ class RandomController extends AbstractController
 
                 $build->setUtilisateur($this->getUser());
 
-                // Ajoute les items, boss et personnage au build
                 foreach ($currentBuild['items'] as $item) {
                     $build->addItem($item);
                 }
@@ -70,44 +58,46 @@ class RandomController extends AbstractController
                 $build->addCharacter($currentBuild['character']);
 
                 $buildRepository->save($build);
-                $session->remove('currentBuild'); // Efface les données après récupération
+                $session->set('savedBuild', $currentBuild);
 
-                $this->redirectToRoute('app_profile');
+                return $this->redirectToRoute('app_profile');
             }
         }
 
         return $this->render('random/index.html.twig', [
             'statusURL' => $statusController,
-            'currentBuild' => $currentBuild, // Envoi des données à Twig
+            'currentBuild' => $currentBuild, 
         ]);
     }
 
-    /**
-     * 🔥 Fonction pour récupérer 10 items uniques avec image valide
-     */
     private function getRandomItems(array $totalItems)
     {
         $itemSet = [];
         $attempts = 0;
         $maxAttempts = 100;
 
-        if ($totalItems == null) {
-            return "Cannot get items";
+        if (empty($totalItems)) {
+            return []; 
         }
 
-        while (count($itemSet) < 10 && $attempts < $maxAttempts) {
+        while (count($itemSet) < 12 && $attempts < $maxAttempts) {
             $randomId = rand(0, count($totalItems) - 1);
             $item = $totalItems[$randomId];
 
-            $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $item->getFilename();
-            if (file_exists($imagePath) && !in_array($item, $itemSet)) {
+            $filename = str_replace('public/images/items/', '', $item->getFilename());
+
+            $imagePath = $this->getParameter('kernel.project_dir') . '/public/images/items/' . $filename;
+
+            if (file_exists($imagePath) && !in_array($item, $itemSet, true)) {
                 $itemSet[] = $item;
             }
+
             $attempts++;
         }
 
         return $itemSet;
     }
+
 
     #[Route('build/user/{id}', name: 'app_build_user_delete')]
     public function delete(Request $request, int $id, EntityManagerInterface $entityManager): Response

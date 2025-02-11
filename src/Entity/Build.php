@@ -23,7 +23,7 @@ class Build
     private Collection $item;
     
     #[ORM\ManyToOne(inversedBy: 'builds')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'utilisateur_id', referencedColumnName: 'id', onDelete: 'CASCADE')]
     private ?User $utilisateur = null;
     
     /**
