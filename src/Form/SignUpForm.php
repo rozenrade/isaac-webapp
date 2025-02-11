@@ -47,18 +47,19 @@ class SignUpForm extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe est trop court',
-                        'max' => 12,
-                        'maxMessage' => 'Votre mot de passe est trop long',
+                        'min' => 8,
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                        'max' => 16,
+                        'maxMessage' => 'Votre mot de passe ne peut pas dépasser {{ limit }} caractères',
                     ]),
                     new Assert\Regex([
-                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,12}$/',
-                        'message' => '.'
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/',
+                        'message' => 'Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial.',
                     ])
                 ]
             ])
             
+
             ->add('cgu', CheckboxType::class, [
                 'mapped' => false,
                 'label' => 'J\'accepte les Conditions Générales d\'Utilisation',
