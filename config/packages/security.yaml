@@ -26,7 +26,7 @@ security:
 
                 login_path: app_login
                 check_path: app_login
-                default_target_path: app_profile
+                default_target_path: app_random
 
                 username_parameter: email
                 password_parameter: password

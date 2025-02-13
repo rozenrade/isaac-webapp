@@ -47,10 +47,10 @@ class SignUpForm extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length([
-                        'min' => 8,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                        'min' => 4,
+                        'minMessage' => 'Votre mot de passe doit comporter au moins 4 caractères',
                         'max' => 16,
-                        'maxMessage' => 'Votre mot de passe ne peut pas dépasser {{ limit }} caractères',
+                        'maxMessage' => 'Votre mot de passe ne peut pas dépasser 16 caractères',
                     ]),
                     new Assert\Regex([
                         'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/',

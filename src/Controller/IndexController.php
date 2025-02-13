@@ -41,4 +41,10 @@ class IndexController extends AbstractController
     {
         return $this->render('cgu/index.html.twig');
     }
+
+    #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
+    public function adminDashboard(): Response
+    {
+        return $this->render('admin/dashboard/index.html.twig');
+    }
 }

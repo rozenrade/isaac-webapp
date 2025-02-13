@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Synergy>
      */
-    #[ORM\OneToMany(targetEntity: Synergy::class, mappedBy: 'utilisateur', orphanRemoval: true)]
+    #[ORM\ManyToMany(targetEntity: Synergy::class, mappedBy: 'utilisateurs')]
     private Collection $synergies;
 
     /**
@@ -158,14 +158,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeSynergy(Synergy $synergy): static
     {
         if ($this->synergies->removeElement($synergy)) {
-            // set the owning side to null (unless already changed)
-            if ($synergy->getUtilisateurs() === $this) {
-                $synergy->addUtilisateur($this);
-            }
+            $synergy->removeUtilisateur($this);  // Ne pas oublier de mettre à jour la relation inverse
         }
-
+    
         return $this;
     }
+    
 
     /**
      * @return Collection<int, ItemList>

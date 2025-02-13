@@ -4,40 +4,37 @@
 {% endblock %}
 
 {% block body %}
-	<div class="flex flex-col justify-center items-center m-16 p-16 bg-red-300 opacity-85 w-full">
+	<div class="flex flex-col items-center p-8 bg-opacity-90 w-full rounded-lg shadow-md">
+		<h1 class="text-2xl font-bold text-white mb-4">Contactez-nous</h1>
 
-		<h1 class="text-2xl font-bold text-white">Contactez-nous</h1>
 		{% for message in app.flashes('success') %}
-			<div class="alert alert-success">{{ message }}</div>
+			<div class="w-full max-w-md p-3 mb-4 text-green-800 bg-green-100 border border-green-400 rounded">
+				{{ message }}
+			</div>
 		{% endfor %}
 
-		<div class="container">
+		<div class="w-full max-w-md bg-white p-6 rounded shadow">
+			{{ form_start(form, { 'attr': {'class': 'space-y-4'} }) }}
 
-			{{ form_start(form) }}
-			<div class="mb-3">
-				{{ form_label(form.name) }}
-				{{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
-				{{ form_errors(form.name) }}
+			<div>
+				{{ form_widget(form.name, { 'attr': {'class': 'w-full p-2 border border-none bg-gray-200 rounded focus:ring-2 focus:border-none'} }) }}
 			</div>
 
-			<div class="mb-3">
-				{{ form_label(form.email) }}
-				{{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-				{{ form_errors(form.email) }}
+			<div>
+				{{ form_widget(form.email, { 'attr': {'class': 'w-full p-2 border border-none bg-gray-200 rounded focus:ring-2 focus:border-none'} }) }}
 			</div>
 
-			<div class="mb-3">
-				{{ form_label(form.message) }}
-				{{ form_widget(form.message, { 'attr': {'class': 'form-control', 'rows': 5} }) }}
-				{{ form_errors(form.message) }}
+			<div>
+				{{ form_widget(form.message, { 'attr': {'class': 'w-full p-2 border border-none bg-gray-200 rounded focus:ring-2 focus:border-none max-h-24 resize-none'} }) }}
 			</div>
 
-			<div class="mb-3">
-				{{ form_widget(form.submit, { 'attr': {'class': 'btn btn-primary'} }) }}
+			<div>
+				{{ form_widget(form.submit, { 'attr': {'class': 'w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition'} }) }}
 			</div>
 
 			{{ form_end(form) }}
 		</div>
 	</div>
+
 
 {% endblock %}

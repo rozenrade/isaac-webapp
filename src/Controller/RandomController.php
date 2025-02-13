@@ -16,15 +16,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RandomController extends AbstractController
 {
-    #[Route('/random', name: 'app_random', methods: ['GET'])]public function index(ItemRepository $itemRepository,BossRepository $bossRepository,CharacterRepository $characterRepository,BuildRepository $buildRepository,Request $request,SessionInterface $session
+    #[Route('/random', name: 'app_random', methods: ['GET'])] public function index(
+        ItemRepository $itemRepository,
+        BossRepository $bossRepository,
+        CharacterRepository $characterRepository,
+        BuildRepository $buildRepository,
+        Request $request,
+        SessionInterface $session
     ): Response {
         $totalItems = $itemRepository->findAll();
         $totalBosses = $bossRepository->findAll();
         $totalCharacters = $characterRepository->findAll();
 
+        if (empty($totalItems) || empty($totalBosses) || empty($totalCharacters)) {
+            return $this->render('random/index.html.twig', [
+                'errorMessage' => 'No data could be loaded.'
+            ]);
+        }
+
         $url = $request->query->get('status');
         $statusController = ($url === 'random');
-        $isSaved = ($url === 'saved'); 
+        $isSaved = ($url === 'saved');
 
         if ($statusController) {
             $items = $this->getRandomItems($totalItems);
@@ -39,9 +51,11 @@ class RandomController extends AbstractController
         }
 
         $currentBuild = $session->get('currentBuild', null);
+        
+
 
         if ($isSaved && $currentBuild) {
-            $session->set('savedBuild', $currentBuild); 
+            $session->set('savedBuild', $currentBuild);
 
             if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
                 $build = new Build();
@@ -66,7 +80,7 @@ class RandomController extends AbstractController
 
         return $this->render('random/index.html.twig', [
             'statusURL' => $statusController,
-            'currentBuild' => $currentBuild, 
+            'currentBuild' => $currentBuild,
         ]);
     }
 
@@ -77,7 +91,7 @@ class RandomController extends AbstractController
         $maxAttempts = 100;
 
         if (empty($totalItems)) {
-            return []; 
+            return [];
         }
 
         while (count($itemSet) < 12 && $attempts < $maxAttempts) {

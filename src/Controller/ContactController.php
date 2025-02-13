@@ -34,5 +34,28 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/admin/messages', name: 'app_admin_messages')]
+    public function adminMessages(DocumentManager $dm): Response
+    {
+        $messages = $dm->getRepository(ContactMessage::class)->findAll();
+
+        return $this->render('contact/admin_messages.html.twig', [
+            'messages' => $messages,
+        ]);
+    }
+
+    #[Route('/admin/messages/delete/{id}', name: 'app_contact_delete')]
+    public function deleteMessage(DocumentManager $dm, int $id): Response
+    {
+        $contactMessage = $dm->getRepository(ContactMessage::class)->find($id);
+        if (!$contactMessage) {
+            throw $this->createNotFoundException('Message not found');
+        }
+        $dm->remove($contactMessage);
+        $dm->flush();
+
+        return $this->redirectToRoute('app_admin_messages');
+    }
 }
 

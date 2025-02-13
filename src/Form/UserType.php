@@ -20,11 +20,13 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, ['label' => 'Email'])
             ->add('password',PasswordType::class, ['label' => 'Password'])
             ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'ROLE_USER' => 'ROLE_USER',
+                'choices'  => [
+                    'ROLE_USER'  => 'ROLE_USER',
                     'ROLE_ADMIN' => 'ROLE_ADMIN',
                 ],
-            ])
+                'expanded' => true,
+                'multiple' => true,
+            ])            
         ;
     }
 

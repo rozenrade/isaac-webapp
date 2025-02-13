@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Azazel",
+        "filepath": "Azazel.png"
+    },
+    {
+        "name": "Bethany",
+        "filepath": "Bethany.png"
+    },
+    {
+        "name": "Cain",
+        "filepath": "Cain.png"
+    },
+    {
+        "name": "Eden",
+        "filepath": "Eden.png"
+    },
+    {
+        "name": "Eve",
+        "filepath": "Eve.png"
+    },
+    {
+        "name": "Isaac",
+        "filepath": "Isaac.png"
+    },
+    {
+        "name": "Judas",
+        "filepath": "Judas.png"
+    },
+    {
+        "name": "Keeper",
+        "filepath": "Keeper.png"
+    },
+    {
+        "name": "Lazarus",
+        "filepath": "Lazarus.png"
+    },
+    {
+        "name": "Lilith",
+        "filepath": "Lilith.png"
+    },
+    {
+        "name": "Magdalene",
+        "filepath": "Magdalene.png"
+    },
+    {
+        "name": "Samson",
+        "filepath": "Samson.png"
+    },
+    {
+        "name": "blue-baby",
+        "filepath": "blue-baby.png"
+    },
+    {
+        "name": "jacob-&-esau",
+        "filepath": "jacob-&-esau.png"
+    },
+    {
+        "name": "judas'-shadow",
+        "filepath": "judas'-shadow.png"
+    },
+    {
+        "name": "lazarus-risen",
+        "filepath": "lazarus-risen.png"
+    },
+    {
+        "name": "the-forgotten",
+        "filepath": "the-forgotten.png"
+    },
+    {
+        "name": "the-lost",
+        "filepath": "the-lost.png"
+    },
+    {
+        "name": "the-soul",
+        "filepath": "the-soul.png"
+    }
+]

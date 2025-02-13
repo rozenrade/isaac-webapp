@@ -24,7 +24,7 @@
 			</li>
 			{% if is_granted('ROLE_ADMIN') %}
 				<li>
-					<a href="{{ path('app_admin_synergy_index') }}" class="hover:text-blue-300 transition-all duration-300 ">Add a synergy</a>
+					<a href="{{ path('app_admin_dashboard') }}" class="hover:text-blue-300 transition-all duration-300 ">Dashboard</a>
 				</li>
 			{% endif %}
 			{% if is_granted('ROLE_USER') %}
