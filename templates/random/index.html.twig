@@ -6,7 +6,7 @@
 {% block body %}
 	{% set currentItemSet = app.session.get('currentItemSet') %}
 
-	{% if not statusURL %}
+	{% if not statusURL|default(false) %}
 		<h1 class="p-4 text-center text-white">You can use our randomizer on this page</h1>
 	{% endif %}
 

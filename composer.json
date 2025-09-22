@@ -7,24 +7,24 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/dbal": "^3",
-        "doctrine/doctrine-bundle": "^2.13",
-        "doctrine/doctrine-migrations-bundle": "^3.4",
-        "doctrine/mongodb-odm-bundle": "^5.2",
-        "doctrine/orm": "^3.3",
+        "doctrine/dbal": "^3.10.2",
+        "doctrine/doctrine-bundle": "^2.16.2",
+        "doctrine/doctrine-migrations-bundle": "^3.4.2",
+        "doctrine/mongodb-odm-bundle": "^5.4.1",
+        "doctrine/orm": "^3.5.2",
         "symfony/asset": "7.2.*",
         "symfony/console": "7.2.*",
         "symfony/dotenv": "7.2.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.8.2",
         "symfony/form": "7.2.*",
         "symfony/framework-bundle": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/security-bundle": "7.2.*",
-        "symfony/stimulus-bundle": "^2.22",
+        "symfony/stimulus-bundle": "^2.30",
         "symfony/twig-bundle": "7.2.*",
-        "symfony/ux-turbo": "^2.22",
+        "symfony/ux-turbo": "^2.30",
         "symfony/validator": "7.2.*",
-        "symfony/webpack-encore-bundle": "^2.2",
+        "symfony/webpack-encore-bundle": "^2.3",
         "symfony/yaml": "7.2.*"
     },
     "config": {
@@ -78,11 +78,11 @@
         }
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^4.0",
-        "phpunit/phpunit": "^12.0",
+        "doctrine/doctrine-fixtures-bundle": "^4.1",
+        "phpunit/phpunit": "^11.5.39",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
-        "symfony/maker-bundle": "^1.62",
-        "symfony/phpunit-bridge": "^7.2"
+        "symfony/maker-bundle": "^1.64",
+        "symfony/phpunit-bridge": "^7.3.3"
     }
 }

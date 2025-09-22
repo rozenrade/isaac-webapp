@@ -30,7 +30,9 @@ class RandomController extends AbstractController
 
         if (empty($totalItems) || empty($totalBosses) || empty($totalCharacters)) {
             return $this->render('random/index.html.twig', [
-                'errorMessage' => 'No data could be loaded.'
+                'errorMessage' => 'No data could be loaded.',
+                'statusURL' => null,
+                'currentBuild' => null
             ]);
         }
 
