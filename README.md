@@ -81,4 +81,4 @@ npm run dev
 ```
 ---
 
-Avec toutes ces commandes effectuées vous aurez la possibilité de naviguer librement depuis votre machine Windows sur l'application web. 
+Avec toutes ces commandes effectuées vous aurez la possibilité de naviguer librement depuis votre Windows sur l'application web. 
