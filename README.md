@@ -2,8 +2,6 @@
 
 *Cette application n'est actuellement disponible qu'en local.*
 
-Une version sous REACT sera mise à jour dans les semaines et mois à venir.
-
 ## 📌 Prérequis
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
