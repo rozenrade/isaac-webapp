@@ -31,8 +31,7 @@ composer -V
 Si Composer n'est pas installé, téléchargez-le avec :
 
 ```sh
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer
 ```
 
 ### 2️⃣ Récupérer le projet
