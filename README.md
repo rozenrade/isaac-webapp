@@ -5,7 +5,7 @@
 ## 📌 Prérequis
 Avant de commencer, assurez-vous d'avoir installé les éléments suivants :
 
-- [PHP](https://www.php.net/downloads) (version 8.1 ou supérieure recommandée)
+- [PHP](https://www.php.net/downloads) (version 8.2 ou supérieure recommandée)
 - [Composer](https://getcomposer.org/download/)
 - [Symfony CLI](https://symfony.com/download)
 - [Node.js](https://nodejs.org/)
